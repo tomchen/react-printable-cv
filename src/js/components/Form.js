@@ -2,22 +2,22 @@ import React, { Component } from 'react'
 
 class Form extends Component {
   constructor() {
-    super();
+    super()
 
     this.state = {
-      value: ""
-    };
+      value: '',
+    }
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange(event) {
-    const { value } = event.target;
+    const { value } = event.target
     this.setState(() => {
       return {
-        value
-      };
-    });
+        value,
+      }
+    })
   }
 
   render() {
@@ -29,7 +29,7 @@ class Form extends Component {
           onChange={this.handleChange}
         />
       </form>
-    );
+    )
   }
 }
 
