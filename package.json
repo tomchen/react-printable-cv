@@ -6,30 +6,51 @@
   "scripts": {
     "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "keywords": [],
   "author": "Tom Chen",
   "license": "MIT",
   "dependencies": {
+    "immer": "*",
     "react": "*",
-    "react-dom": "*"
+    "react-dom": "*",
+    "react-redux": "*",
+    "redux": "*",
+    "redux-thunk": "*"
   },
   "devDependencies": {
     "@babel/core": "*",
     "@babel/preset-env": "*",
     "@babel/preset-react": "*",
+    "@svgr/webpack": "*",
+    "babel-jest": "*",
     "babel-loader": "*",
+    "css-loader": "*",
     "eslint": "*",
     "eslint-config-airbnb-base": "*",
     "eslint-config-prettier": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-react": "*",
+    "file-loader": "*",
     "html-loader": "*",
     "html-webpack-plugin": "*",
+    "jest": "*",
+    "node-sass": "*",
     "prettier": "*",
+    "react-dev-utils": "*",
+    "react-test-renderer": "*",
+    "sass-loader": "*",
+    "style-loader": "*",
+    "url-loader": "*",
     "webpack": "*",
     "webpack-cli": "*",
     "webpack-dev-server": "*"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }

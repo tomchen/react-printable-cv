@@ -1,7 +1,7 @@
 import React, { lazy, Suspense } from 'react'
 
-// import Form from "./js/components/Form"
-const Form = lazy(() => import('./js/components/Form'))
+// import Form from "./components/Form"
+const Form = lazy(() => import('./components/Form'))
 
 function App() {
   return (
