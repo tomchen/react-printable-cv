@@ -1,6 +1,6 @@
-# Simple Starter React App
+# Starter React App
 
-[![CircleCI](https://circleci.com/gh/tomchen/simple-starter-react-app.svg?style=shield)](https://circleci.com/gh/tomchen/simple-starter-react-app) [![codecov](https://codecov.io/gh/tomchen/simple-starter-react-app/branch/master/graph/badge.svg)](https://codecov.io/gh/tomchen/simple-starter-react-app)
+[![CircleCI](https://circleci.com/gh/tomchen/starter-react-app.svg?style=shield)](https://circleci.com/gh/tomchen/starter-react-app) [![codecov](https://codecov.io/gh/tomchen/starter-react-app/branch/master/graph/badge.svg)](https://codecov.io/gh/tomchen/starter-react-app)
 
 Starter React App with my preferred (dev)dependencies.
 
