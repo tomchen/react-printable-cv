@@ -1,5 +1,7 @@
 # Simple Starter React App
 
+[![CircleCI](https://circleci.com/gh/tomchen/simple-starter-react-app.svg?style=shield)](https://circleci.com/gh/tomchen/simple-starter-react-app) [![Coverage Status](https://coveralls.io/repos/github/tomchen/simple-starter-react-app/badge.svg?branch=master&t=TI5iCM)](https://coveralls.io/github/tomchen/simple-starter-react-app?branch=master)
+
 Starter React App with my preferred (dev)dependencies.
 
 Preinstalled and preconfigured are (see package.json for details):
