@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import formCls from './Form.scss'
 
 class Form extends Component {
   constructor() {
@@ -22,7 +23,7 @@ class Form extends Component {
 
   render() {
     return (
-      <form>
+      <form className={formCls.abc}>
         <input
           type="text"
           value={this.state.value}
