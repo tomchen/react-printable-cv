@@ -1,6 +1,9 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 // const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
 // const webpack = require('webpack')
+const postcssPresetEnv = require('postcss-preset-env')
+const postcssNormalize = require('postcss-normalize')
+const cssnano = require('cssnano')
 
 module.exports = {
   entry: './src/index.js',
@@ -27,11 +30,46 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: { modules: true, importLoaders: 1 },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                postcssPresetEnv(),
+                postcssNormalize(),
+                cssnano(),
+              ],
+            },
+          },
+          'sass-loader',
+        ],
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: { modules: true, importLoaders: 1 },
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              ident: 'postcss',
+              plugins: () => [
+                postcssPresetEnv(),
+                postcssNormalize(),
+                cssnano(),
+              ],
+            },
+          },
+        ],
       },
       {
         test: /\.svg$/,
