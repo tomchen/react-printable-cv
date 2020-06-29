@@ -22,11 +22,12 @@ class Form extends Component {
   }
 
   render() {
+    const {value} = this.state
     return (
       <form className={formCls.abc}>
         <input
           type="text"
-          value={this.state.value}
+          value={value}
           onChange={this.handleChange}
         />
       </form>
