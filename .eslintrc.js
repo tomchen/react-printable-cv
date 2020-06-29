@@ -5,10 +5,9 @@ module.exports = {
     jest: true,
   },
   extends: [
-    'airbnb-base',
+    'airbnb',
     'prettier',
-    'eslint:recommended',
-    'plugin:react/recommended',
+    'eslint:recommended'
   ],
   globals: {
     Atomics: 'readonly',
@@ -22,5 +21,7 @@ module.exports = {
       jsx: true,
     },
   },
-  rules: {},
+  rules: {
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+  },
 }
