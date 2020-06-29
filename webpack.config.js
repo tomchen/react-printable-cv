@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
-// const webpack = require('webpack')
+const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
+const webpack = require('webpack')
 const postcssPresetEnv = require('postcss-preset-env')
 const postcssNormalize = require('postcss-normalize')
 const cssnano = require('cssnano')
@@ -75,27 +75,27 @@ module.exports = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
       },
-      {
-        test: /\.(png|jpe?g|gif|ico)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
-        ],
-      },
-      // url-loader (transforming ressources into base64 URI)
-      // can be used instead of file-loader (get ressources' URL)
       // {
       //   test: /\.(png|jpe?g|gif|ico)$/i,
       //   use: [
       //     {
-      //       loader: 'url-loader',
-      //       options: {
-      //         limit: 8192,
-      //       },
+      //       loader: 'file-loader',
       //     },
       //   ],
       // },
+      // url-loader (transforming ressources into base64 URI)
+      // can be used instead of file-loader (get ressources' URL)
+      {
+        test: /\.(png|jpe?g|gif|ico)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            // options: {
+            //   limit: 8192,
+            // },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -104,9 +104,9 @@ module.exports = {
       filename: './index.html',
     }),
     // produce one script chunk and / or inline script in index.html
-    // new webpack.optimize.LimitChunkCountPlugin({
-    //   maxChunks: 1
-    // }), // then manually remove /dist/*.js
-    // new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/\.js$/]),
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 1
+    }), // then manually remove /dist/*.js
+    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/\.js$/]),
   ],
 }
