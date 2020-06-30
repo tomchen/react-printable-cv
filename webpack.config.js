@@ -1,11 +1,13 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
+const RemovePlugin = require('remove-files-webpack-plugin')
 const webpack = require('webpack')
 const postcssPresetEnv = require('postcss-preset-env')
 const postcssNormalize = require('postcss-normalize')
 const cssnano = require('cssnano')
+const settings = require('./settings')
 
-module.exports = {
+const config = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
@@ -75,17 +77,43 @@ module.exports = {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
       },
-      // {
-      //   test: /\.(png|jpe?g|gif|ico)$/i,
-      //   use: [
-      //     {
-      //       loader: 'file-loader',
-      //     },
-      //   ],
-      // },
-      // url-loader (transforming ressources into base64 URI)
-      // can be used instead of file-loader (get ressources' URL)
-      {
+    ],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: './index.html',
+    }),
+  ],
+}
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.mode = 'development'
+    config.devtool = 'source-map'
+  }
+
+  if (
+    argv.mode === 'development' ||
+    (argv.mode === 'production' && !settings.inline_resources)
+  ) {
+    // url-loader (transforming ressources into base64 URI)
+    // can be used instead of file-loader (get ressources' URL)
+    config.module.rules.push({
+      test: /\.(png|jpe?g|gif|ico)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+        },
+      ],
+    })
+  }
+
+  if (argv.mode === 'production') {
+    config.mode = 'production'
+
+    if (settings.inline_resources) {
+      config.module.rules.push({
         test: /\.(png|jpe?g|gif|ico)$/i,
         use: [
           {
@@ -95,18 +123,31 @@ module.exports = {
             // },
           },
         ],
-      },
-    ],
-  },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      filename: './index.html',
-    }),
-    // produce one script chunk and / or inline script in index.html
-    new webpack.optimize.LimitChunkCountPlugin({
-      maxChunks: 1
-    }), // then manually remove /dist/*.js
-    new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/\.js$/]),
-  ],
+      })
+    }
+
+    if (settings.one_chunk) {
+      config.plugins.push(
+        // produce one script chunk and / or inline script in index.html
+        new webpack.optimize.LimitChunkCountPlugin({
+          maxChunks: 1,
+        }), // then manually remove /dist/*.js
+      )
+    }
+
+    if (settings.inline_resources) {
+      config.plugins.push(
+        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/\.js$/]),
+        new RemovePlugin({
+          after: {
+            root: './dist',
+            include: ['bundle.js'],
+            trash: true,
+          },
+        }),
+      )
+    }
+  }
+
+  return config
 }
