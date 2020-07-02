@@ -1,0 +1,24 @@
+@import '../../global_styles/variables';
+@import '../../global_styles/mixins';
+
+.footer {
+  @include light-font-color-in-print-mode($light-color);
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  line-height: $global-line-height;
+  text-align: center;
+
+  div {
+    display: inline;
+    margin-right: 0.3rem;
+
+    a {
+      @include link-hover-effect($back-color);
+
+      &,
+      &:visited {
+        @include light-font-color-in-print-mode($back-color);
+      }
+    }
+  }
+}

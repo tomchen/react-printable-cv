@@ -1,0 +1,72 @@
+@import './variables';
+
+@mixin section-title-style {
+  display: flex;
+  flex-basis: 8rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 8rem;
+  margin: 0.8rem 0 0.8rem 1rem;
+  padding: 0.5rem 0.2rem;
+  text-align: center;
+
+  @include mobile {
+    margin: 1.2rem auto 0.5rem;
+  }
+}
+
+@mixin notched-corner(
+  $top_left_size: 0,
+  $bottom_left_size: 0,
+  $top_right_size: 0,
+  $bottom_right_size: 0
+) {
+  clip-path: polygon(
+    0% $top_left_size,
+    #{$top_left_size} 0%,
+    calc(100% - #{$top_right_size}) 0%,
+    100% $top_right_size,
+    100% calc(100% - #{$bottom_right_size}),
+    calc(100% - #{$bottom_right_size}) 100%,
+    $bottom_left_size 100%,
+    0% calc(100% - #{$bottom_left_size})
+  );
+}
+
+@mixin link-hover-effect($color) {
+  &,
+  &:visited {
+    padding-bottom: 1px;
+    text-decoration: none;
+    background-image: linear-gradient($color, $color);
+    background-repeat: no-repeat;
+    background-position: 0 88%;
+    background-size: 100% 1px;
+    transition: background-size 0.25s ease-in;
+  }
+
+  &:hover {
+    background-size: 0 1px;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: $mobile-width) {
+    @content;
+  }
+}
+
+@mixin light-font-color-in-print-mode($color) {
+  color: $color;
+
+  // Firefox print mode problem fix:
+  // force text to print as specified color instead of black
+  @-moz-document url-prefix('') {
+    @media print {
+      color: rgba(0, 0, 0, 0);
+      text-shadow: 0 0 0 $color;
+    }
+  }
+}

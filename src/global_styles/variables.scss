@@ -1,0 +1,25 @@
+$main-color: #4f81bd;
+$main-color-dark: darken($main-color, 20%);
+$main-color-light: lighten($main-color, 20%);
+
+$back-color: #fafafa;
+$light-color: #fff;
+
+$mobile-width: 768px;
+
+$primary-font-family: 'Source Serif Pro', 'Palatino Linotype', 'Book Antiqua', 'URW Palladio L',
+  'PingFang SC', 'PingFang TC', 'Hiragino Sans GB', 'Microsoft YaHei',
+  'WenQuanYi Micro Hei', SimSun, serif;
+
+$root-font-size: 15px;
+$global-line-height: 1.2rem;
+
+$section-margin: 0.3rem;
+
+$block-padding-y: 0.9rem;
+$block-padding-x: 0.75rem;
+
+$photo-width: 100px;
+$photo-ratio: 7 / 9; // UK, France standard size
+
+$notched-corner-size: 0.5rem;

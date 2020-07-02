@@ -1,0 +1,34 @@
+@import '../../global_styles/variables';
+@import '../../global_styles/mixins';
+
+.block {
+  @include notched-corner($notched-corner-size, $notched-corner-size);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  justify-content: center;
+
+  // For IE11
+  width: 100%;
+  padding: $block-padding-y $block-padding-x;
+  background-color: $light-color;
+
+  @include mobile {
+    @include notched-corner($notched-corner-size, 0);
+    width: auto;
+  }
+}
+
+.topblock {
+  @include notched-corner(0, $notched-corner-size);
+
+  display: flex;
+  flex-direction: row;
+  padding-top: 3rem;
+
+  @include mobile {
+    @include notched-corner(0, 0);
+    display: block;
+    padding-top: $block-padding-y;
+  }
+}

@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import photoImage from '../../../../data/photo.jpg'
+import photoImage from '../../../data/photo.jpg'
+import photoStyle from './Photo.scss'
 
 const Photo = ({ name }) => (
-  <div>
+  <div className={photoStyle.photo}>
     <img src={photoImage} alt={name} />
   </div>
 )

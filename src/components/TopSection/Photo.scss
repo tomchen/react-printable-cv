@@ -1,0 +1,17 @@
+@import '../../global_styles/variables';
+@import '../../global_styles/mixins';
+
+.photo {
+  @include section-title-style;
+}
+
+.photo img {
+  width: $photo-width;
+  height: $photo-width / $photo-ratio;
+  margin-top: 2rem;
+  margin-right: 0.8rem;
+  object-fit: cover;
+  @include mobile {
+    margin-right: 0;
+  }
+}

@@ -1,16 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import SectionTitle from './SectionTitle'
+import sectionStyle from './index.scss'
 
 const Section = ({ title, children }) => (
-  <div>
-    <SectionTitle title={title} />
+  <section className={sectionStyle.section}>
+    {title && <SectionTitle title={title} />}
     {children}
-  </div>
+  </section>
 )
 
+Section.defaultProps = {
+  title: null,
+}
+
 Section.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   children: PropTypes.element.isRequired,
 }
 
