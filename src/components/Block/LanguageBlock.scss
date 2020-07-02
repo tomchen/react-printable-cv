@@ -1,0 +1,28 @@
+@import '../../global_styles/variables';
+
+.ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0 0.75rem;
+  line-height: $global-line-height * 1.25;
+  list-style: none;
+
+  li {
+    display: block;
+    display: flex;
+    flex-basis: 50%;
+
+    span {
+      flex: 1 1 0;
+
+      &.langname {
+        font-weight: bold;
+      }
+
+      &.langdesc {
+        flex-grow: 1.5;
+      }
+    }
+  }
+}

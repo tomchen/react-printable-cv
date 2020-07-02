@@ -5,17 +5,22 @@ import ItemContent from './ItemContent'
 import ItemTitle from './ItemTitle'
 import ItemSubtitle from './ItemSubtitle'
 import Block from './index'
+import tbbStyle from './TimeBasedBlock.scss'
 
 const TimeBasedBlock = ({ timeBasedItemList }) => (
   <Block>
+    <>
     {timeBasedItemList.map((item) => (
-      <div key={item.title}>
+      <div key={item.title} className={tbbStyle.item}>
         <ItemTime from={item.from} to={item.to} />
-        <ItemTitle content={item.title} />
-        {item.subtitle && <ItemSubtitle content={item.subtitle} />}
-        {item.content && <ItemContent content={item.content} />}
+        <div className={tbbStyle.lines}>
+          {item.title && <ItemTitle content={item.title} />}
+          {item.subtitle && <ItemSubtitle content={item.subtitle} />}
+          {item.content && <ItemContent content={item.content} />}
+        </div>
       </div>
     ))}
+    </>
   </Block>
 )
 

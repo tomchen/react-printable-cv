@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import topStyle from './index.scss'
 
-const Profession = ({ profession }) => <div>{profession}</div>
+const Profession = ({ profession }) => (
+  <div className={topStyle.profession}>{profession}</div>
+)
 
 Profession.propTypes = {
   profession: PropTypes.string.isRequired,

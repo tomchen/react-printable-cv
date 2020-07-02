@@ -8,8 +8,10 @@ import {
   FaTwitter,
   FaGithub,
   FaBirthdayCake,
+  FaFlag,
 } from 'react-icons/fa'
-import { GrFlagFill } from 'react-icons/gr'
+import topStyle from './index.scss'
+import { autoDetectDmy, age } from '../../timeFormat'
 
 const typeMapping = {
   adresse: {
@@ -30,7 +32,7 @@ const typeMapping = {
   },
   birth_place: {
     name: 'Birth place',
-    icon: <GrFlagFill />,
+    icon: <FaFlag />,
   },
   website: {
     name: 'Website',
@@ -46,34 +48,52 @@ const typeMapping = {
   },
 }
 
-const InfoLine = ({ type, text, url, iconOnly, isInlineBlock }) => (
+const InfoLine = ({ type, text, url, isNotExtUrl, isSocial }) => (
   <div
     className={cx({
-      'inline-block': isInlineBlock,
+      [topStyle.social]: isSocial,
+      [topStyle.infoline]: true,
     })}
+    data-type={type}
   >
     <span
       title={typeMapping[type].name}
       aria-label={typeMapping[type].name}
+      className={topStyle.svgwrapper}
     >
       {typeMapping[type].icon}
     </span>
-    {!iconOnly && (url ? <a href={url}>{text}</a> : <span>{text}</span>)}
+    {url ? (
+      <a
+        href={url}
+        className={topStyle.text}
+        target={isNotExtUrl ? undefined : '_blank'}
+        rel={isNotExtUrl ? undefined : 'noopener noreferrer'}
+      >
+        {text}
+      </a>
+    ) : (
+      <span className={topStyle.text}>
+        {type === 'birth_date'
+          ? `${autoDetectDmy(text, 'fr')} (${age(text, 'fr')})`
+          : text}
+      </span>
+    )}
   </div>
 )
 
 InfoLine.defaultProps = {
   url: null,
-  iconOnly: false,
-  isInlineBlock: false,
+  isNotExtUrl: false,
+  isSocial: false,
 }
 
 InfoLine.propTypes = {
   type: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   url: PropTypes.string,
-  iconOnly: PropTypes.bool,
-  isInlineBlock: PropTypes.bool,
+  isNotExtUrl: PropTypes.bool,
+  isSocial: PropTypes.bool,
 }
 
 export default InfoLine

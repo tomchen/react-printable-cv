@@ -1,0 +1,17 @@
+@import '../../global_styles/mixins.scss';
+
+.menu {
+  position: absolute;
+  top: 0;
+  left: calc(50% + #{210mm / 2});
+  display: flex;
+
+  @include mobile {
+    left: calc(50% + ((100% - 4rem) / 2));
+  }
+
+}
+
+.button {
+  display: inline-block;
+}

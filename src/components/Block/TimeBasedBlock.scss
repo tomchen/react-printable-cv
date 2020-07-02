@@ -1,0 +1,29 @@
+.item {
+  display: flex;
+  margin-top: 0.5rem;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.time {
+  flex-basis: 11rem;
+  flex-grow: 0;
+}
+
+.lines {
+  flex: 1 1 0;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.subtitle {
+  display: block;
+}
+
+.content {
+  font-size: 0.9rem;
+}

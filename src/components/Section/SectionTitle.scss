@@ -1,0 +1,9 @@
+@import '../../global_styles/variables';
+@import '../../global_styles/mixins';
+
+.title {
+  @include section-title-style;
+  background-color: $main-color-light;
+  font-feature-settings: normal;
+  font-variant: small-caps;
+}

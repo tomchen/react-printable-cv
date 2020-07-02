@@ -1,0 +1,50 @@
+@import-normalize;
+@import './variables';
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: $root-font-size;
+  font-family: $primary-font-family;
+  background-color: $back-color;
+}
+
+@page {
+  margin: 0;
+  size: A4;
+}
+
+@media print {
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+    background: $main-color !important;
+    color-adjust: exact !important;
+    // The height should be 297mm
+    // In Firefox 296mm is used due to a Firefox print mode bug
+    // where a new page is generated if height is 297mm
+    @-moz-document url-prefix('') {
+      height: 296mm;
+    }
+  }
+}
+
+/* source-serif-pro-regular - latin */
+@font-face {
+  font-weight: 400;
+  font-family: 'Source Serif Pro';
+  font-style: normal;
+  src: local('Source Serif Pro'), local('SourceSerifPro-Regular'),
+    url('../fonts/source-serif-pro-latin-regular.woff') format('woff');
+}
+/* source-serif-pro-700 - latin */
+@font-face {
+  font-weight: 700;
+  font-family: 'Source Serif Pro';
+  font-style: normal;
+  src: local('Source Serif Pro Bold'), local('SourceSerifPro-Bold'),
+    url('../fonts/source-serif-pro-latin-700.woff') format('woff');
+}

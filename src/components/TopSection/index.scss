@@ -1,0 +1,84 @@
+@import '../../global_styles/variables';
+@import '../../global_styles/mixins';
+
+.name {
+  display: flex;
+  flex-basis: 11rem;
+  flex-grow: 0;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  color: $main-color-dark;
+  font-size: 1.35rem;
+  text-align: center;
+
+  @include mobile {
+    margin: 1rem 0;
+  }
+}
+
+.infos {
+  display: flex;
+  flex-basis: 18rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-between;
+  @include mobile {
+    display: block;
+    margin: 0 3rem;
+  }
+}
+
+.svgwrapper {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  padding-right: 0.15rem;
+  vertical-align: middle;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    color: $main-color;
+  }
+}
+
+.infoline {
+  flex: 1 100%;
+
+  &[data-type='website'],
+  &.social {
+    flex: 2;
+  }
+
+  .text {
+    line-height: 18px;
+    vertical-align: middle;
+  }
+
+  a {
+    @include link-hover-effect($main-color);
+
+    &,
+    &:visited {
+      color: $main-color;
+    }
+  }
+}
+
+.profession {
+  display: flex;
+  flex-basis: 8rem;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  padding-right: 1.5rem;
+  color: $main-color-dark;
+  font-weight: bold;
+  font-size: 1.05rem;
+  text-align: center;
+
+  @include mobile {
+    margin: 1rem 0;
+  }
+}

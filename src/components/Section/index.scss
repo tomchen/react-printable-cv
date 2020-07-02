@@ -1,0 +1,21 @@
+@import '../../global_styles/variables';
+@import '../../global_styles/mixins';
+
+.section {
+  display: flex;
+  line-height: $global-line-height;
+  margin-bottom: $section-margin;
+
+  @include mobile {
+    display: block;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 0.3rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

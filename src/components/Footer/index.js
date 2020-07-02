@@ -4,18 +4,21 @@ import { connect } from 'react-redux'
 import DesignedBy from './DesignedBy'
 import DevelopedBy from './DevelopedBy'
 import LastUpdate from './LastUpdate'
+import footerStyle from './index.scss'
 
-const Footer = ({designer, designerUrl, developer, developerUrl, lastUpdateTime}) => (
-  <div>
+const Footer = ({designer, designerUrl, developer, developerUrl, lastUpdateTime, repoName, repoUrl}) => (
+  <footer className={footerStyle.footer}>
     <DesignedBy name={designer} url={designerUrl} />
-    <DevelopedBy name={developer} url={developerUrl} />
+    <DevelopedBy name={developer} url={developerUrl} repoName={repoName} repoUrl={repoUrl} />
     <LastUpdate time={lastUpdateTime} />
-  </div>
+  </footer>
 )
 
 Footer.defaultProps = {
   designerUrl: null,
   developerUrl: null,
+  repoName: null,
+  repoUrl: null,
 }
 
 Footer.propTypes = {
@@ -23,6 +26,8 @@ Footer.propTypes = {
   designerUrl: PropTypes.string,
   developer: PropTypes.string.isRequired,
   developerUrl: PropTypes.string,
+  repoName: PropTypes.string,
+  repoUrl: PropTypes.string,
   lastUpdateTime: PropTypes.string.isRequired,
 }
 
@@ -31,6 +36,8 @@ const mapStateToProps = (state) => ({
   designerUrl: state.designed_by.url,
   developer: state.developed_by.name,
   developerUrl: state.developed_by.url,
+  repoName: state.developed_by.repo_name,
+  repoUrl: state.developed_by.repo_url,
   lastUpdateTime: state.last_update,
 })
 
