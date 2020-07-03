@@ -9,15 +9,11 @@ module.exports = {
       name: 'English',
     },
     {
-      code: 'zh_cn',
-      name: '简体中文',
-    },
-    {
-      code: 'zh_tw',
-      name: '繁體中文',
+      code: 'zh-cn',
+      name: '中文',
     },
   ],
-  default_lang: 'en',
+  default_lang: 'fr',
   one_chunk: true,
   inline_resources: true,
   lazy_loading: false,

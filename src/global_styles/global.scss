@@ -7,8 +7,14 @@ body {
   margin: 0;
   padding: 0;
   font-size: $root-font-size;
-  font-family: $primary-font-family;
   background-color: $back-color;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: $primary-font-family;
 }
 
 @page {
@@ -29,6 +35,10 @@ body {
     @-moz-document url-prefix('') {
       height: 296mm;
     }
+    // Should be perfect in Windows Chrome
+    // in Windows Firefox, user should set '100%' print size instead of 'Fit'
+    // Mac Chrome
+    // Ok in other modern browsers
   }
 }
 
@@ -47,4 +57,21 @@ body {
   font-style: normal;
   src: local('Source Serif Pro Bold'), local('SourceSerifPro-Bold'),
     url('../fonts/source-serif-pro-latin-700.woff') format('woff');
+}
+
+/* roboto-regular - latin-ext_latin */
+@font-face {
+  font-weight: 400;
+  font-family: 'Roboto';
+  font-style: normal;
+  src: local('Roboto'), local('Roboto-Regular'),
+    url('../fonts/roboto-latin-ext_latin-regular.woff') format('woff');
+}
+/* roboto-700 - latin-ext_latin */
+@font-face {
+  font-weight: 700;
+  font-family: 'Roboto';
+  font-style: normal;
+  src: local('Roboto Bold'), local('Roboto-Bold'),
+    url('../fonts/roboto-latin-ext_latin-700.woff') format('woff');
 }

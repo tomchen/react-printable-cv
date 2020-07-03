@@ -15,7 +15,7 @@ LanguageSection.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  langList: state.languages,
+  langList: state.userData.languages,
 })
 
 export default connect(mapStateToProps)(LanguageSection)

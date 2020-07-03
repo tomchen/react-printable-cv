@@ -1,10 +1,10 @@
-import defaultData from '../../data/cv/en'
+import { combineReducers } from 'redux'
+import userData from './userData'
+import lang from './lang'
 
-const reducers = (state = defaultData, action) => {
-  switch (action.type) {
-    default:
-      return state
-  }
-}
+const rootReducer = combineReducers({
+  userData,
+  lang
+})
 
-export default reducers
+export default rootReducer

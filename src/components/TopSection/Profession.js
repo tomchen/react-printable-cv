@@ -12,7 +12,7 @@ Profession.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  profession: state.profession,
+  profession: state.userData.profession,
 })
 
 export default connect(mapStateToProps)(Profession)

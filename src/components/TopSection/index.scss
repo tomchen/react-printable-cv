@@ -33,13 +33,41 @@
   display: inline-block;
   width: 18px;
   height: 18px;
-  padding-right: 0.15rem;
+  padding: 0;
   vertical-align: middle;
+  background: none;
+  border: 0;
+
+  &.fronticon {
+    padding-right: 0.15rem;
+  }
 
   svg {
     width: 18px;
     height: 18px;
     color: $main-color;
+  }
+
+  &.copy,
+  &.call {
+    margin-left: 0.3rem;
+    outline: none;
+    cursor: pointer;
+
+    svg {
+      color: #000;
+    }
+
+    &:focus {
+      svg {
+        color: $main-color;
+      }
+    }
+
+    @media print {
+      display: none;
+    }
+
   }
 }
 

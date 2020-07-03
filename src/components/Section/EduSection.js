@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import TimeBasedSection from './TimeBasedSection'
 
@@ -17,19 +18,20 @@ const eduListToTimeBasedItemList = (eduList) => {
   return newArr
 }
 
-const EduSection = ({ eduList }) => (
+const EduSection = ({ eduList, t }) => (
   <TimeBasedSection
-    title='Education'
+    title={t('Education')}
     timeBasedItemList={eduListToTimeBasedItemList(eduList)}
   />
 )
 
 EduSection.propTypes = {
   eduList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  t: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({
-  eduList: state.education,
+  eduList: state.userData.education,
 })
 
-export default connect(mapStateToProps)(EduSection)
+export default connect(mapStateToProps)(withTranslation()(EduSection))

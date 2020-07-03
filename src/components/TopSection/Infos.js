@@ -5,7 +5,7 @@ import InfoLine from './InfoLine'
 import topStyle from './index.scss'
 
 const Infos = ({
-  adresse,
+  address,
   tel,
   email,
   birthDate,
@@ -15,7 +15,7 @@ const Infos = ({
   socialNetworks,
 }) => (
   <div className={topStyle.infos}>
-    <InfoLine type="adresse" text={adresse} />
+    <InfoLine type="address" text={address} />
     <InfoLine type="tel" text={tel} />
     <InfoLine type="email" text={email} url={`mailto:${email}`} isNotExtUrl/>
     <InfoLine type="birth_date" text={birthDate} />
@@ -43,7 +43,7 @@ Infos.defaultProps = {
 }
 
 Infos.propTypes = {
-  adresse: PropTypes.string.isRequired,
+  address: PropTypes.string.isRequired,
   tel: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
   birthDate: PropTypes.string.isRequired,
@@ -54,14 +54,14 @@ Infos.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  adresse: state.adresse,
-  tel: state.tel,
-  email: state.email,
-  birthDate: state.birth_date,
-  birthPlace: state.birth_place,
-  websiteName: state.website_name,
-  websiteUrl: state.website_url,
-  socialNetworks: state.social_networks,
+  address: state.userData.address,
+  tel: state.userData.tel,
+  email: state.userData.email,
+  birthDate: state.userData.birth_date,
+  birthPlace: state.userData.birth_place,
+  websiteName: state.userData.website_name,
+  websiteUrl: state.userData.website_url,
+  socialNetworks: state.userData.social_networks,
 })
 
 export default connect(mapStateToProps)(Infos)

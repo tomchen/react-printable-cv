@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import TimeBasedSection from './TimeBasedSection'
 
@@ -16,16 +17,17 @@ const careerListToTimeBasedItemList = (careerList) => {
   return newArr
 }
 
-const CareerSection = ({ careerList }) => (
-  <TimeBasedSection title="Work Experience" timeBasedItemList={careerListToTimeBasedItemList(careerList)} />
+const CareerSection = ({ careerList, t }) => (
+  <TimeBasedSection title={t('Work Experience')} timeBasedItemList={careerListToTimeBasedItemList(careerList)} />
 )
 
 CareerSection.propTypes = {
   careerList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  t: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({
-  careerList: state.career,
+  careerList: state.userData.career,
 })
 
-export default connect(mapStateToProps)(CareerSection)
+export default connect(mapStateToProps)(withTranslation()(CareerSection))

@@ -41,7 +41,7 @@ CVPage.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  customSections: state.custom_sections,
+  customSections: state.userData.custom_sections,
 })
 
 export default connect(mapStateToProps)(CVPage)

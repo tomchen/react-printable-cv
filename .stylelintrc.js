@@ -6,6 +6,7 @@ module.exports = {
   ],
   rules: {
     'scss/at-import-partial-extension-blacklist': null,
+    'selector-type-no-unknown': null,
     'order/properties-alphabetical-order': null,
     'function-parentheses-space-inside': null,
     'max-nesting-depth': null,

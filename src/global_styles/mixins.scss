@@ -58,6 +58,12 @@
   }
 }
 
+@mixin desktop {
+  @media only screen and (max-width: $desktop-width) {
+    @content;
+  }
+}
+
 @mixin light-font-color-in-print-mode($color) {
   color: $color;
 
