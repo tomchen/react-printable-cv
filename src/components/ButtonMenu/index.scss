@@ -1,17 +1,49 @@
+@import '../../global_styles/variables';
 @import '../../global_styles/mixins.scss';
 
 .menu {
   position: absolute;
-  top: 0;
-  left: calc(50% + #{210mm / 2});
+  top: $page-margin-top-and-bottom;
+  left: calc(50% + #{210mm / 2} + #{$buttonmenu-left-margin});
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
 
-  @include mobile {
-    left: calc(50% + ((100% - 4rem) / 2));
+  @include desktop {
+    top: $page-margin-top-and-bottom - 1rem;
+    left: calc(50% - #{210mm / 2});
+    flex-direction: row;
+    z-index: 100;
+    width: 210mm;
+    justify-content: center;
   }
 
+  @media only screen and (max-width: 230mm) {
+    left: calc(50% - ((100% - 4rem) / 2));
+    width: calc(100% - 4rem);
+    flex-wrap: wrap;
+  }
+
+  @include mobile {
+  }
+
+  > * {
+    margin-bottom: 1.5rem !important;
+
+    @include desktop {
+      margin-bottom: 0.4rem !important;
+      margin-left: 0.4rem !important;
+      margin-right: 0.4rem !important;
+    }
+  }
+
+  @media print {
+    display: none;
+  }
 }
 
-.button {
-  display: inline-block;
+:global(.MuiTooltip-popper) {
+  @media print {
+    display: none;
+  }
 }

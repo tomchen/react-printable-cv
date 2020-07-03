@@ -17,6 +17,7 @@ module.exports = (env, argv) => {
     },
     devServer: {
       port: 8080,
+      historyApiFallback: true,
     },
     module: {
       rules: [
@@ -125,7 +126,7 @@ module.exports = (env, argv) => {
     // url-loader (transforming ressources into base64 URI)
     // can be used instead of file-loader (get ressources' URL)
     config.module.rules.push({
-      test: /\.(png|jpe?g|gif|ico)$/i,
+      test: /\.(png|jpe?g|gif|ico|pdf)$/i,
       use: [
         {
           loader: 'file-loader',
@@ -143,7 +144,7 @@ module.exports = (env, argv) => {
       })
 
       config.module.rules.push({
-        test: /\.(png|jpe?g|gif|ico)$/i,
+        test: /\.(png|jpe?g|gif|ico|pdf)$/i,
         use: [
           {
             loader: 'url-loader',

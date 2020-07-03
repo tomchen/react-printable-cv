@@ -1,6 +1,5 @@
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
-
 import 'dayjs/locale/en'
 import 'dayjs/locale/en-gb'
 import 'dayjs/locale/fr'
@@ -105,18 +104,18 @@ dayjs.extend((option, Dayjs, dayjsp) => {
     return localeConfig // eslint-disable-line consistent-return
   }
 
-  dayjsc.addFormats.changeBack = () => {
-    Object.keys(cache).forEach((key) => {
-      localeConfig.formats[key] = cache[key]
-    })
-    return localeConfig
-  }
+  // dayjsc.addFormats.changeBack = () => {
+  //   Object.keys(cache).forEach((key) => {
+  //     localeConfig.formats[key] = cache[key]
+  //   })
+  //   return localeConfig
+  // }
 })
 
 export const my = (date, locale) => {
   dayjs.addFormats(locale)
   const ret = dayjs(date).locale(locale).format('l')
-  dayjs.addFormats.changeBack()
+  // dayjs.addFormats.changeBack()
   return ret
 }
 
@@ -129,7 +128,7 @@ export const myUfl = (date, locale) => {
 export const dm = (date, locale) => {
   dayjs.addFormats(locale)
   const ret = dayjs(date).locale(locale).format('lll')
-  dayjs.addFormats.changeBack()
+  // dayjs.addFormats.changeBack()
   return ret
 }
 
@@ -138,7 +137,7 @@ export const dmy = (date, locale) => dayjs(date).locale(locale).format('ll')
 export const y = (date, locale) => {
   dayjs.addFormats(locale)
   const ret = dayjs(date).locale(locale).format('llll')
-  dayjs.addFormats.changeBack()
+  // dayjs.addFormats.changeBack()
   return ret
 }
 

@@ -5,13 +5,13 @@
   flex-wrap: wrap;
   margin: 0;
   padding: 0 0.75rem;
-  line-height: $global-line-height * 1.25;
+  line-height: $global-line-height;
   list-style: none;
 
   li {
-    display: block;
     display: flex;
     flex-basis: 50%;
+    margin: 0.3rem 0;
 
     span {
       flex: 1 1 0;

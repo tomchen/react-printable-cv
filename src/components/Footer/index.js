@@ -32,13 +32,13 @@ Footer.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  designer: state.designed_by.name,
-  designerUrl: state.designed_by.url,
-  developer: state.developed_by.name,
-  developerUrl: state.developed_by.url,
-  repoName: state.developed_by.repo_name,
-  repoUrl: state.developed_by.repo_url,
-  lastUpdateTime: state.last_update,
+  designer: state.userData.designed_by.name,
+  designerUrl: state.userData.designed_by.url,
+  developer: state.userData.developed_by.name,
+  developerUrl: state.userData.developed_by.url,
+  repoName: state.userData.developed_by.repo_name,
+  repoUrl: state.userData.developed_by.repo_url,
+  lastUpdateTime: state.userData.last_update,
 })
 
 export default connect(mapStateToProps)(Footer)

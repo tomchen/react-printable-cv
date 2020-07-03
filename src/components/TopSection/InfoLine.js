@@ -1,54 +1,57 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import cx from 'classnames'
-import { AiFillHome } from 'react-icons/ai'
-import { MdLocationOn, MdMail } from 'react-icons/md'
-import {
-  FaMobileAlt,
-  FaTwitter,
-  FaGithub,
-  FaBirthdayCake,
-  FaFlag,
-} from 'react-icons/fa'
+import { withTranslation } from 'react-i18next'
+import PlaceIcon from '@material-ui/icons/Place'
+import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid'
+import EmailIcon from '@material-ui/icons/Email'
+import CakeIcon from '@material-ui/icons/Cake'
+import FlagIcon from '@material-ui/icons/Flag'
+import HomeIcon from '@material-ui/icons/Home'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import TwitterIcon from '@material-ui/icons/Twitter'
 import topStyle from './index.scss'
-import { autoDetectDmy, age } from '../../timeFormat'
+import { autoDetectDmy, age } from '../../utils/timeFormat'
+import Copy from './Copy'
+import Call from './Call'
 
-const typeMapping = {
-  adresse: {
-    name: 'Adresse',
-    icon: <MdLocationOn />,
-  },
-  tel: {
-    name: 'Telephone number',
-    icon: <FaMobileAlt />,
-  },
-  email: {
-    name: 'Email',
-    icon: <MdMail />,
-  },
-  birth_date: {
-    name: 'Birth date',
-    icon: <FaBirthdayCake />,
-  },
-  birth_place: {
-    name: 'Birth place',
-    icon: <FaFlag />,
-  },
-  website: {
-    name: 'Website',
-    icon: <AiFillHome />,
-  },
-  github: {
-    name: 'GitHub',
-    icon: <FaGithub />,
-  },
-  twitter: {
-    name: 'Twitter',
-    icon: <FaTwitter />,
-  },
-}
-
-const InfoLine = ({ type, text, url, isNotExtUrl, isSocial }) => (
+const InfoLine = ({ type, text, url, isNotExtUrl, isSocial, currentLang, t }) => {
+  const typeMapping = {
+    address: {
+      name: t('Address'),
+      icon: <PlaceIcon />,
+    },
+    tel: {
+      name: t('Telephone number'),
+      icon: <PhoneAndroidIcon />,
+    },
+    email: {
+      name: t('Email'),
+      icon: <EmailIcon />,
+    },
+    birth_date: {
+      name: t('Birth date'),
+      icon: <CakeIcon />,
+    },
+    birth_place: {
+      name: t('Birth place'),
+      icon: <FlagIcon />,
+    },
+    website: {
+      name: t('Website'),
+      icon: <HomeIcon />,
+    },
+    github: {
+      name: t('GitHub'),
+      icon: <GitHubIcon />,
+    },
+    twitter: {
+      name: t('Twitter'),
+      icon: <TwitterIcon />,
+    },
+  }
+return (
   <div
     className={cx({
       [topStyle.social]: isSocial,
@@ -59,7 +62,7 @@ const InfoLine = ({ type, text, url, isNotExtUrl, isSocial }) => (
     <span
       title={typeMapping[type].name}
       aria-label={typeMapping[type].name}
-      className={topStyle.svgwrapper}
+      className={`${topStyle.svgwrapper} ${topStyle.fronticon}`}
     >
       {typeMapping[type].icon}
     </span>
@@ -75,12 +78,20 @@ const InfoLine = ({ type, text, url, isNotExtUrl, isSocial }) => (
     ) : (
       <span className={topStyle.text}>
         {type === 'birth_date'
-          ? `${autoDetectDmy(text, 'fr')} (${age(text, 'fr')})`
+          ? `${autoDetectDmy(text, currentLang)} (${age(text, currentLang)})`
           : text}
       </span>
     )}
+    {type === 'tel' && (
+      <>
+        <Copy text={text} title={t('Copy phone number')} />
+        <Call tel={text} title={t('Call the number')} />
+      </>
+    )}
+    {type === 'email' && <Copy text={text} title={t('Copy Email address')} />}
   </div>
 )
+}
 
 InfoLine.defaultProps = {
   url: null,
@@ -94,6 +105,12 @@ InfoLine.propTypes = {
   url: PropTypes.string,
   isNotExtUrl: PropTypes.bool,
   isSocial: PropTypes.bool,
+  currentLang: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired,
 }
 
-export default InfoLine
+const mapStateToProps = (state) => ({
+  currentLang: state.lang,
+})
+
+export default connect(mapStateToProps)(withTranslation()(InfoLine))

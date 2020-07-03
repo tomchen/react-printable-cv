@@ -1,12 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { withTranslation } from 'react-i18next'
-import { autoDetectDmy } from '../../timeFormat'
+import { connect } from 'react-redux'
+import { autoDetectDmy } from '../../utils/timeFormat'
 
 const LastUpdate = ({ time, t, i18n }) => {
   return (
     <div>
-      {t('Last update: ')}{autoDetectDmy(time, i18n.language)}
+      {t('Last update: ')}
+      {autoDetectDmy(time, i18n.language)}
     </div>
   )
 }
@@ -17,4 +19,4 @@ LastUpdate.propTypes = {
   i18n: PropTypes.objectOf(PropTypes.any).isRequired,
 }
 
-export default withTranslation()(LastUpdate);
+export default connect()(withTranslation()(LastUpdate))

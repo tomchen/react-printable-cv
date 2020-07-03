@@ -15,7 +15,7 @@ Photo.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-  name: state.name,
+  name: state.userData.name,
 })
 
 export default connect(mapStateToProps)(Photo)

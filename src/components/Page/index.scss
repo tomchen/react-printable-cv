@@ -1,11 +1,17 @@
 @import '../../global_styles/variables';
+@import '../../global_styles/mixins';
 
 .page {
   display: flex;
   flex-direction: column;
   width: 210mm;
   min-height: 297mm;
-  margin: 12mm auto;
+  margin: $page-margin-top-and-bottom auto;
+
+  @include desktop {
+    margin-top: $page-margin-top-and-bottom + 5rem;
+  }
+
   background: $main-color;
   border: 0;
   box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.4);
