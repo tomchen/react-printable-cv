@@ -3,7 +3,7 @@
 
 .title {
   @include section-title-style;
+  font-variant: small-caps;
   background-color: $main-color-light;
   font-feature-settings: normal;
-  font-variant: small-caps;
 }
