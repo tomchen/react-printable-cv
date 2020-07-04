@@ -9,13 +9,14 @@ const useStyles = makeStyles({
     fontWeight: 'bold',
   },
 
-  tooltipWidth: {
-    maxWidth: 100,
+  tooltip: {
+    maxWidth: '8.5rem',
+    fontSize: '0.8rem',
     textAlign: 'center',
   },
 })
 
-const Button = ({ text, onClick, color, title, disabled }) => {
+const Button = ({ text, onClick, color, title, disabled, component }) => {
   const classes = useStyles()
   const uiButton = (
     <UIButton
@@ -26,6 +27,7 @@ const Button = ({ text, onClick, color, title, disabled }) => {
       color={color}
       onClick={onClick}
       disabled={disabled}
+      component={component}
     >
       {text}
     </UIButton>
@@ -33,7 +35,7 @@ const Button = ({ text, onClick, color, title, disabled }) => {
 
   if (title) {
     return (
-      <Tooltip title={title} classes={{ tooltip: classes.tooltipWidth }}>
+      <Tooltip title={title} classes={{ tooltip: classes.tooltip }}>
         {uiButton}
       </Tooltip>
     )
@@ -42,17 +44,20 @@ const Button = ({ text, onClick, color, title, disabled }) => {
 }
 
 Button.defaultProps = {
+  onClick: null,
   color: 'primary',
   title: null,
   disabled: false,
+  component: 'button',
 }
 
 Button.propTypes = {
   text: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   color: PropTypes.string,
   title: PropTypes.string,
   disabled: PropTypes.bool,
+  component: PropTypes.string,
 }
 
 export default Button

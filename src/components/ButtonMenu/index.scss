@@ -12,29 +12,26 @@
   @include desktop {
     top: $page-margin-top-and-bottom - 1rem;
     left: calc(50% - #{210mm / 2});
-    flex-direction: row;
     z-index: 100;
-    width: 210mm;
+    flex-direction: row;
     justify-content: center;
-  }
-
-  @media only screen and (max-width: 230mm) {
-    left: calc(50% - ((100% - 4rem) / 2));
-    width: calc(100% - 4rem);
-    flex-wrap: wrap;
-  }
-
-  @include mobile {
+    width: 210mm;
   }
 
   > * {
     margin-bottom: 1.5rem !important;
 
     @include desktop {
+      margin-right: 0.4rem !important;
       margin-bottom: 0.4rem !important;
       margin-left: 0.4rem !important;
-      margin-right: 0.4rem !important;
     }
+  }
+
+  @media only screen and (max-width: 230mm) {
+    left: calc(50% - ((100% - 4rem) / 2));
+    flex-wrap: wrap;
+    width: calc(100% - 4rem);
   }
 
   @media print {

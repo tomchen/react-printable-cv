@@ -1,14 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import { changeLang } from '../../actions'
 import Button from './Button'
-import SwitchBar from './SwitchBar'
+// import SwitchBar from './SwitchBar'
 import buttonStyle from './index.scss'
 import pdfUrlEn from '../../../pdf/en.pdf'
 import pdfUrlFr from '../../../pdf/fr.pdf'
 import pdfUrlZhCn from '../../../pdf/zh-cn.pdf'
 import settings from '../../../settings'
+import UploadButton from './UploadButton'
 
 const pdfUrls = {
   en: pdfUrlEn,
@@ -16,13 +18,33 @@ const pdfUrls = {
   'zh-cn': pdfUrlZhCn,
 }
 
-const ButtonMenu = ({ currentLang, dispatch }) => {
+const downloadStringAsFile = (filename, text) => {
+  const el = document.createElement('a')
+  el.setAttribute(
+    'href',
+    `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`,
+  )
+  el.setAttribute('download', filename)
+  el.style.display = 'none'
+  document.body.appendChild(el)
+  el.click()
+  document.body.removeChild(el)
+}
+
+const ButtonMenu = ({ currentLang, userData, dispatch, t }) => {
   const print = () => {
     window.print()
   }
 
   const handleLangChange = (lang) => {
     dispatch(changeLang(lang))
+  }
+
+  const handleExportJson = () => {
+    downloadStringAsFile('data.json', JSON.stringify(userData, null, 2))
+  }
+
+  const handleImportJson = () => {
   }
 
   const pdf = () => {
@@ -39,9 +61,9 @@ const ButtonMenu = ({ currentLang, dispatch }) => {
     }
   }
 
-  const handleSwitchChange = (switchOn) => {
-    console.log(switchOn)
-  }
+  // const handleEditModeChange = (switchOn) => {
+
+  // }
 
   return (
     <div className={buttonStyle.menu}>
@@ -50,46 +72,47 @@ const ButtonMenu = ({ currentLang, dispatch }) => {
           key={code}
           disabled={currentLang === code}
           text={name}
-          title={currentLang !== code ? 'Change language' : undefined}
+          title={currentLang !== code ? t('Change language') : undefined}
           onClick={() => {
             handleLangChange(code)
           }}
         />
       ))}
       <Button
-        text="PDF"
-        title="Download PDF file for the current language"
+        text={t('PDF')}
+        title={t('Download PDF file for the current language')}
         onClick={pdf}
         color="secondary"
       />
       <Button
-        text="Print (🧪)"
-        title="Experimental. It's almost perfect in Chrome. Firefox user should set print scale to 100% instead of 'Shrink To Fit'. Other browsers may have problems. Instead, you may click 'PDF' then print the PDF file."
+        text={t('Print (🧪)')}
+        title={t(
+          'Experimental. Almost perfect in Chrome. Firefox user should set print scale to 100% instead of "Shrink To Fit". Other browsers may have problems. Instead, you may click "PDF" then print the PDF file.',
+        )}
         onClick={print}
         color="default"
       />
-      <SwitchBar text="Edit mode" onChange={handleSwitchChange} />
+      {/* <SwitchBar text={t('Edit mode')} onChange={handleEditModeChange} /> */}
       <Button
-        text="Export JSON"
-        title="Export .json file of the data"
-        onClick={print}
+        text={t('Export JSON')}
+        title={t('Export .json file of the data')}
+        onClick={handleExportJson}
       />
-      <Button
-        text="Import JSON"
-        title="Import .json file and replace the data"
-        onClick={print}
-      />
+      {/* <UploadButton /> */}
     </div>
   )
 }
 
 ButtonMenu.propTypes = {
   currentLang: PropTypes.string.isRequired,
+  userData: PropTypes.objectOf(PropTypes.any).isRequired,
   dispatch: PropTypes.func.isRequired,
+  t: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = (state) => ({
   currentLang: state.lang,
+  userData: state.userData,
 })
 
-export default connect(mapStateToProps)(ButtonMenu)
+export default connect(mapStateToProps)(withTranslation()(ButtonMenu))

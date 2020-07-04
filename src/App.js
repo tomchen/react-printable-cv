@@ -1,4 +1,8 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { withTranslation } from 'react-i18next'
+import { Helmet } from 'react-helmet'
+import { connect } from 'react-redux'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import { blue } from '@material-ui/core/colors'
 import './global_styles/global.scss'
@@ -26,11 +30,30 @@ const blueTheme = createMuiTheme({
   },
 })
 
-const App = () => (
+const App = ({ currentLang, userName, t }) => (
   <ThemeProvider theme={blueTheme}>
     <ButtonMenu />
     <CVPage />
+    <Helmet>
+      <html lang={currentLang} />
+      <title>{t('Curriculum vitae of {{userName}}', { userName })}</title>
+      <meta
+        name="description"
+        content={t('Curriculum vitae of {{userName}}', { userName })}
+      />
+    </Helmet>
   </ThemeProvider>
 )
 
-export default App
+App.propTypes = {
+  currentLang: PropTypes.string.isRequired,
+  userName: PropTypes.string.isRequired,
+  t: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+  currentLang: state.lang,
+  userName: state.userData.name,
+})
+
+export default connect(mapStateToProps)(withTranslation()(App))

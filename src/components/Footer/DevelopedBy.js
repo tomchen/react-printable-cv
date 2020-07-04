@@ -1,23 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { withTranslation } from 'react-i18next'
 
-const DevelopedBy = ({ name, url, repoName, repoUrl }) => (
+const DevelopedBy = ({ name, url, repoName, repoUrl, t }) => (
   <div>
-    Developed by{' '}
+    {t('Developed by ')}
     {url ? (
-      <a href={url} target='_blank' rel='noopener noreferrer'>
+      <a href={url} target="_blank" rel="noopener noreferrer">
         {name}
       </a>
     ) : (
       <span>{name}</span>
-    )}{' '}
-    with React.js
-    {repoUrl && <> (
-      <a href={repoUrl} target='_blank' rel='noopener noreferrer'>
-        {repoName || 'repo'}
-      </a>
-    )</>}
-    .
+    )}
+    {t(' with React.js')}
+    {repoUrl && (
+      <>
+        {' '}
+        (
+        <a href={repoUrl} target="_blank" rel="noopener noreferrer">
+          {repoName || t('repo')}
+        </a>
+        )
+      </>
+    )}
+    {t('.')}
   </div>
 )
 
@@ -32,6 +38,7 @@ DevelopedBy.propTypes = {
   url: PropTypes.string,
   repoName: PropTypes.string,
   repoUrl: PropTypes.string,
+  t: PropTypes.func.isRequired,
 }
 
-export default DevelopedBy
+export default withTranslation()(DevelopedBy)

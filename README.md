@@ -24,6 +24,8 @@ In case your browser has any problem in printing the document directly, there is
 
 To generate PDF: open the web page online verison (i.e. with a server, you can use the [online editor/demo](https://react-cv.tomchen.org/) or run `npm start` on your computer), edit the CV and click "PDF" button, change the language.
 
+Put your pre-generated `$LOCALE.pdf` files in the `pdf/` folder so that they can be included in the SPA.
+
 ## Static offline version
 
 The static offline version can be either a standalone HTML file that contains all the resources, including JavaScript, CSS, images, fonts, PDF, etc., or a group of HTML, JavaScript bundle files and other aforementioned resources.

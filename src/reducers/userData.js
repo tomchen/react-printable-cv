@@ -1,4 +1,4 @@
-import { CHANGE_LANG } from '../constants/ActionTypes'
+import { CHANGE_LANG, IMPORT_JSON } from '../constants/ActionTypes'
 import settings from '../../settings'
 
 import defaultDataEn from '../../data/cv/en.json'
@@ -15,6 +15,8 @@ const userData = (state = defaultData[settings.default_lang], action) => {
   switch (action.type) {
     case CHANGE_LANG:
       return defaultData[action.lang]
+    case IMPORT_JSON:
+      return action.data
     default:
       return state
   }
