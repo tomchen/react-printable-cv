@@ -4,17 +4,18 @@
 .page {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 210mm;
-  min-height: 297mm;
+  height: 297mm;
   margin: $page-margin-top-and-bottom auto;
+  overflow: hidden;
+  background: $main-color;
+  border: 0;
+  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.4);
 
   @include desktop {
     margin-top: $page-margin-top-and-bottom + 5rem;
   }
-
-  background: $main-color;
-  border: 0;
-  box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.4);
 }
 
 @media only screen and (max-width: 230mm) {
@@ -26,7 +27,7 @@
 @media print {
   .page {
     width: initial;
-    min-height: initial;
+    height: initial;
     margin: 0;
     page-break-after: always;
     background: initial;

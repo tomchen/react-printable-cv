@@ -5,9 +5,10 @@ import Infos from './Infos'
 import Profession from './Profession'
 import Block from '../Block'
 import Section from '../Section'
+import topsection from './index.scss'
 
 const TopSection = () => (
-  <Section>
+  <Section className={topsection.topsection}>
     <>
       <Photo />
       <Block isTop>

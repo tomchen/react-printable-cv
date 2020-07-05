@@ -3,8 +3,8 @@
 
 .section {
   display: flex;
-  line-height: $global-line-height;
   margin-bottom: $section-margin;
+  line-height: $global-line-height;
 
   @include mobile {
     display: block;

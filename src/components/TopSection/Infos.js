@@ -15,15 +15,15 @@ const Infos = ({
   socialNetworks,
 }) => (
   <div className={topStyle.infos}>
-    <InfoLine type="address" text={address} />
-    <InfoLine type="tel" text={tel} />
-    <InfoLine type="email" text={email} url={`mailto:${email}`} isNotExtUrl/>
-    <InfoLine type="birth_date" text={birthDate} />
+    {address && <InfoLine type="address" text={address} />}
+    {tel && <InfoLine type="tel" text={tel} />}
+    {email && <InfoLine type="email" text={email} url={`mailto:${email}`} isNotExtUrl/>}
+    {birthDate && <InfoLine type="birth_date" text={birthDate} />}
     {birthPlace && <InfoLine type="birth_place" text={birthPlace} />}
     {websiteName && websiteUrl && (
       <InfoLine type="website" text={websiteName} url={websiteUrl} />
     )}
-    {socialNetworks.map((item) => (
+    {socialNetworks && socialNetworks.map((item) => (
       <InfoLine
         key={item.type}
         type={item.type}
@@ -36,6 +36,10 @@ const Infos = ({
 )
 
 Infos.defaultProps = {
+  address: null,
+  tel: null,
+  email: null,
+  birthDate: null,
   birthPlace: null,
   websiteName: null,
   websiteUrl: null,
@@ -43,10 +47,10 @@ Infos.defaultProps = {
 }
 
 Infos.propTypes = {
-  address: PropTypes.string.isRequired,
-  tel: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  birthDate: PropTypes.string.isRequired,
+  address: PropTypes.string,
+  tel: PropTypes.string,
+  email: PropTypes.string,
+  birthDate: PropTypes.string,
   birthPlace: PropTypes.string,
   websiteName: PropTypes.string,
   websiteUrl: PropTypes.string,

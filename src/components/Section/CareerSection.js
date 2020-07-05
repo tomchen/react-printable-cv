@@ -11,18 +11,26 @@ const careerListToTimeBasedItemList = (careerList) => {
       from: item.from_date,
       to: item.to_date,
       title: item.company,
-      subtitle: item.title
+      subtitle: item.title,
     })
   })
   return newArr
 }
 
-const CareerSection = ({ careerList, t }) => (
-  <TimeBasedSection title={t('Work Experience')} timeBasedItemList={careerListToTimeBasedItemList(careerList)} />
-)
+const CareerSection = ({ careerList, t }) =>
+  careerList && (
+    <TimeBasedSection
+      title={t('Work Experience')}
+      timeBasedItemList={careerListToTimeBasedItemList(careerList)}
+    />
+  )
+
+CareerSection.defaultProps = {
+  careerList: null,
+}
 
 CareerSection.propTypes = {
-  careerList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  careerList: PropTypes.arrayOf(PropTypes.object),
   t: PropTypes.func.isRequired,
 }
 

@@ -17,7 +17,7 @@ const CVPage = ({ customSections }) => (
     <CareerSection />
     <EduSection />
     <LanguageSection />
-    {customSections.map((item, index) => (
+    {customSections && customSections.map((item, index) => (
       <Section
         key={item.section_name}
         title={item.section_name}
@@ -36,8 +36,12 @@ const CVPage = ({ customSections }) => (
   </Page>
 )
 
+CVPage.defaultProps = {
+  customSections: null,
+}
+
 CVPage.propTypes = {
-  customSections: PropTypes.arrayOf(PropTypes.object).isRequired,
+  customSections: PropTypes.arrayOf(PropTypes.object),
 }
 
 const mapStateToProps = (state) => ({
