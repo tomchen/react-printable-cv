@@ -1,6 +1,6 @@
 # React Printable CV
 
-[![CircleCI](https://circleci.com/gh/tomchen/react-printable-cv.svg?style=shield)](https://circleci.com/gh/tomchen/react-printable-cv)
+[![CircleCI](https://circleci.com/gh/tomchen/react-printable-cv.svg?style=shield)](https://circleci.com/gh/tomchen/react-printable-cv) [![codecov](https://codecov.io/gh/tomchen/react-printable-cv/branch/master/graph/badge.svg)](https://codecov.io/gh/tomchen/react-printable-cv)
 
 Printable, multi-language, web curriculum vitae (resume) built with React and Redux.
 

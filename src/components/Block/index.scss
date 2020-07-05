@@ -30,6 +30,8 @@
   @include mobile {
     @include notched-corner(0, 0);
     display: block;
+    margin-top: 0;
+    padding-top: 3rem;
     padding-top: $block-padding-y;
   }
 }
