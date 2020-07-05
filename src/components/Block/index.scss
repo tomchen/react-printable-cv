@@ -24,7 +24,8 @@
 
   display: flex;
   flex-direction: row;
-  padding-top: 3rem;
+  margin-top: -25rem;
+  padding-top: 28rem;
 
   @include mobile {
     @include notched-corner(0, 0);

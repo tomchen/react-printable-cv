@@ -1,19 +1,19 @@
 module.exports = {
   langs: [
     {
-      code: 'fr',
-      name: 'français',
-    },
-    {
       code: 'en',
       name: 'English',
+    },
+    {
+      code: 'fr',
+      name: 'français',
     },
     {
       code: 'zh-cn',
       name: '中文',
     },
   ],
-  default_lang: 'fr',
+  default_lang: 'en',
   one_chunk: true,
   inline_resources: true,
   lazy_loading: false,

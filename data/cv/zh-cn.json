@@ -1,0 +1,119 @@
+{
+  "name": "江豆",
+  "address": "01789 Golden Leaf Str., Paris, 俄罗斯",
+  "tel": "639-484-4806",
+  "email": "hlehon@example.com",
+  "birth_date": "1967-11-03",
+  "birth_place": "南极洲",
+  "website_name": "example.com",
+  "website_url": "https://example.com/",
+  "profession": "市场部经理",
+  "social_networks": [
+    {
+      "type": "github",
+      "id": "example",
+      "url": "https://github.com/example"
+    },
+    {
+      "type": "twitter",
+      "id": "@example",
+      "url": "https://twitter.com/@example"
+    }
+  ],
+  "education": [
+    {
+      "from_date": "2002-09",
+      "to_date": "2005-06",
+      "school": "广东广播电视大学",
+      "major": "忍者博士",
+      "desc": "忍忍忍忍忍忍忍"
+    },
+    {
+      "from_date": "2005-09",
+      "to_date": "2008-06",
+      "school": "圣彼得堡国立植物聚合物技术大学",
+      "major": "计算机科学硕士",
+      "desc": "C/C++, Java, Python, JavaScript"
+    },
+    {
+      "from_date": "2008-09",
+      "to_date": "2011-06",
+      "school": "印度尼西亚克里斯滕大学",
+      "major": "商业学士学位",
+      "desc": "管理、营销"
+    }
+  ],
+  "career": [
+    {
+      "from_date": "2018-09",
+      "to_date": "",
+      "company": "Breitenberg, Welch and Cummings",
+      "title": "经理"
+    },
+    {
+      "from_date": "2016-03",
+      "to_date": "2018-08",
+      "company": "Mayert-Rolfson",
+      "title": "人力资源经理"
+    },
+    {
+      "from_date": "2012-12",
+      "to_date": "2016-02",
+      "company": "Kris-Orn",
+      "title": "市场部经理"
+    },
+    {
+      "from_date": "2011-09",
+      "to_date": "2012-11",
+      "company": "Barton Group",
+      "title": "实习生、助理"
+    }
+  ],
+  "languages": [
+    {
+      "name": "希腊语",
+      "desc": "母语"
+    },
+    {
+      "name": "英语",
+      "desc": "流利"
+    },
+    {
+      "name": "马来语",
+      "desc": "良好"
+    },
+    {
+      "name": "泰语",
+      "desc": "基础"
+    }
+  ],
+  "custom_sections": [
+    {
+      "section_name": "管理技能",
+      "section_content": "分析思维、人事管理、业务知识、领导力、预算、沟通、用人、人际关系等"
+    },
+    {
+      "section_name": "计算机技能",
+      "section_content": "操作系统（Windows和MacOS）、办公套件（Microsoft Office、G Suite）、演示软件（PowerPoint、Keynote）、电子表格（Excel、Google Spreadsheets等）、通讯和协作工具（Slack、Skype等）、会计软件（QuickBooks、FreshBooks、Xero等）"
+    },
+    {
+      "section_name": "品质",
+      "section_content": "勇于冒险、乐于助人、和蔼可亲、谦虚、有能力、有想象力、有魅力、公正、自信、独立、认真、敏锐"
+    },
+    {
+      "section_name": "爱好",
+      "section_content": "运动（足球、网球等）、下棋、解谜游戏、读书、写书、写文章、画画、素描、绘画、烹饪、烘焙、旅游"
+    }
+  ],
+  "designed_by": {
+    "name": "Tom CHEN",
+    "url": "https://github.com/tomchen/"
+  },
+  "developed_by": {
+    "name": "Tom CHEN",
+    "url": "https://github.com/tomchen/",
+    "repo_name": "GitHub repo",
+    "repo_url": "https://github.com/tomchen/react-printable-cv"
+  },
+  "last_update": "2020-07-05"
+}

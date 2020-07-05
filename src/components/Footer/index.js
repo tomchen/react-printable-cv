@@ -6,38 +6,38 @@ import DevelopedBy from './DevelopedBy'
 import LastUpdate from './LastUpdate'
 import footerStyle from './index.scss'
 
-const Footer = ({designer, designerUrl, developer, developerUrl, lastUpdateTime, repoName, repoUrl}) => (
-  <footer className={footerStyle.footer}>
-    <DesignedBy name={designer} url={designerUrl} />
-    <DevelopedBy name={developer} url={developerUrl} repoName={repoName} repoUrl={repoUrl} />
-    <LastUpdate time={lastUpdateTime} />
-  </footer>
-)
+const Footer = ({ design, develop, lastUpdateTime }) => {
+  return (
+    <footer className={footerStyle.footer}>
+      {design && <DesignedBy name={design.name} url={design.url} />}
+      {develop && (
+        <DevelopedBy
+          name={develop.name}
+          url={develop.url}
+          repoName={develop.repo_name}
+          repoUrl={develop.repo_url}
+        />
+      )}
+      {lastUpdateTime && <LastUpdate time={lastUpdateTime} />}
+    </footer>
+  )
+}
 
 Footer.defaultProps = {
-  designerUrl: null,
-  developerUrl: null,
-  repoName: null,
-  repoUrl: null,
+  design: null,
+  develop: null,
+  lastUpdateTime: null,
 }
 
 Footer.propTypes = {
-  designer: PropTypes.string.isRequired,
-  designerUrl: PropTypes.string,
-  developer: PropTypes.string.isRequired,
-  developerUrl: PropTypes.string,
-  repoName: PropTypes.string,
-  repoUrl: PropTypes.string,
-  lastUpdateTime: PropTypes.string.isRequired,
+  design: PropTypes.objectOf(PropTypes.string),
+  develop: PropTypes.objectOf(PropTypes.string),
+  lastUpdateTime: PropTypes.string,
 }
 
 const mapStateToProps = (state) => ({
-  designer: state.userData.designed_by.name,
-  designerUrl: state.userData.designed_by.url,
-  developer: state.userData.developed_by.name,
-  developerUrl: state.userData.developed_by.url,
-  repoName: state.userData.developed_by.repo_name,
-  repoUrl: state.userData.developed_by.repo_url,
+  design: state.userData.designed_by,
+  develop: state.userData.developed_by,
   lastUpdateTime: state.userData.last_update,
 })
 

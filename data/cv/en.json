@@ -1,0 +1,119 @@
+{
+  "name": "John Doe",
+  "address": "01789 Golden Leaf Str., Paris, Russia",
+  "tel": "639-484-4806",
+  "email": "hlehon@example.com",
+  "birth_date": "1967-11-03",
+  "birth_place": "Antarctica",
+  "website_name": "example.com",
+  "website_url": "https://example.com/",
+  "profession": "Marketing Manager",
+  "social_networks": [
+    {
+      "type": "github",
+      "id": "example",
+      "url": "https://github.com/example"
+    },
+    {
+      "type": "twitter",
+      "id": "@example",
+      "url": "https://twitter.com/@example"
+    }
+  ],
+  "education": [
+    {
+      "from_date": "2002-09",
+      "to_date": "2005-06",
+      "school": "Guangdong Radio & TV University",
+      "major": "PhD in Ninja",
+      "desc": "Ninjaaaaaaaaaaa"
+    },
+    {
+      "from_date": "2005-09",
+      "to_date": "2008-06",
+      "school": "St. Petersburg State Technological University of Plant Polymers",
+      "major": "Master's Degree in Computer Science",
+      "desc": "C/C++, Java, Python, JavaScript"
+    },
+    {
+      "from_date": "2008-09",
+      "to_date": "2011-06",
+      "school": "Universitas Kristen Indonesia",
+      "major": "Bachelor's Degree in Business",
+      "desc": "Management, Marketing"
+    }
+  ],
+  "career": [
+    {
+      "from_date": "2018-09",
+      "to_date": "",
+      "company": "Breitenberg, Welch and Cummings",
+      "title": "Manager"
+    },
+    {
+      "from_date": "2016-03",
+      "to_date": "2018-08",
+      "company": "Mayert-Rolfson",
+      "title": "HR Manager"
+    },
+    {
+      "from_date": "2012-12",
+      "to_date": "2016-02",
+      "company": "Kris-Orn",
+      "title": "Marketing Manager"
+    },
+    {
+      "from_date": "2011-09",
+      "to_date": "2012-11",
+      "company": "Barton Group",
+      "title": "Intern, assistant"
+    }
+  ],
+  "languages": [
+    {
+      "name": "Greek",
+      "desc": "Native"
+    },
+    {
+      "name": "English",
+      "desc": "Proficient"
+    },
+    {
+      "name": "Malay",
+      "desc": "Good"
+    },
+    {
+      "name": "Thai",
+      "desc": "Basic"
+    }
+  ],
+  "custom_sections": [
+    {
+      "section_name": "Management Skills",
+      "section_content": "Analytical Thinking, People Management, Business Knowledge, Leadership, Budgeting, Communication, Hiring, Interpersonal, etc."
+    },
+    {
+      "section_name": "Computer Skills",
+      "section_content": "Operating systems (Windows and MacOS), Office suites (Microsoft Office, G Suite), Presentation software (PowerPoint, Keynote), Spreadsheets (Excel, Google Spreadsheets, etc.), Communication and collaboration tools (Slack, Skype, etc.), Accounting software (QuickBooks, FreshBooks, Xero, etc.)"
+    },
+    {
+      "section_name": "Personality",
+      "section_content": "Adventurous, Helpful, Affable, Humble, Capable, Imaginative, Charming, Impartial, Confident, Independent, Conscientious, Keen"
+    },
+    {
+      "section_name": "Hobbies",
+      "section_content": "Playing sports (football, tennis, etc.), Playing chess and solving puzzle games, Reading and writing books and articles, Drawing, sketching and painting, Cooking and baking, Travelling"
+    }
+  ],
+  "designed_by": {
+    "name": "Tom CHEN",
+    "url": "https://github.com/tomchen/"
+  },
+  "developed_by": {
+    "name": "Tom CHEN",
+    "url": "https://github.com/tomchen/",
+    "repo_name": "GitHub repo",
+    "repo_url": "https://github.com/tomchen/react-printable-cv"
+  },
+  "last_update": "2020-07-05"
+}
