@@ -42,7 +42,15 @@ In `settings/index.js`, change `inline_resources` to false to have separate reso
 
 It support mordern browsers and IE 11 via Polyfills, although it may have some [Flexbox](https://caniuse.com/flexbox) rendering problem in IE 11.
 
-You'll find the Chrome generated PDF usually much smaller than Word generated PDF. (However, it's not the case for Firefox.) The final standalone HTML, albeit unzipped, is also reasonably small, the demo file that contains one image, two font weights and 3 PDF files has a size of only 1 MB.
+## File sizes
+
+You'll find the Chrome generated PDF usually much smaller than Word generated PDF. However, it's not the case for Firefox. You'll find the [CV word file](https://github.com/tomchen/react-printable-cv/blob/master/word/cv.docx) in the folder `word/` (the CV word file was created by me long before the React.js one) to be compared. The word file it self has a size of 83 KB which is not bad, but it generates a larger PDF:
+
+* Word generated PDFL: 137 KB
+* Chrome generated PDFL: 53 KB
+* Firefox generated PDFL: 458 KB
+
+The final standalone HTML is reasonably small, having taken into account the fact that it's not gzipped and that it contains multiple image, font and PDF files. The demo file that contains one image, two font weights and 3 PDF files has a size of 1 MB.
 
 ## Multi-language
 
