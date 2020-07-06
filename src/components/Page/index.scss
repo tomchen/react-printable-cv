@@ -13,7 +13,7 @@
   border: 0;
   box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.4);
 
-  @include mobile {
+  @include a4-threshold {
     height: auto;
     min-height: 297mm;
   }
@@ -23,7 +23,7 @@
   }
 }
 
-@media only screen and (max-width: 230mm) {
+@include a4-threshold {
   .page {
     width: calc(100% - 4rem);
   }

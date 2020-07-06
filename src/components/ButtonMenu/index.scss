@@ -18,6 +18,12 @@
     width: 210mm;
   }
 
+  @include a4-threshold {
+    left: calc(50% - ((100% - 4rem) / 2));
+    flex-wrap: wrap;
+    width: calc(100% - 4rem);
+  }
+
   > * {
     margin-bottom: 1.5rem !important;
 
@@ -26,12 +32,6 @@
       margin-bottom: 0.4rem !important;
       margin-left: 0.4rem !important;
     }
-  }
-
-  @media only screen and (max-width: 230mm) {
-    left: calc(50% - ((100% - 4rem) / 2));
-    flex-wrap: wrap;
-    width: calc(100% - 4rem);
   }
 
   @media print {

@@ -58,6 +58,12 @@
   }
 }
 
+@mixin a4-threshold {
+  @media only screen and (max-width: $a4-threshold-width) {
+    @content;
+  }
+}
+
 @mixin desktop {
   @media only screen and (max-width: $desktop-width) {
     @content;
