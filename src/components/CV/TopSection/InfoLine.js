@@ -12,7 +12,7 @@ import HomeIcon from '@material-ui/icons/Home'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import topStyle from './index.scss'
-import { autoDetectDmy, age } from '../../utils/timeFormat'
+import { autoDetectDmy, age } from '../../../utils/timeFormat'
 import Copy from './Copy'
 import Call from './Call'
 

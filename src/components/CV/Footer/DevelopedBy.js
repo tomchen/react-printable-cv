@@ -12,7 +12,7 @@ const DevelopedBy = ({ name, url, repoName, repoUrl, t }) => (
     ) : (
       <span>{name}</span>
     )}
-    {t(' with React.js')}
+    {t(' with React')}
     {repoUrl && (
       <>
         {' '}

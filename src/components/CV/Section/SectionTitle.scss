@@ -1,5 +1,5 @@
-@import '../../global_styles/variables';
-@import '../../global_styles/mixins';
+@import '../../../global_styles/variables';
+@import '../../../global_styles/mixins';
 
 .title {
   @include section-title-style;

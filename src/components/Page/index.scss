@@ -2,14 +2,12 @@
 @import '../../global_styles/mixins';
 
 .page {
+  @include a4-size;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 210mm;
-  height: 297mm;
   margin: $page-margin-top-and-bottom auto;
   overflow: hidden;
-  background: $main-color;
   border: 0;
   box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.4);
 
@@ -31,12 +29,8 @@
 
 @media print {
   .page {
-    width: initial;
-    height: initial;
     margin: 0;
-    page-break-after: always;
-    background: initial;
-    background: $main-color !important;
+    page-break-after: avoid;
     border: initial;
     border-radius: initial;
     box-shadow: initial;

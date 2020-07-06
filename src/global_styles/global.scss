@@ -1,5 +1,6 @@
 @import-normalize;
 @import './variables';
+@import './mixins';
 
 body {
   width: 100%;
@@ -7,7 +8,6 @@ body {
   margin: 0;
   padding: 0;
   font-size: $root-font-size;
-  background-color: $back-color;
 }
 
 body,
@@ -25,16 +25,8 @@ button {
 @media print {
   html,
   body {
-    width: 210mm;
-    height: 297mm;
-    background: $main-color !important;
+    @include a4-size;
     color-adjust: exact !important;
-    // The height should be 297mm
-    // In Firefox 296mm is used due to a Firefox print mode bug
-    // where a new page is generated if height is 297mm
-    @-moz-document url-prefix('') {
-      height: 296mm;
-    }
     // Should be perfect in Windows Chrome
     // in Windows Firefox, user should set '100%' print size instead of 'Fit'
     // Mac Chrome

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import tbbStyle from './TimeBasedBlock.scss'
-import { autoDetectDmy } from '../../utils/timeFormat'
+import { autoDetectDmy } from '../../../utils/timeFormat'
 
 const ItemTime = ({ from, to, currentLang, t }) => {
   const fromLocale = autoDetectDmy(from, currentLang)

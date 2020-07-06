@@ -44,7 +44,7 @@ It support mordern browsers and IE 11 via Polyfills, although it may have some [
 
 ## File sizes
 
-You'll find the Chrome generated PDF usually much smaller than Word generated PDF. However, it's not the case for Firefox. You'll find the [CV word file](https://github.com/tomchen/react-printable-cv/blob/master/word/cv.docx) in the folder `word/` (the CV word file was created by me long before the React.js one) to be compared. The word file it self has a size of 83 KB which is not bad, but it generates a larger PDF:
+You'll find the Chrome generated PDF usually much smaller than Word generated PDF. However, it's not the case for Firefox. You'll find the [CV word file](https://github.com/tomchen/react-printable-cv/blob/master/word/cv.docx) in the folder `word/` (the CV word file was created by me long before the React one) to be compared. The word file it self has a size of 83 KB which is not bad, but it generates a larger PDF:
 
 * Word generated PDFL: 137 KB
 * Chrome generated PDFL: 53 KB
@@ -99,6 +99,7 @@ Things that could be done in the future to make it more interesting:
 
 * [ ] Tests
 * [ ] Editor forms (Edit Mode)
+* [ ] Migrate to TypeScript
 * [ ] Backend generates PDF on-demand
 * [ ] Separate the optimized production version with backend server, from the development version
 * [ ] More templates

@@ -27,20 +27,6 @@
       "school": "Guangdong Radio & TV University",
       "major": "PhD in Ninja",
       "desc": "Ninjaaaaaaaaaaa"
-    },
-    {
-      "from_date": "2005-09",
-      "to_date": "2008-06",
-      "school": "St. Petersburg State Technological University of Plant Polymers",
-      "major": "Master's Degree in Computer Science",
-      "desc": "C/C++, Java, Python, JavaScript"
-    },
-    {
-      "from_date": "2008-09",
-      "to_date": "2011-06",
-      "school": "Universitas Kristen Indonesia",
-      "major": "Bachelor's Degree in Business",
-      "desc": "Management, Marketing"
     }
   ],
   "career": [
@@ -49,12 +35,6 @@
       "to_date": "",
       "company": "Breitenberg, Welch and Cummings",
       "title": "Manager"
-    },
-    {
-      "from_date": "2016-03",
-      "to_date": "2018-08",
-      "company": "Mayert-Rolfson",
-      "title": "HR Manager"
     },
     {
       "from_date": "2012-12",
@@ -112,7 +92,7 @@
   "developed_by": {
     "name": "Tom CHEN",
     "url": "https://github.com/tomchen/",
-    "repo_name": "GitHub repo",
+    "repo_name": "GitHub",
     "repo_url": "https://github.com/tomchen/react-printable-cv"
   },
   "last_update": "2020-07-05"

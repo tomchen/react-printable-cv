@@ -1,0 +1,13 @@
+{
+  "category": "",
+  "items": [
+    {
+      "name": "React project",
+      "url": "https://reactjs.org/",
+      "repo_url": "https://github.com/facebook/react",
+      "date": ["2013-05-29", ""],
+      "stack": ["JavaScript"],
+      "desc": ""
+    }
+  ]
+}

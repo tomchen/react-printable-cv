@@ -1,5 +1,19 @@
 @import './variables';
 
+@mixin a4-size {
+  width: 210mm;
+  height: 297mm;
+  // The height should be 297mm
+  // In Firefox 296mm could be used due to a Firefox print mode bug
+  // where 297mm is too much for one A4 page
+  // However, I set `.page { page-break-after: avoid; }`
+  // to cut the content and avoid any page break
+  // so the following is not needed
+  // @-moz-document url-prefix('') {
+  //   height: 297mm;
+  // }
+}
+
 @mixin section-title-style {
   display: flex;
   flex-basis: 8rem;

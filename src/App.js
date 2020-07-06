@@ -7,7 +7,8 @@ import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles'
 import { blue } from '@material-ui/core/colors'
 import './global_styles/global.scss'
 import ButtonMenu from './components/ButtonMenu'
-import CVPage from './components/Page/CVPage'
+import CVPage from './components/CV'
+import ProjectListPage from './components/ProjectList'
 
 const blueTheme = createMuiTheme({
   palette: {
@@ -34,6 +35,7 @@ const App = ({ currentLang, userName, t }) => (
   <ThemeProvider theme={blueTheme}>
     <ButtonMenu />
     <CVPage />
+    <ProjectListPage />
     <Helmet>
       <html lang={currentLang} />
       <title>{t('Curriculum vitae of {{userName}}', { userName })}</title>

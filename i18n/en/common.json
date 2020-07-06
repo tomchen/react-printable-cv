@@ -1,5 +1,5 @@
 {
-  " with React.js": " with React.js",
+  " with React": " with React",
   ".": ".",
   "{{from}} – {{to}}": "{{from}} – {{to}}",
   "{{from}} – now": "{{from}} – now",
@@ -12,7 +12,7 @@
   "Copy Email address": "Copy Email address",
   "Copy phone number": "Copy phone number",
   "Curriculum vitae of {{userName}}": "{{userName}}'s Curriculum Vitae",
-  "Designed by ": "Designed by ",
+  "Designed by ": "CV designed by ",
   "Developed by ": "Developed by ",
   "Download PDF file for the current language": "Download PDF file for the current language",
   "Edit mode": "Edit mode",
