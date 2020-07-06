@@ -9,15 +9,15 @@ import footerStyle from './index.scss'
 const Footer = ({ design, develop, lastUpdateTime }) => {
   return (
     <footer className={footerStyle.footer}>
-      {design && <DesignedBy name={design.name} url={design.url} />}
       {develop && (
         <DevelopedBy
           name={develop.name}
           url={develop.url}
           repoName={develop.repo_name}
-          repoUrl={develop.repo_url}
+          gitUrl={develop.git_url}
         />
       )}
+      {design && <DesignedBy name={design.name} url={design.url} />}
       {lastUpdateTime && <LastUpdate time={lastUpdateTime} />}
     </footer>
   )

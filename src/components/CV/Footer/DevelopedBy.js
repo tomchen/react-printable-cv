@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withTranslation } from 'react-i18next'
 
-const DevelopedBy = ({ name, url, repoName, repoUrl, t }) => (
+const DevelopedBy = ({ name, url, repoName, gitUrl, t }) => (
   <div>
     {t('Developed by ')}
     {url ? (
@@ -13,11 +13,11 @@ const DevelopedBy = ({ name, url, repoName, repoUrl, t }) => (
       <span>{name}</span>
     )}
     {t(' with React')}
-    {repoUrl && (
+    {gitUrl && (
       <>
         {' '}
         (
-        <a href={repoUrl} target="_blank" rel="noopener noreferrer">
+        <a href={gitUrl} target="_blank" rel="noopener noreferrer">
           {repoName || t('repo')}
         </a>
         )
@@ -30,14 +30,14 @@ const DevelopedBy = ({ name, url, repoName, repoUrl, t }) => (
 DevelopedBy.defaultProps = {
   url: null,
   repoName: null,
-  repoUrl: null,
+  gitUrl: null,
 }
 
 DevelopedBy.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string,
   repoName: PropTypes.string,
-  repoUrl: PropTypes.string,
+  gitUrl: PropTypes.string,
   t: PropTypes.func.isRequired,
 }
 

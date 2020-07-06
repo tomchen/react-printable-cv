@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import sectionTitleStyle from './SectionTitle.scss'
 
 const SectionTitle = ({ title }) => (
-  <h3 className={sectionTitleStyle.title}>{title}</h3>
+  <h2 className={sectionTitleStyle.title}>{title}</h2>
 )
 
 SectionTitle.propTypes = {

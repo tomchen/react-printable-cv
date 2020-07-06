@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  box-sizing: border-box;
   margin: $page-margin-top-and-bottom auto;
   overflow: hidden;
   border: 0;

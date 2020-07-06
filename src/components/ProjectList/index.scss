@@ -1,3 +1,37 @@
+@import '../../global_styles/variables.scss';
+
 .projectlist {
-  display: block;
+  display: flex;
+  padding: 3rem;
+}
+
+.title {
+  margin-top: 0;
+  margin-bottom: 0.7rem;
+  color: $main-color-dark;
+  font-size: 1.05rem;
+  line-height: 100%;
+  text-align: center;
+}
+
+.cat {
+}
+
+.cattitle {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  padding: 0.4rem;
+  color: $light-color;
+  font-size: 1.05rem;
+  line-height: 100%;
+  text-align: center;
+  background-color: $main-color;
+}
+
+.item {
+}
+
+.svgwrapper {
+  display: inline-block;
+  vertical-align: middle;
 }

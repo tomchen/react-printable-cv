@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import topStyle from './index.scss'
 
-const Name = ({ name }) => <h2 className={topStyle.name}>{name}</h2>
+const Name = ({ name }) => <h1 className={topStyle.name}>{name}</h1>
 
 Name.propTypes = {
   name: PropTypes.string.isRequired,

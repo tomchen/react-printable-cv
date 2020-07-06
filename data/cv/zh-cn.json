@@ -105,15 +105,15 @@
       "section_content": "运动（足球、网球等）、下棋、解谜游戏、读书、写书、写文章、画画、素描、绘画、烹饪、烘焙、旅游"
     }
   ],
-  "designed_by": {
-    "name": "Tom CHEN",
-    "url": "https://github.com/tomchen/"
-  },
   "developed_by": {
     "name": "Tom CHEN",
     "url": "https://github.com/tomchen/",
     "repo_name": "GitHub",
-    "repo_url": "https://github.com/tomchen/react-printable-cv"
+    "git_url": "https://github.com/tomchen/react-printable-cv"
+  },
+  "designed_by": {
+    "name": "Tom CHEN",
+    "url": "https://github.com/tomchen/"
   },
   "last_update": "2020-07-05"
 }

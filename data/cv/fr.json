@@ -105,15 +105,15 @@
       "section_content": "Faire du sport (football, tennis, etc.), Jouer aux échecs et résoudre des puzzles, Lire et écrire des livres et des articles, Dessiner, faire des croquis et peindre, Cuisiner et cuisiner, Voyager"
     }
   ],
-  "designed_by": {
-    "name": "Tom CHEN",
-    "url": "https://github.com/tomchen/"
-  },
   "developed_by": {
     "name": "Tom CHEN",
     "url": "https://github.com/tomchen/",
     "repo_name": "GitHub",
-    "repo_url": "https://github.com/tomchen/react-printable-cv"
+    "git_url": "https://github.com/tomchen/react-printable-cv"
+  },
+  "designed_by": {
+    "name": "Tom CHEN",
+    "url": "https://github.com/tomchen/"
   },
   "last_update": "2020-07-05"
 }

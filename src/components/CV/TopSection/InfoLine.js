@@ -5,6 +5,8 @@ import cx from 'classnames'
 import { withTranslation } from 'react-i18next'
 import PlaceIcon from '@material-ui/icons/Place'
 import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid'
+import Tooltip from '@material-ui/core/Tooltip'
+import { makeStyles } from '@material-ui/core/styles'
 import EmailIcon from '@material-ui/icons/Email'
 import CakeIcon from '@material-ui/icons/Cake'
 import FlagIcon from '@material-ui/icons/Flag'
@@ -16,81 +18,106 @@ import { autoDetectDmy, age } from '../../../utils/timeFormat'
 import Copy from './Copy'
 import Call from './Call'
 
-const InfoLine = ({ type, text, url, isNotExtUrl, isSocial, currentLang, t }) => {
+const useStyles = makeStyles({
+  tooltip: {
+    fontSize: '0.8rem',
+    textAlign: 'center',
+  },
+})
+
+const InfoLine = ({
+  type,
+  text,
+  url,
+  isNotExtUrl,
+  isSocial,
+  currentLang,
+  t,
+}) => {
+  const classes = useStyles()
   const typeMapping = {
     address: {
       name: t('Address'),
-      icon: <PlaceIcon />,
+      icon: PlaceIcon,
     },
     tel: {
       name: t('Telephone number'),
-      icon: <PhoneAndroidIcon />,
+      icon: PhoneAndroidIcon,
     },
     email: {
       name: t('Email'),
-      icon: <EmailIcon />,
+      icon: EmailIcon,
     },
     birth_date: {
       name: t('Birth date'),
-      icon: <CakeIcon />,
+      icon: CakeIcon,
     },
     birth_place: {
       name: t('Birth place'),
-      icon: <FlagIcon />,
+      icon: FlagIcon,
     },
     website: {
       name: t('Website'),
-      icon: <HomeIcon />,
+      icon: HomeIcon,
     },
     github: {
       name: t('GitHub'),
-      icon: <GitHubIcon />,
+      icon: GitHubIcon,
     },
     twitter: {
       name: t('Twitter'),
-      icon: <TwitterIcon />,
+      icon: TwitterIcon,
     },
   }
-return (
-  <div
-    className={cx({
-      [topStyle.social]: isSocial,
-      [topStyle.infoline]: true,
-    })}
-    data-type={type}
-  >
-    <span
-      title={typeMapping[type].name}
-      aria-label={typeMapping[type].name}
-      className={`${topStyle.svgwrapper} ${topStyle.fronticon}`}
+  const typeLower = type.toLowerCase()
+  const TypeIcon = typeMapping[typeLower].icon
+
+  return (
+    <div
+      className={cx({
+        [topStyle.social]: isSocial,
+        [topStyle.infoline]: true,
+      })}
+      data-type={typeLower}
     >
-      {typeMapping[type].icon}
-    </span>
-    {url ? (
-      <a
-        href={url}
-        className={topStyle.text}
-        target={isNotExtUrl ? undefined : '_blank'}
-        rel={isNotExtUrl ? undefined : 'noopener noreferrer'}
+      <Tooltip
+        classes={{ tooltip: classes.tooltip }}
+        title={typeMapping[typeLower].name}
       >
-        {text}
-      </a>
-    ) : (
-      <span className={topStyle.text}>
-        {type === 'birth_date'
-          ? `${autoDetectDmy(text, currentLang)} (${age(text, currentLang)})`
-          : text}
-      </span>
-    )}
-    {type === 'tel' && (
-      <>
-        <Copy text={text} title={t('Copy phone number')} />
-        <Call tel={text} title={t('Call the number')} />
-      </>
-    )}
-    {type === 'email' && <Copy text={text} title={t('Copy Email address')} />}
-  </div>
-)
+        <span
+          className={`${topStyle.svgwrapper} ${topStyle.fronticon}`}
+          aria-label={typeMapping[typeLower].name}
+        >
+          <TypeIcon />
+        </span>
+      </Tooltip>
+      {url ? (
+        <a
+          href={url}
+          className={topStyle.text}
+          target={isNotExtUrl ? undefined : '_blank'}
+          rel={isNotExtUrl ? undefined : 'noopener noreferrer'}
+        >
+          {text}
+        </a>
+      ) : (
+        <span className={topStyle.text}>
+          {typeLower === 'birth_date'
+            ? `${autoDetectDmy(text, currentLang)} (${age(text, currentLang)})`
+            : text}
+        </span>
+      )}
+      {typeLower === 'tel' && (
+        <>
+          <Copy text={text} title={t('Copy phone number')} />
+          <Call tel={text} title={t('Call the number')} />
+        </>
+      )}
+      {typeLower === 'email' && (
+        <Copy text={text} title={t('Copy Email address')} />
+      )}
+    </div>
+  )
 }
 
 InfoLine.defaultProps = {

@@ -8,7 +8,7 @@ Printable, multi-language, web curriculum vitae (resume) built with React and Re
 
 It's a responsive web page or a so-called SPA (single page application) that is 'perfectly' A4 paper print-ready. The data, stored in JSON files, are fully separated from the SPA.<!--  A PDF file can be generated at compile time or in the backend server. -->
 
-Also can be generated a **standalone** HTML file containing all the resources, including JavaScript, CSS, images, fonts and even the pre-generated PDF. The [demo page](https://react-cv.tomchen.org/) is a standalone HTML.
+Also can be optionally generated a **standalone** HTML file containing all the resources, including JavaScript, CSS, images, fonts and even the pre-generated PDF. The [demo page](https://react-cv.tomchen.org/) is a standalone HTML.
 
 ## Direct printing
 
@@ -34,6 +34,8 @@ Put your pre-generated `$LOCALE.pdf` files in the `pdf/` folder so that they can
 
 The static offline version can be either a standalone HTML file that contains all the resources, including JavaScript, CSS, images, fonts, PDF, etc., or a group of HTML, JavaScript bundle files and other aforementioned resources.
 
+In comparison with the normal version with separate resource files, standalone HTML file have great portability but lost the ability to asynchronously "lazy load".
+
 In wider or normal screen, the web page visually shows on an "A4 page" with non-printable buttons on the right side outside the "A4 page", while it's responsive in mobile screen.
 
 `npm run rebuild` to generate the static offline version (using files and resources from `data/`, `src/` and `pdf/`) and put it into `dist/` folder.
@@ -50,7 +52,7 @@ You'll find the Chrome generated PDF usually much smaller than Word generated PD
 * Chrome generated PDFL: 53 KB
 * Firefox generated PDFL: 458 KB
 
-The final standalone HTML is reasonably small, having taken into account the fact that it's not gzipped and that it contains multiple image, font and PDF files. The demo file that contains one image, two font weights and 3 PDF files has a size of 1 MB.
+The final standalone HTML is reasonably small, having taken into account the fact that it's not gzipped and that it contains many JavaScript (including the whole React.js library), image, font and PDF files. The demo file that contains one image, two font weights and 3 PDF files has a size of 1 MB.
 
 ## Multi-language
 
@@ -95,8 +97,9 @@ Not bootstrapped with Create React App, it uses:
 
 ## To do
 
-Things that could be done in the future to make it more interesting:
+Things that could be done in the future to make it better or more interesting:
 
+* [ ] Async load data
 * [ ] Tests
 * [ ] Editor forms (Edit Mode)
 * [ ] Migrate to TypeScript
