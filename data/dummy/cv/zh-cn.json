@@ -13,11 +13,6 @@
       "type": "github",
       "id": "example",
       "url": "https://github.com/example"
-    },
-    {
-      "type": "twitter",
-      "id": "@example",
-      "url": "https://twitter.com/@example"
     }
   ],
   "education": [
@@ -33,7 +28,7 @@
       "to_date": "2008-06",
       "school": "圣彼得堡国立植物聚合物技术大学",
       "major": "计算机科学硕士",
-      "desc": "C/C++, Java, Python, JavaScript"
+      "desc": "C/C++、Java、Python、JavaScript"
     },
     {
       "from_date": "2008-09",

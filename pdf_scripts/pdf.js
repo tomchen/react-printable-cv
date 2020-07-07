@@ -10,5 +10,5 @@ const fs = require('fs')
 
   await browser.close()
 
-  fs.writeFileSync('pdf/CV.pdf', buffer)
+  fs.writeFileSync('pdf/cv.pdf', buffer)
 })().catch(() => {})

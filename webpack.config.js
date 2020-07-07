@@ -1,19 +1,31 @@
 const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const TerserJSPlugin = require('terser-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
+const HTMLInlineCSSWebpackPlugin = require('html-inline-css-webpack-plugin')
+  .default
 const RemovePlugin = require('remove-files-webpack-plugin')
 const postcssPresetEnv = require('postcss-preset-env')
 const postcssNormalize = require('postcss-normalize')
 const cssnano = require('cssnano')
-const settings = require('./settings')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const usedummy = require('./settings/usedummy')
+const settings = usedummy ? require('./settings/dummy') : require('./settings')
 
 module.exports = (env, argv) => {
+  const dev = argv.mode === 'development'
+  const outputPath = path.join(__dirname, 'dist')
+  const JsOutputSubPath = ''
+  const CssOutputSubPath = ''
+
   const config = {
     entry: './src/index.js',
     output: {
-      filename: 'bundle.js',
-      path: path.join(__dirname, 'dist'),
+      filename: path.join(JsOutputSubPath, '[name].[contenthash].js'),
+      chunkFilename: path.join(JsOutputSubPath, '[id].[contenthash].js'),
+      path: outputPath,
     },
     devServer: {
       port: 8080,
@@ -24,9 +36,16 @@ module.exports = (env, argv) => {
         {
           test: /\.(js|jsx)$/,
           exclude: /node_modules/,
-          use: {
-            loader: 'babel-loader',
-          },
+          use: [
+            { loader: 'babel-loader' },
+            {
+              loader: 'ifdef-loader',
+              options: {
+                USEDUMMY: usedummy,
+                "ifdef-verbose": true,
+              },
+            },
+          ],
         },
         {
           test: /\.html$/,
@@ -35,22 +54,28 @@ module.exports = (env, argv) => {
           },
         },
         {
-          test: /\.s[ac]ss$/i,
+          test: /\.(sa|sc|c)ss$/i,
           use: [
-            'style-loader',
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: {
+                hmr: dev,
+                reloadAll: true,
+              },
+            },
             {
               loader: 'css-loader',
               options: {
                 modules: true,
                 importLoaders: 1,
-                sourceMap: argv.mode === 'development',
+                sourceMap: dev,
               },
             },
             {
               loader: 'postcss-loader',
               options: {
                 ident: 'postcss',
-                sourceMap: argv.mode === 'development',
+                sourceMap: true,
                 plugins: () => [
                   postcssPresetEnv(),
                   postcssNormalize(),
@@ -62,43 +87,159 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /\.css$/i,
+          test: /\.(png|jpe?g|gif)$/i,
           use: [
-            'style-loader',
-            {
-              loader: 'css-loader',
+            dev || (argv.mode === 'production' && !settings.inline_resources)
+              ? {
+                  loader: 'file-loader',
+                  options: {
+                    name: '[name].[ext]',
+                    outputPath: 'images/',
+                  },
+                }
+              : {
+                  loader: 'url-loader',
+                  // options: {
+                  //   limit: 8192,
+                  // },
+                },
+            !dev && {
+              loader: 'image-webpack-loader',
               options: {
-                modules: true,
-                importLoaders: 1,
-                sourceMap: argv.mode === 'development',
+                bypassOnDebug: true,
+                disable: true,
+                mozjpeg: {
+                  progressive: true,
+                  quality: 65,
+                },
+                optipng: {
+                  enabled: true,
+                },
+                pngquant: {
+                  quality: [0.65, 0.9],
+                  speed: 4,
+                },
+                gifsicle: {
+                  interlaced: false,
+                },
+                webp: {
+                  quality: 75,
+                },
               },
             },
-            {
-              loader: 'postcss-loader',
-              options: {
-                ident: 'postcss',
-                sourceMap: argv.mode === 'development',
-                plugins: () => [
-                  postcssPresetEnv(),
-                  postcssNormalize(),
-                  cssnano(),
-                ],
-              },
-            },
+          ].filter((a) => a !== false),
+        },
+        {
+          test: /\.pdf$/i,
+          use: [
+            dev || (argv.mode === 'production' && !settings.inline_resources)
+              ? {
+                  loader: 'file-loader',
+                  options: {
+                    name: '[name].[ext]',
+                    outputPath: 'pdf/',
+                  },
+                }
+              : {
+                  loader: 'url-loader',
+                  // options: {
+                  //   limit: 8192,
+                  // },
+                },
+          ],
+        },
+        {
+          test: /\.ico$/i,
+          use: [
+            dev || (argv.mode === 'production' && !settings.inline_resources)
+              ? {
+                  loader: 'file-loader',
+                  options: {
+                    name: '[name].[ext]',
+                    outputPath: 'icons/',
+                  },
+                }
+              : {
+                  loader: 'url-loader',
+                  // options: {
+                  //   limit: 8192,
+                  // },
+                },
+          ],
+        },
+        {
+          test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
+          use: [
+            dev || (argv.mode === 'production' && !settings.inline_resources)
+              ? {
+                  loader: 'file-loader',
+                  options: {
+                    name: '[name].[ext]',
+                    outputPath: 'fonts/',
+                  },
+                }
+              : 'base64-inline-loader',
           ],
         },
         {
           test: /\.svg$/,
-          use: [{
-            loader: '@svgr/webpack',
-            options: {
-              svgoConfig: {
-                plugins: {
-                  removeViewBox: false
-                }
-              }
-            }
-          }],
+          use: [
+            {
+              loader: '@svgr/webpack',
+              options: {
+                svgo: true,
+                svgoConfig: {
+                  plugins: {
+                    removeViewBox: false,
+                    ...(dev
+                      ? {}
+                      : {
+                          addAttributesToSVGElement: false,
+                          addClassesToSVGElement: false,
+                          cleanupAttrs: true,
+                          cleanupEnableBackground: true,
+                          cleanupIDs: true,
+                          cleanupListOfValues: true,
+                          cleanupNumericValues: { floatPrecision: 2 },
+                          collapseGroups: true,
+                          convertColors: true,
+                          convertPathData: true,
+                          convertShapeToPath: true,
+                          convertStyleToAttrs: true,
+                          convertTransform: true,
+                          mergePaths: true,
+                          minifyStyles: true,
+                          moveElemsAttrsToGroup: true,
+                          moveGroupAttrsToElems: true,
+                          removeAttrs: true,
+                          removeComments: true,
+                          removeDesc: true,
+                          removeDimensions: true,
+                          removeDoctype: true,
+                          removeEditorsNSData: true,
+                          removeElementsByAttr: true,
+                          removeEmptyAttrs: true,
+                          removeEmptyContainers: true,
+                          removeEmptyText: true,
+                          removeHiddenElems: true,
+                          removeMetadata: true,
+                          removeNonInheritableGroupAttrs: true,
+                          removeStyleElement: true,
+                          removeTitle: true,
+                          removeUnknownsAndDefaults: true,
+                          removeUnusedNS: true,
+                          removeUselessDefs: true,
+                          removeUselessStrokeAndFill: true,
+                          removeXMLNS: false,
+                          removeXMLProcInst: true,
+                          sortAttrs: true,
+                          transformsWithOnePath: true,
+                        }),
+                  },
+                },
+              },
+            },
+          ],
         },
       ],
     },
@@ -107,85 +248,73 @@ module.exports = (env, argv) => {
         template: './src/index.html',
         filename: './index.html',
       }),
-    ],
-  }
+      new CleanWebpackPlugin(),
+      new MiniCssExtractPlugin({
+        filename: dev
+          ? path.join(CssOutputSubPath, '[name].css')
+          : path.join(CssOutputSubPath, '[name].[hash].css'),
+        chunkFilename: dev
+          ? path.join(CssOutputSubPath, '[id].css')
+          : path.join(CssOutputSubPath, '[id].[hash].css'),
+      }),
 
-  if (argv.mode === 'development') {
-    config.devtool = 'source-map'
-    config.module.rules.push()
-  }
-
-  if (
-    argv.mode === 'development' ||
-    (argv.mode === 'production' && !settings.inline_resources)
-  ) {
-    config.module.rules.push({
-      test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-            outputPath: 'fonts/',
-          },
-        },
-      ],
-    })
-
-    // url-loader (transforming ressources into base64 URI)
-    // can be used instead of file-loader (get ressources' URL)
-    config.module.rules.push({
-      test: /\.(png|jpe?g|gif|ico|pdf)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-        },
-      ],
-    })
-  }
-
-  if (argv.mode === 'production') {
-
-    if (settings.inline_resources) {
-      config.module.rules.push({
-        test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
-        use: 'base64-inline-loader',
-      })
-
-      config.module.rules.push({
-        test: /\.(png|jpe?g|gif|ico|pdf)$/i,
-        use: [
-          {
-            loader: 'url-loader',
-            // options: {
-            //   limit: 8192,
-            // },
-          },
-        ],
-      })
-    }
-
-    if (settings.one_chunk) {
-      config.plugins.push(
-        // produce one script chunk and / or inline script in index.html
+      !dev &&
+        settings.one_script_chunk &&
         new webpack.optimize.LimitChunkCountPlugin({
+          // produce one script chunk and / or inline script in index.html
           maxChunks: 1,
         }), // then manually remove /dist/*.js
-      )
-    }
 
-    if (settings.inline_resources) {
-      config.plugins.push(
-        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/\.js$/]),
-        new RemovePlugin({
-          after: {
-            root: config.output.path,
-            include: ['bundle.js'],
-            trash: true,
-          },
+      ...(!dev && settings.inline_resources
+        ? [
+            new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/.*/]),
+            new HTMLInlineCSSWebpackPlugin(),
+            new RemovePlugin({
+              after: {
+                root: outputPath,
+                test: [
+                  {
+                    folder: path.join('.', JsOutputSubPath),
+                    method: (absoluteItemPath) => {
+                      return /\.(js|txt)$/i.test(absoluteItemPath)
+                    },
+                  },
+                ],
+              },
+            }),
+          ]
+        : []),
+    ].filter((a) => a !== false),
+
+    resolve: {
+      alias: {
+        Src: path.resolve(__dirname, 'src/'),
+        Settings: path.resolve(__dirname, 'settings/'),
+      },
+    },
+
+    devtool: dev ? 'source-map' : false,
+
+    optimization: {
+      minimize: !dev,
+      minimizer: [
+        new TerserJSPlugin({
+          test: /\.js(\?.*)?$/i,
+          sourceMap: dev,
         }),
-      )
-    }
+      ],
+      moduleIds: 'hashed',
+      runtimeChunk: 'single',
+      splitChunks: {
+        cacheGroups: {
+          vendor: {
+            test: /[\\/]node_modules[\\/]/,
+            name: 'vendors',
+            chunks: 'all',
+          },
+        },
+      },
+    },
   }
 
   return config

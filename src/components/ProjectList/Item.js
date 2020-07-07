@@ -2,14 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
+import Markdown from 'react-markdown'
 import { autoDetectDmy } from '../../utils/timeFormat'
 import Icon from './Icon'
-import ProjectListStyle from './index.scss'
+import projectListStyle from './index.scss'
 import stackIconList from './stackIcons'
 
 const Item = ({
   name,
   url,
+  urlTitle,
   gitUrl,
   githubUrl,
   npmUrl,
@@ -21,8 +23,15 @@ const Item = ({
 }) => {
   const links =
     url || gitUrl || githubUrl || npmUrl ? (
-      <span>
-        {url && <Icon type="home" url={url} title={t('Home page')} />}
+      <span className={projectListStyle.links}>
+        {url && (
+          <Icon
+            type="home"
+            url={url}
+            title={urlTitle || t('Home page')}
+            size="large"
+          />
+        )}
         {gitUrl && <Icon type="git" url={gitUrl} title={t('git repository')} />}
         {githubUrl && (
           <Icon type="github" url={githubUrl} title={t('GitHub page')} />
@@ -35,30 +44,28 @@ const Item = ({
 
   let dateLine
   if (!date) {
-    dateLine = null
+    dateLine = ''
+  } else if (typeof date === 'string') {
+    dateLine = autoDetectDmy(date, currentLang)
+  } else if (Array.isArray(date) && (date.length === 1 || date[1] === '')) {
+    dateLine = t('{{from}} – now', {
+      from: autoDetectDmy(date[0], currentLang),
+    })
   } else {
-    if (typeof date === 'string') {
-      dateLine = autoDetectDmy(date[0], currentLang)
-    } else if (Array.isArray(date) && (date.length === 1 || date[1] === '')) {
-      dateLine = t('{{from}} - now', {
-        from: autoDetectDmy(date[0], currentLang),
-      })
-    } else {
-      dateLine = t('{{from}} - {{to}}', {
-        from: autoDetectDmy(date[0], currentLang),
-        to: autoDetectDmy(date[1], currentLang),
-      })
-    }
-    dateLine = <span>{dateLine}</span>
+    dateLine = t('{{from}} – {{to}}', {
+      from: autoDetectDmy(date[0], currentLang),
+      to: autoDetectDmy(date[1], currentLang),
+    })
   }
+  dateLine = <span className={projectListStyle.date}>{dateLine}</span>
 
   return (
-    <div className={ProjectListStyle.item}>
-      <h4>{name}</h4>
+    <div className={projectListStyle.item}>
+      <h4 className={projectListStyle.itemtitle}>{name}</h4>
       {links}
       {dateLine}
       {stack && (
-        <div>
+        <div className={projectListStyle.stack}>
           {stack.map((tech) => (
             <Icon
               key={tech}
@@ -66,7 +73,7 @@ const Item = ({
               title={
                 (
                   stackIconList[tech.toLowerCase()] || {
-                    name: t('Warning: Can\'t find logo for "{{tech}}"', {
+                    name: t('Warning: Can\'t find icon for "{{tech}}"', {
                       tech,
                     }),
                   }
@@ -77,13 +84,18 @@ const Item = ({
           ))}
         </div>
       )}
-      {desc && <div>{desc}</div>}
+      {desc && (
+        <div className={projectListStyle.desc}>
+          <Markdown source={desc} />
+        </div>
+      )}
     </div>
   )
 }
 
 Item.defaultProps = {
   url: null,
+  urlTitle: null,
   gitUrl: null,
   githubUrl: null,
   npmUrl: null,
@@ -95,6 +107,7 @@ Item.defaultProps = {
 Item.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string,
+  urlTitle: PropTypes.string,
   gitUrl: PropTypes.string,
   githubUrl: PropTypes.string,
   npmUrl: PropTypes.string,

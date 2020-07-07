@@ -13,11 +13,6 @@
       "type": "github",
       "id": "example",
       "url": "https://github.com/example"
-    },
-    {
-      "type": "twitter",
-      "id": "@example",
-      "url": "https://twitter.com/@example"
     }
   ],
   "education": [

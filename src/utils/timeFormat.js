@@ -151,6 +151,9 @@ export const autoDetectDmy = (date, locale) => {
   if (/^\d{1,2}-\d{1,2}$/.test(date)) {
     return dm(date, locale)
   }
+  if (/^\d{4}$/.test(date)) {
+    return y(date, locale)
+  }
   return null
 }
 

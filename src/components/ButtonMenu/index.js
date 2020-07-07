@@ -2,15 +2,24 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
+import { downloadStringAsFile, downloadBlobAsFile } from '../../utils/download'
 import { changeLang } from '../../actions'
 import Button from './Button'
 // import SwitchBar from './SwitchBar'
 import buttonStyle from './index.scss'
+// import UploadButton from './UploadButton'
+
+/// #if USEDUMMY
+import pdfUrlEn from '../../../pdf/dummy/en.pdf'
+import pdfUrlFr from '../../../pdf/dummy/fr.pdf'
+import pdfUrlZhCn from '../../../pdf/dummy/zh-cn.pdf'
+import settings from 'Settings/dummy'
+/// #else
 import pdfUrlEn from '../../../pdf/en.pdf'
 import pdfUrlFr from '../../../pdf/fr.pdf'
 import pdfUrlZhCn from '../../../pdf/zh-cn.pdf'
-import settings from '../../../settings'
-import UploadButton from './UploadButton'
+import settings from 'Settings'
+/// #endif
 
 const pdfUrls = {
   en: pdfUrlEn,
@@ -18,22 +27,13 @@ const pdfUrls = {
   'zh-cn': pdfUrlZhCn,
 }
 
-const downloadStringAsFile = (filename, text) => {
-  const el = document.createElement('a')
-  el.setAttribute(
-    'href',
-    `data:text/plain;charset=utf-8,${encodeURIComponent(text)}`,
-  )
-  el.setAttribute('download', filename)
-  el.style.display = 'none'
-  document.body.appendChild(el)
-  el.click()
-  document.body.removeChild(el)
-}
-
-const ButtonMenu = ({ currentLang, userData, dispatch, t }) => {
+const ButtonMenu = ({ currentLang, userData, projectData, dispatch, t }) => {
   const print = () => {
     window.print()
+  }
+
+  const handleGotoGithub = () => {
+    window.open('https://github.com/tomchen/react-printable-cv')
   }
 
   const handleLangChange = (lang) => {
@@ -41,10 +41,10 @@ const ButtonMenu = ({ currentLang, userData, dispatch, t }) => {
   }
 
   const handleExportJson = () => {
-    downloadStringAsFile('data.json', JSON.stringify(userData, null, 2))
-  }
-
-  const handleImportJson = () => {
+    downloadStringAsFile(
+      'data.json',
+      JSON.stringify({ cv: userData, project_list: projectData }, null, 2),
+    )
   }
 
   const pdf = () => {
@@ -54,7 +54,7 @@ const ButtonMenu = ({ currentLang, userData, dispatch, t }) => {
       fetch(currentPdfUrl)
         .then((res) => res.blob())
         .then((blob) => {
-          window.location.href = URL.createObjectURL(blob)
+          downloadBlobAsFile(`cv.${currentLang}.pdf`, blob)
         })
     } else {
       window.open(currentPdfUrl)
@@ -97,8 +97,14 @@ const ButtonMenu = ({ currentLang, userData, dispatch, t }) => {
         text={t('Export JSON')}
         title={t('Export .json file of the data')}
         onClick={handleExportJson}
+        color="default"
       />
       {/* <UploadButton /> */}
+      <Button
+        text={t('GitHub')}
+        onClick={handleGotoGithub}
+        color="default"
+      />
     </div>
   )
 }
@@ -106,6 +112,7 @@ const ButtonMenu = ({ currentLang, userData, dispatch, t }) => {
 ButtonMenu.propTypes = {
   currentLang: PropTypes.string.isRequired,
   userData: PropTypes.objectOf(PropTypes.any).isRequired,
+  projectData: PropTypes.objectOf(PropTypes.any).isRequired,
   dispatch: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 }
@@ -113,6 +120,7 @@ ButtonMenu.propTypes = {
 const mapStateToProps = (state) => ({
   currentLang: state.lang,
   userData: state.userData,
+  projectData: state.projectData,
 })
 
 export default connect(mapStateToProps)(withTranslation()(ButtonMenu))

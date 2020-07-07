@@ -1,13 +1,22 @@
 @import '../../global_styles/variables.scss';
+@import '../../global_styles/mixins.scss';
 
 .projectlist {
   display: flex;
+  justify-content: flex-start;
+  // height: auto;
+  // min-height: 297mm;
   padding: 3rem;
+}
+
+.svgwrapper {
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .title {
   margin-top: 0;
-  margin-bottom: 0.7rem;
+  margin-bottom: 0.5rem;
   color: $main-color-dark;
   font-size: 1.05rem;
   line-height: 100%;
@@ -15,11 +24,14 @@
 }
 
 .cat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .cattitle {
-  margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.1rem;
   padding: 0.4rem;
   color: $light-color;
   font-size: 1.05rem;
@@ -28,10 +40,80 @@
   background-color: $main-color;
 }
 
-.item {
+.items {
+  display: flex;
+  flex-direction: column;
 }
 
-.svgwrapper {
+.item {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e7e7e7;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.itemtitle {
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  margin: 0;
+}
+
+.links {
   display: inline-block;
+  flex: 1 0 0;
+  text-align: center;
   vertical-align: middle;
+
+  .svgwrapper {
+    margin: 0 0.5rem;
+  }
+}
+
+.date {
+  display: inline-block;
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.stack {
+  display: flex;
+  flex: 1 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 0.2rem 0;
+
+  .svgwrapper {
+    margin: 0.1rem 0.76rem;
+  }
+}
+
+.desc {
+  flex: 1 100%;
+  line-height: 1.2rem;
+
+  a {
+    @include link-hover-effect($main-color);
+
+    &,
+    &:visited {
+      color: $main-color;
+    }
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }

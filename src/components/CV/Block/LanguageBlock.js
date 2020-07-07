@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Markdown from 'react-markdown'
 import Block from './index'
 import lbStyle from './LanguageBlock.scss'
 
@@ -9,7 +10,7 @@ const LanguageBlock = ({ langList }) => (
       {langList.map((item) => (
         <li key={item.name}>
           <span className={lbStyle.langname}>{item.name}</span>
-          <span className={lbStyle.langdesc}>{item.desc}</span>
+          <span className={lbStyle.langdesc}><Markdown source={item.desc} /></span>
         </li>
       ))}
     </ul>

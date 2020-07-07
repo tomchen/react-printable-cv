@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { v4 as uuidv4 } from 'uuid'
+import Markdown from 'react-markdown'
 import Page from '../Page'
 import TopSection from './TopSection'
 import CareerSection from './Section/CareerSection'
@@ -27,11 +27,7 @@ const CV = ({ customSections }) => (
             isBottom={index === customSections.length - 1 && true}
           >
             <Block>
-              <>
-                {item.section_content.split('\n').map((paragraph) => (
-                  <p key={uuidv4()}>{paragraph}</p>
-                ))}
-              </>
+              <Markdown source={item.section_content} />
             </Block>
           </Section>
         ))}

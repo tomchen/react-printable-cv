@@ -1,4 +1,11 @@
 /non-git/
+/data/*
+!/data/dummy/
+/pdf/*
+!/pdf/dummy/
+/settings/*
+!/settings/dummy/
+
 
 # Logs
 logs

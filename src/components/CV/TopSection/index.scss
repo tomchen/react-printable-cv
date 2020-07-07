@@ -23,9 +23,15 @@
   flex-wrap: wrap;
   justify-content: center;
   justify-content: space-between;
+
   @include mobile {
     display: block;
     margin: 0 3rem;
+  }
+
+  div[data-type='website'],
+  .social {
+    flex-basis: 33%;
   }
 }
 

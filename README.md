@@ -40,7 +40,7 @@ In wider or normal screen, the web page visually shows on an "A4 page" with non-
 
 `npm run rebuild` to generate the static offline version (using files and resources from `data/`, `src/` and `pdf/`) and put it into `dist/` folder.
 
-In `settings/index.js`, change `inline_resources` to false to have separate resource files instead of the standalone HTML. You can also set `one_chunk` to false to have multiple JavaScript chunk files.
+In `settings/index.js`, change `inline_resources` to false to have separate resource files instead of the standalone HTML. You can also set `one_script_chunk` to false to have multiple JavaScript chunk files.
 
 It support mordern browsers and IE 11 via Polyfills, although it may have some [Flexbox](https://caniuse.com/flexbox) rendering problem in IE 11.
 
@@ -72,7 +72,7 @@ module.exports = {
     ...
   ],
   default_lang: 'en',
-  one_chunk: true, // generate one JavaScript chunk files only in production
+  one_script_chunk: true, // generate one JavaScript chunk files only in production
   inline_resources: true, // make resources inline in order to generate a standalone HTML in production
   // lazy_loading: false, // not supported for now
 }
@@ -89,7 +89,8 @@ Not bootstrapped with Create React App, it uses:
 * *Formik + Yup for forms (to do)*
 * *Immer, Redux Thunk for store manipulation and asynchronous operations (to do)*
 * i18next for forms i18n
-* Prettier, ESLint for linting
+* Influenced by JAMstack (JSON source, Markdown support via react-markdown)
+* Prettier, ESLint, stylelint for linting
 * Day.js for date manipulation
 * Puppeteer for backend PDF creation
 * Jest for test

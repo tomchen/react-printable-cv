@@ -12,3 +12,12 @@ Added by me:
 * adobe-illustrator
 * assembly
 * nsis
+* r
+* objective-c
+* jquery-icon
+* reveal
+* alibaba-cloud
+* stylelint
+* immer
+* formik
+* day-js

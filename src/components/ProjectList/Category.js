@@ -1,17 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Item from './Item'
-import ProjectListStyle from './index.scss'
+import projectListStyle from './index.scss'
 
 const Category = ({ name, items }) => (
-  <div className={ProjectListStyle.cat}>
-    <h3 className={ProjectListStyle.cattitle}>{name}</h3>
-    <div>
+  <div className={projectListStyle.cat}>
+    <h3 className={projectListStyle.cattitle}>{name}</h3>
+    <div className={projectListStyle.items}>
       {items.map((item) => (
         <Item
           key={item.name}
           name={item.name}
           url={item.url}
+          urlTitle={item.url_title}
           gitUrl={item.git_url}
           githubUrl={item.github_url}
           npmUrl={item.npm_url}

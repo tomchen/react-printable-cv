@@ -14,7 +14,7 @@ module.exports = {
     },
   ],
   default_lang: 'en',
-  one_chunk: true,
+  one_script_chunk: true,
   inline_resources: true,
   lazy_loading: false,
 }

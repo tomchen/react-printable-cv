@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
 import HomeIcon from '@material-ui/icons/Home'
 import WarningIcon from '@material-ui/icons/Warning'
-import ProjectListStyle from './index.scss'
+import projectListStyle from './index.scss'
 import stackIconList from './stackIcons'
 
 const useStyles = makeStyles({
@@ -37,7 +37,7 @@ const Icon = ({ type, url, title, size }) => {
     case 'middle':
       realSize = 25
       break
-    case 'big':
+    case 'large':
       realSize = 32
       break
     default:
@@ -67,14 +67,15 @@ const Icon = ({ type, url, title, size }) => {
   const anchor = url ? (
     <a
       href={url}
-      className={ProjectListStyle.svgwrapper}
+      className={projectListStyle.svgwrapper}
+      target="_blank"
       rel="noopener noreferrer"
       style={style}
     >
       {TypeIconRendered}
     </a>
   ) : (
-    <span className={ProjectListStyle.svgwrapper} style={style}>
+    <span className={projectListStyle.svgwrapper} style={style}>
       {TypeIconRendered}
     </span>
   )
@@ -91,7 +92,7 @@ const Icon = ({ type, url, title, size }) => {
 Icon.defaultProps = {
   url: null,
   title: null,
-  size: 18,
+  size: 'middle',
 }
 
 Icon.propTypes = {

@@ -1,4 +1,5 @@
 @import '../../../global_styles/variables';
+@import '../../../global_styles/mixins';
 
 .ul {
   display: flex;
@@ -22,6 +23,15 @@
 
       &.langdesc {
         flex-grow: 1.5;
+
+        a {
+          @include link-hover-effect($main-color);
+
+          &,
+          &:visited {
+            color: $main-color;
+          }
+        }
       }
     }
   }

@@ -1,9 +1,21 @@
-import { CHANGE_LANG, IMPORT_JSON } from '../constants/ActionTypes'
-import settings from '../../settings'
+/// #if USEDUMMY
+import settings from 'Settings/dummy'
+/// #else
+import settings from 'Settings'
+/// #endif
 
+import { CHANGE_LANG, IMPORT_JSON } from '../constants/ActionTypes'
+
+
+/// #if USEDUMMY
+import defaultDataEn from '../../data/dummy/cv/en.json'
+import defaultDataFr from '../../data/dummy/cv/fr.json'
+import defaultDataZhCn from '../../data/dummy/cv/zh-cn.json'
+/// #else
 import defaultDataEn from '../../data/cv/en.json'
 import defaultDataFr from '../../data/cv/fr.json'
 import defaultDataZhCn from '../../data/cv/zh-cn.json'
+/// #endif
 
 const defaultData = {
   en: defaultDataEn,

@@ -5,6 +5,7 @@ module.exports = {
     'stylelint-config-rational-order',
   ],
   rules: {
+    'selector-max-compound-selectors': null,
     'selector-class-pattern': null,
     'scss/at-import-partial-extension-blacklist': null,
     'selector-type-no-unknown': null,

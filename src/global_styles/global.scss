@@ -26,6 +26,10 @@ button {
   html,
   body {
     @include a4-size;
+    // set -webkit-print-color-adjust so it will work even
+    // without postcss/autoprefixer (which might be disabled in dev mode)
+    /* stylelint-disable-next-line property-no-vendor-prefix */
+    -webkit-print-color-adjust: exact !important;
     color-adjust: exact !important;
     // Should be perfect in Windows Chrome
     // in Windows Firefox, user should set '100%' print size instead of 'Fit'

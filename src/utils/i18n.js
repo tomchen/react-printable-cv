@@ -1,8 +1,12 @@
 import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
-import settings from '../../settings'
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
+/// #if USEDUMMY
+import settings from 'Settings/dummy'
+/// #else
+import settings from 'Settings'
+/// #endif
 
 const resources = {}
 
