@@ -1,5 +1,9 @@
 @import '../../global_styles/variables';
 
 .cv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
   background: $main-color;
 }

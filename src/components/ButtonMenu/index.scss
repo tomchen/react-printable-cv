@@ -3,7 +3,7 @@
 
 .menu {
   position: fixed;
-  top: $page-margin-top-and-bottom;
+  top: $cv-page-margin-top-and-bottom;
   left: calc(50% + #{210mm / 2} + #{$buttonmenu-left-margin});
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
 
   @include desktop {
     position: absolute;
-    top: $page-margin-top-and-bottom - 1rem;
+    top: $cv-page-margin-top-and-bottom - 1rem;
     left: calc(50% - #{210mm / 2});
     z-index: 100;
     flex-direction: row;

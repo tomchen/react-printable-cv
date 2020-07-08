@@ -21,3 +21,4 @@ Added by me:
 * immer
 * formik
 * day-js
+* mongodb-icon

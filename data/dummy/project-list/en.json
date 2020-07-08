@@ -5,28 +5,38 @@
       "name": "Professional Projects",
       "items": [
         {
-          "name": "React project",
+          "name": "Nice React.js example project",
           "url": "https://reactjs.org/",
           "git_url": "https://github.com/facebook/react",
           "github_url": "https://github.com/facebook/react",
           "npm_url": "https://www.npmjs.com/package/react",
           "date": ["2013-05-29", ""],
-          "stack": ["JavaScript", "TypeScript", "ECMAScript"],
-          "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          "stack": [
+            "JavaScript",
+            "ECMAScript 6",
+            "React.js",
+            "Redux",
+            "Babel",
+            "webpack",
+            "Material UI",
+            "Sass",
+            "Prettier",
+            "ESLint",
+            "stylelint",
+            "immer",
+            "Formik",
+            "Jest",
+            "CircleCI",
+            "Codecov"
+          ],
+          "desc": "This is a nice React.js project. **React** is an open-source JavaScript library for building user interfaces. [**Redux**](https://redux.js.org/) is an open-source JavaScript library for managing application state."
         },
         {
-          "name": "React project 2",
-          "url": "https://reactjs.org/",
-          "date": ["2013-05-29", "2018-01-01"],
-          "stack": ["JavaScript"]
-        },
-        {
-          "name": "React project 3",
-          "url": "https://reactjs.org/",
-          "git_url": "https://github.com/facebook/react",
-          "date": "2019-02-29",
-          "stack": [""],
-          "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          "name": "Yet Another MERN project",
+          "git_url": "https://github.com/expressjs/express",
+          "date": "2019-02",
+          "stack": ["MongoDB", "Node.js", "Express", "React.js"],
+          "desc": "*MERN* is the acronym for **M**ongoDB, **E**xpress.js, **R**eact.js and **N**ode.js. [Node.js](https://nodejs.org/) is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside a web browser.\n\n[MongoDB](https://www.mongodb.com/) is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas."
         }
       ]
     },
@@ -34,25 +44,22 @@
       "name": "Student Projects",
       "items": [
         {
-          "name": "React project",
-          "date": ["2013-05-29"],
-          "desc": ""
-        },
-        {
-          "name": "React project 2",
-          "url": "https://reactjs.org/",
-          "github_url": "https://github.com/facebook/react",
-          "npm_url": "https://www.npmjs.com/package/react",
-          "stack": ["JavaScript"],
-          "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        },
-        {
-          "name": "React project 3",
-          "url": "https://reactjs.org/",
-          "npm_url": "https://www.npmjs.com/package/react",
-          "date": ["2013-05-29", "2018-01-01"],
-          "stack": ["JavaScript", "Not Existed"],
-          "desc": ""
+          "name": "Mixed project",
+          "date": ["2017-06-05"],
+          "stack": [
+            "Java",
+            "C",
+            "C++",
+            "Python",
+            "Lua",
+            "Mysql",
+            "Angular",
+            "Vue.js",
+            "Jquery",
+            "Docker",
+            "Rust"
+          ],
+          "desc": "What can you do with such stack?"
         }
       ]
     },
@@ -60,11 +67,30 @@
       "name": "Personal Projects",
       "items": [
         {
-          "name": "React project",
-          "github_url": "https://github.com/facebook/react",
-          "date": ["2013-05-29", ""],
-          "stack": ["JavaScript"],
-          "desc": ""
+          "name": "Cutting edge web experiment",
+          "url": "https://deno.land/",
+          "repo_url": "https://github.com/sveltejs/svelte",
+          "github_url": "https://github.com/denoland",
+          "npm_url": "https://www.npmjs.com/package/svelte",
+          "date": ["2020"],
+          "stack": [
+            "TypeScript",
+            "Deno",
+            "Svelte",
+            "rollup",
+            "Graphql",
+            "WebAssembly"
+          ],
+          "desc": "Experimental web project using latest stack. Created by Ryan Dahl, original creator of Node.js, Deno is a runtime for JavaScript and TypeScript that is based on V8 engine and Rust. Svelte is a radical new approach to building user interfaces."
+        },
+        {
+          "name": "WordPress blog",
+          "url": "https://wordpress.org/",
+          "git_url": "https://core.trac.wordpress.org/",
+          "github_url": "https://github.com/WordPress/WordPress",
+          "date": ["2013-05-29", "2018-01-01"],
+          "stack": ["PHP", "WordPress", "JavaScript", "CSS", "HTML"],
+          "desc": "A personal blog powered by old-school WordPress."
         }
       ]
     }

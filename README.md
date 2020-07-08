@@ -8,7 +8,7 @@ Printable, multi-language, web curriculum vitae (resume) built with React and Re
 
 It's a responsive web page or a so-called SPA (single page application) that is 'perfectly' A4 paper print-ready. The data, stored in JSON files, are fully separated from the SPA.<!--  A PDF file can be generated at compile time or in the backend server. -->
 
-Also can be optionally generated a **standalone** HTML file containing all the resources, including JavaScript, CSS, images, fonts and even the pre-generated PDF. The [demo page](https://react-cv.tomchen.org/) is a standalone HTML.
+Also can be optionally generated a standalone HTML file containing all the resources, including JavaScript, CSS, images, fonts and even the pre-generated PDF. The [demo page](https://react-cv.tomchen.org/) is a non-standalone code splitting version, it has [a subpage](https://react-cv.tomchen.org/standalone) that looks the same but is a standalone HTML.
 
 ## Direct printing
 
@@ -34,31 +34,33 @@ Put your pre-generated `$LOCALE.pdf` files in the `pdf/` folder so that they can
 
 The static offline version can be either a standalone HTML file that contains all the resources, including JavaScript, CSS, images, fonts, PDF, etc., or a group of HTML, JavaScript bundle files and other aforementioned resources.
 
-In comparison with the normal version with separate resource files, standalone HTML file have great portability but lost the ability to asynchronously "lazy load".
+In comparison with the normal version with separate resource files, standalone HTML file have great portability but lost the ability to on-demand, asynchronously "lazy load" / code splitting.
 
-In wider or normal screen, the web page visually shows on an "A4 page" with non-printable buttons on the right side outside the "A4 page", while it's responsive in mobile screen.
+In wider or normal screen, the web page visually shows on an "A4 page" with non-printable buttons on the right side outside the "A4 page". The web page is responsive in mobile screen.
 
 `npm run rebuild` to generate the static offline version (using files and resources from `data/`, `src/` and `pdf/`) and put it into `dist/` folder.
 
-In `settings/index.js`, change `inline_resources` to false to have separate resource files instead of the standalone HTML. You can also set `one_script_chunk` to false to have multiple JavaScript chunk files.
+In `settings/index.js`, change `inline_resources` to false to have separate resource files instead of the standalone HTML. You can also set `less_script_chunks` to false to have as many JavaScript chunk files as webpack needs for code splitting.
 
-It support mordern browsers and IE 11 via Polyfills, although it may have some [Flexbox](https://caniuse.com/flexbox) rendering problem in IE 11.
+It supports mordern browsers and IE 11 via Polyfills, although it may have some [Flexbox](https://caniuse.com/flexbox) rendering problem in IE 11.
 
 ## File sizes
 
-You'll find the Chrome generated PDF usually much smaller than Word generated PDF. However, it's not the case for Firefox. You'll find the [CV word file](https://github.com/tomchen/react-printable-cv/blob/master/word/cv.docx) in the folder `word/` (the CV word file was created by me long before the React one) to be compared. The word file it self has a size of 83 KB which is not bad, but it generates a larger PDF:
-
-* Word generated PDFL: 137 KB
-* Chrome generated PDFL: 53 KB
-* Firefox generated PDFL: 458 KB
-
-The final standalone HTML is reasonably small, having taken into account the fact that it's not gzipped and that it contains many JavaScript (including the whole React.js library), image, font and PDF files. The demo file that contains one image, two font weights and 3 PDF files has a size of 1 MB.
+You'll find the Chrome generated PDF usually much smaller than Word generated PDF. However, it's not the case for Firefox. You'll find the [CV word file](https://github.com/tomchen/react-printable-cv/blob/master/word/cv.docx) in the folder `word/` (the CV word file was created by me long before the React one) to be compared.
 
 ## Multi-language
 
 You can set languages in `settings/index.js` and `i18next-parser.config.js`. Translations are in `i18n/$LOCALE/$NAMESPACE.json`.
 
 ## Configuration
+
+`settings/usedummy.js`:
+
+```javascript
+module.exports = true
+```
+
+It controls whether to use dummy data and settings (data/dummy/, pdf/dummy/, settings/dummy/), or not (data/, pdf/, settings/).
 
 `settings/index.js`:
 
@@ -72,9 +74,8 @@ module.exports = {
     ...
   ],
   default_lang: 'en',
-  one_script_chunk: true, // generate one JavaScript chunk files only in production
+  less_script_chunks: true, // generate one JavaScript chunk files only in production
   inline_resources: true, // make resources inline in order to generate a standalone HTML in production
-  // lazy_loading: false, // not supported for now
 }
 ```
 
@@ -86,8 +87,8 @@ Not bootstrapped with Create React App, it uses:
 * Babel, webpack, PostCSS, some plugins and loaders for transpilation and module bundling
 * Material UI for buttons
 * Main page area is built with CSS Flexbox, and using Sass and CSS Modules
-* *Formik + Yup for forms (to do)*
-* *Immer, Redux Thunk for store manipulation and asynchronous operations (to do)*
+* *Formik + Yup for forms (will be used)*
+* *Immer (will be used)*, Redux Thunk for store manipulation and asynchronous operations
 * i18next for forms i18n
 * Influenced by JAMstack (JSON source, Markdown support via react-markdown)
 * Prettier, ESLint, stylelint for linting
@@ -100,7 +101,6 @@ Not bootstrapped with Create React App, it uses:
 
 Things that could be done in the future to make it better or more interesting:
 
-* [ ] Async load data
 * [ ] Tests
 * [ ] Editor forms (Edit Mode)
 * [ ] Migrate to TypeScript

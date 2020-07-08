@@ -2,39 +2,37 @@
 @import '../../global_styles/mixins';
 
 .page {
-  @include a4-size;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   box-sizing: border-box;
-  margin: $page-margin-top-and-bottom auto;
-  overflow: hidden;
+  width: 210mm;
+  min-height: 297mm;
+  margin: $cv-page-margin-top-and-bottom auto;
   border: 0;
   box-shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.4);
 
   @include a4-threshold {
+    width: calc(100% - 4rem);
     height: auto;
     min-height: 297mm;
   }
 
   @include desktop {
-    margin-top: $page-margin-top-and-bottom + 5rem;
+    margin-top: $cv-page-margin-top-and-bottom + 5rem;
   }
-}
 
-@include a4-threshold {
-  .page {
-    width: calc(100% - 4rem);
-  }
-}
-
-@media print {
-  .page {
+  @media print {
     margin: 0;
-    page-break-after: avoid;
     border: initial;
     border-radius: initial;
     box-shadow: initial;
     color-adjust: exact !important; // Good in Google Chrome (and similar browsers)
+  }
+}
+
+.pagebreak {
+  display: none;
+  @media print {
+    // width: 100%;
+    // height: $projectlist-page-margin * 2;
+    break-before: page;
   }
 }

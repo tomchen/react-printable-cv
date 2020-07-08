@@ -1,70 +1,96 @@
 {
-  "title": "My Project List",
+  "title": "我的项目列表",
   "categorys": [
     {
-      "name": "Professional Projects",
+      "name": "职业项目",
       "items": [
         {
-          "name": "React project",
+          "name": "不错的React.js示例项目",
           "url": "https://reactjs.org/",
           "git_url": "https://github.com/facebook/react",
           "github_url": "https://github.com/facebook/react",
           "npm_url": "https://www.npmjs.com/package/react",
           "date": ["2013-05-29", ""],
-          "stack": ["JavaScript", "TypeScript", "ECMAScript"],
-          "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          "stack": [
+            "JavaScript",
+            "ECMAScript 6",
+            "React.js",
+            "Redux",
+            "Babel",
+            "webpack",
+            "Material UI",
+            "Sass",
+            "Prettier",
+            "ESLint",
+            "stylelint",
+            "immer",
+            "Formik",
+            "Jest",
+            "CircleCI",
+            "Codecov"
+          ],
+          "desc": "这是一个不错的React.js项目。**React**是一个用于构建用户界面的开源JavaScript库。[**Redux**](https://redux.js.org/)是一个用于管理应用程序状态的开源JavaScript库。"
         },
         {
-          "name": "React project 2",
-          "url": "https://reactjs.org/",
-          "date": ["2013-05-29", "2018-01-01"],
-          "stack": ["JavaScript"]
-        },
-        {
-          "name": "React project 3",
-          "url": "https://reactjs.org/",
-          "git_url": "https://github.com/facebook/react",
-          "date": "2019-02-29",
-          "stack": [""],
-          "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+          "name": "又一个MERN项目",
+          "git_url": "https://github.com/expressjs/express",
+          "date": "2019-02",
+          "stack": ["MongoDB", "Node.js", "Express", "React.js"],
+          "desc": "*MERN*是**M**ongoDB、**E**xpress.js、**R**eact.js和**N**ode.js的缩写。[Node.js](https://nodejs.org/)是一个开源的、跨平台的JavaScript运行环境，它可以在Web浏览器之外执行JavaScript代码。\n\n[MongoDB](https://www.mongodb.com/)是一个跨平台的面向文档的数据库程序。MongoDB被归类为NoSQL数据库程序，它使用类似JSON的文档，模式可选。"
         }
       ]
     },
     {
-      "name": "Student Projects",
+      "name": "学生项目",
       "items": [
         {
-          "name": "React project",
-          "date": ["2013-05-29"],
-          "desc": ""
-        },
-        {
-          "name": "React project 2",
-          "url": "https://reactjs.org/",
-          "github_url": "https://github.com/facebook/react",
-          "npm_url": "https://www.npmjs.com/package/react",
-          "stack": ["JavaScript"],
-          "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        },
-        {
-          "name": "React project 3",
-          "url": "https://reactjs.org/",
-          "npm_url": "https://www.npmjs.com/package/react",
-          "date": ["2013-05-29", "2018-01-01"],
-          "stack": ["JavaScript", "Not Existed"],
-          "desc": ""
+          "name": "混合项目",
+          "date": ["2017-06-05"],
+          "stack": [
+            "Java",
+            "C",
+            "C++",
+            "Python",
+            "Lua",
+            "Mysql",
+            "Angular",
+            "Vue.js",
+            "Jquery",
+            "Docker",
+            "Rust"
+          ],
+          "desc": "你能用这样的技术栈做什么呢？"
         }
       ]
     },
     {
-      "name": "Personal Projects",
+      "name": "个人项目",
       "items": [
         {
-          "name": "React project",
-          "github_url": "https://github.com/facebook/react",
-          "date": ["2013-05-29", ""],
-          "stack": ["JavaScript"],
-          "desc": ""
+          "name": "前沿网络实验",
+          "url": "https://deno.land/",
+          "repo_url": "https://github.com/sveltejs/svelte",
+          "github_url": "https://github.com/denoland",
+          "npm_url": "https://www.npmjs.com/package/svelte",
+          "date": ["2020"],
+          "stack": [
+            "TypeScript",
+            "Deno",
+            "Svelte",
+            "rollup",
+            "Graphql",
+            "WebAssembly"
+          ],
+          "desc": "使用最新技术栈的实验性网络项目。Deno由Node.js的创造者Ryan Dahl创建，是一个基于V8引擎和Rust的JavaScript和TypeScript的运行时。Svelte是构建用户界面的一种激进的新方法。"
+        },
+        {
+          "name": "WordPress博客",
+          "url": "https://wordpress.org/",
+          "git_url": "https://core.trac.wordpress.org/",
+          "github_url": "https://github.com/WordPress/WordPress",
+          "date": ["2013-05-29", "2018-01-01"],
+          "stack": ["PHP", "WordPress", "JavaScript", "CSS", "HTML"],
+          "desc": "一个由经典的WordPress支持的个人博客。"
         }
       ]
     }

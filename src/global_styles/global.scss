@@ -15,6 +15,7 @@ input,
 textarea,
 button {
   font-family: $primary-font-family;
+  word-break: break-word;
 }
 
 @page {
@@ -25,7 +26,18 @@ button {
 @media print {
   html,
   body {
-    @include a4-size;
+    width: 210mm;
+    height: 297mm;
+    // The height should be 297mm
+    // In Firefox 296mm could be used due to a Firefox print mode bug
+    // where 297mm is too much for one A4 page
+    // However, I set `.page { page-break-after: avoid; }`
+    // to cut the content and avoid any page break
+    // so the following is not needed
+    // @-moz-document url-prefix('') {
+    //   height: 297mm;
+    // }
+
     // set -webkit-print-color-adjust so it will work even
     // without postcss/autoprefixer (which might be disabled in dev mode)
     /* stylelint-disable-next-line property-no-vendor-prefix */

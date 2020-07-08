@@ -1,11 +1,6 @@
 import { CHANGE_LANG } from '../constants/ActionTypes'
-/// #if USEDUMMY
-import settings from 'Settings/dummy'
-/// #else
-import settings from 'Settings'
-/// #endif
 
-const lang = (state = settings.default_lang, action) => {
+const lang = (state = null, action) => {
   switch (action.type) {
     case CHANGE_LANG:
       return action.lang

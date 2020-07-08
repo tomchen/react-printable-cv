@@ -2,11 +2,13 @@
 @import '../../global_styles/mixins.scss';
 
 .projectlist {
-  display: flex;
-  justify-content: flex-start;
-  // height: auto;
-  // min-height: 297mm;
-  padding: 3rem;
+  padding: $projectlist-page-margin;
+}
+
+.projectlistwrapper {
+  // @media print {
+  //   width: calc(100% - 2 * #{$projectlist-page-margin});
+  // }
 }
 
 .svgwrapper {
@@ -30,6 +32,8 @@
 }
 
 .cattitle {
+  @include light-font-color-in-print-mode($light-color);
+
   margin-top: 0.5rem;
   margin-bottom: 0.1rem;
   padding: 0.4rem;
@@ -54,6 +58,10 @@
 
   &:last-child {
     border-bottom: 0;
+  }
+
+  @media print {
+    break-inside: avoid-page;
   }
 }
 

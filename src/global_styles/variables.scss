@@ -7,18 +7,20 @@ $light-color: #fff;
 
 $highlight-color: #f50057;
 
-$mobile-width: 768px;
-$a4-threshold-width: 230mm;
-$desktop-width: 1130px;
-
 $primary-font-family: 'Source Serif Pro', 'Palatino Linotype', 'Book Antiqua', 'URW Palladio L',
   'PingFang SC', 'PingFang TC', 'Hiragino Sans GB', 'Microsoft YaHei',
   'WenQuanYi Micro Hei', serif;
 
+$mobile-width: 768px;
+$a4-threshold-width: 230mm;
+$desktop-width: 1130px;
+
+$projectlist-page-margin: 2cm;
+
 $root-font-size: 15px;
 $global-line-height: 1.2rem;
 
-$page-margin-top-and-bottom: 2rem;
+$cv-page-margin-top-and-bottom: 2rem;
 
 $buttonmenu-left-margin: 2rem;
 

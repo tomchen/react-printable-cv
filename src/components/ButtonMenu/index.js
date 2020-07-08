@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import { downloadStringAsFile, downloadBlobAsFile } from '../../utils/download'
-import { changeLang } from '../../actions'
+import { changeLangAsync } from '../../actions'
 import Button from './Button'
 // import SwitchBar from './SwitchBar'
 import buttonStyle from './index.scss'
@@ -37,7 +37,7 @@ const ButtonMenu = ({ currentLang, userData, projectData, dispatch, t }) => {
   }
 
   const handleLangChange = (lang) => {
-    dispatch(changeLang(lang))
+    dispatch(changeLangAsync(lang))
   }
 
   const handleExportJson = () => {
@@ -109,8 +109,12 @@ const ButtonMenu = ({ currentLang, userData, projectData, dispatch, t }) => {
   )
 }
 
+ButtonMenu.defaultProps = {
+  currentLang: null,
+}
+
 ButtonMenu.propTypes = {
-  currentLang: PropTypes.string.isRequired,
+  currentLang: PropTypes.string,
   userData: PropTypes.objectOf(PropTypes.any).isRequired,
   projectData: PropTypes.objectOf(PropTypes.any).isRequired,
   dispatch: PropTypes.func.isRequired,

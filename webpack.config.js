@@ -42,7 +42,8 @@ module.exports = (env, argv) => {
               loader: 'ifdef-loader',
               options: {
                 USEDUMMY: usedummy,
-                "ifdef-verbose": true,
+                LESSCHUNKS: !dev && settings.less_script_chunks,
+                'ifdef-verbose': true,
               },
             },
           ],
@@ -259,11 +260,11 @@ module.exports = (env, argv) => {
       }),
 
       !dev &&
-        settings.one_script_chunk &&
-        new webpack.optimize.LimitChunkCountPlugin({
-          // produce one script chunk and / or inline script in index.html
-          maxChunks: 1,
-        }), // then manually remove /dist/*.js
+      settings.less_script_chunks &&
+      new webpack.optimize.LimitChunkCountPlugin({
+        // produce one script chunk and / or inline script in index.html
+        maxChunks: 1,
+      }), // then manually remove /dist/*.js
 
       ...(!dev && settings.inline_resources
         ? [
@@ -284,11 +285,13 @@ module.exports = (env, argv) => {
             }),
           ]
         : []),
+
     ].filter((a) => a !== false),
 
     resolve: {
       alias: {
         Src: path.resolve(__dirname, 'src/'),
+        Data: path.resolve(__dirname, 'data/'),
         Settings: path.resolve(__dirname, 'settings/'),
       },
     },
@@ -305,15 +308,17 @@ module.exports = (env, argv) => {
       ],
       moduleIds: 'hashed',
       runtimeChunk: 'single',
-      splitChunks: {
-        cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
-            chunks: 'all',
+      splitChunks: !dev && settings.less_script_chunks
+        ? {}
+        : {
+            cacheGroups: {
+              vendor: {
+                test: /[\\/]node_modules[\\/]/,
+                name: 'vendors',
+                chunks: 'all',
+              },
+            },
           },
-        },
-      },
     },
   }
 
