@@ -4,6 +4,7 @@
 /pdf/*
 !/pdf/dummy/
 /settings/*
+!/settings/usedummy.js
 !/settings/dummy/
 
 
