@@ -14,7 +14,7 @@ const Footer = ({ design, develop, lastUpdateTime }) => {
           name={develop.name}
           url={develop.url}
           repoName={develop.repo_name}
-          gitUrl={develop.git_url}
+          gitUrl={develop.repo_url}
         />
       )}
       {design && <DesignedBy name={design.name} url={design.url} />}

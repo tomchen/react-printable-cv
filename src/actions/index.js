@@ -1,6 +1,6 @@
 import i18n from 'i18next'
 import * as types from '../constants/ActionTypes'
-import { userData, projectData } from '../utils/dataCache'
+import { userData, projectData, loadedLocale } from '../utils/dataCache'
 
 /// #if USEDUMMY
 const useDummy = true
@@ -20,7 +20,7 @@ require(
 /// #else
 import(
 /// #endif
-    `Data/${useDummy ? 'dummy/' : '/'}${
+    `Data/${useDummy ? 'dummy/' : ''}${
       userOrProject ? 'cv' : 'project-list'
     }/${lang}.json`
   )
@@ -28,8 +28,8 @@ import(
 }
 
 const getI18nLang = async (lang) => {
-  // userOrProject: true=user ; false=project
-  if (i18n.languages.includes(lang)) {
+  console.log(i18n.languages)
+  if (loadedLocale.includes(lang)) {
     return true
   }
   const res = await
@@ -40,6 +40,7 @@ import(
 /// #endif
     `../../i18n/${lang}/common.json`)
   i18n.addResourceBundle(lang, 'common', res)
+  loadedLocale.push(lang)
   return true
 }
 

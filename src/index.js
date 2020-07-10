@@ -37,6 +37,9 @@ i18n.use(initReactI18next).init({
   },
 })
 
+
+console.log(i18n.languages)
+
 const langChangeMiddleware = ({ getState }) => {
   return (next) => (action) => {
     const previousLang = getState().lang

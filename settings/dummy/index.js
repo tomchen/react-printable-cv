@@ -14,6 +14,6 @@ module.exports = {
     },
   ],
   default_lang: 'en',
-  less_script_chunks: true,
-  inline_resources: true,
+  less_script_chunks: false,
+  inline_resources: false,
 }

@@ -29,6 +29,16 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  /**
+   * For long page only
+   */
+  @media print {
+    &:last-child {
+      break-before: page;
+      margin-top: $projectlist-page-margin;
+    }
+  }
 }
 
 .cattitle {
