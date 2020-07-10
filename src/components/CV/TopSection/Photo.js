@@ -5,12 +5,14 @@ import photoStyle from './Photo.scss'
 /// #if USEDUMMY
 import photoImage from '../../../../data/dummy/photo.jpg'
 /// #else
-import photoImage from '../../../../data/photo.jpg'
+import photoImage2 from '../../../../data/photo.jpg'
 /// #endif
+
+const photoImageUrl = typeof photoImage !== "undefined" ? photoImage : photoImage2
 
 const Photo = ({ name }) => (
   <div className={photoStyle.photo}>
-    <img src={photoImage} alt={name} />
+    <img src={photoImageUrl} alt={name} />
   </div>
 )
 

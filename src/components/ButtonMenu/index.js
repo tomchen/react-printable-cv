@@ -13,18 +13,37 @@ import buttonStyle from './index.scss'
 import pdfUrlEn from '../../../pdf/dummy/en.pdf'
 import pdfUrlFr from '../../../pdf/dummy/fr.pdf'
 import pdfUrlZhCn from '../../../pdf/dummy/zh-cn.pdf'
-import settings from 'Settings/dummy'
 /// #else
-import pdfUrlEn from '../../../pdf/en.pdf'
-import pdfUrlFr from '../../../pdf/fr.pdf'
-import pdfUrlZhCn from '../../../pdf/zh-cn.pdf'
-import settings from 'Settings'
+import pdfUrlEn2 from '../../../pdf/en.pdf'
+import pdfUrlFr2 from '../../../pdf/fr.pdf'
+import pdfUrlZhCn2 from '../../../pdf/zh-cn.pdf'
 /// #endif
 
+let settings
+/// #if USEDUMMY
+settings = require('Settings/dummy')
+/// #else
+settings = require('Settings')
+/// #endif
+
+let pdfUrlEnA
+let pdfUrlFrA
+let pdfUrlZhCnA
+
+if (typeof pdfUrlEn !== 'undefined') {
+  pdfUrlEnA = pdfUrlEn
+  pdfUrlFrA = pdfUrlFr
+  pdfUrlZhCnA = pdfUrlZhCn
+} else {
+  pdfUrlEnA = pdfUrlEn2
+  pdfUrlFrA = pdfUrlFr2
+  pdfUrlZhCnA = pdfUrlZhCn2
+}
+
 const pdfUrls = {
-  en: pdfUrlEn,
-  fr: pdfUrlFr,
-  'zh-cn': pdfUrlZhCn,
+  en: pdfUrlEnA,
+  fr: pdfUrlFrA,
+  'zh-cn': pdfUrlZhCnA,
 }
 
 const ButtonMenu = ({ currentLang, userData, projectData, dispatch, t }) => {
@@ -100,11 +119,7 @@ const ButtonMenu = ({ currentLang, userData, projectData, dispatch, t }) => {
         color="default"
       />
       {/* <UploadButton /> */}
-      <Button
-        text={t('GitHub')}
-        onClick={handleGotoGithub}
-        color="default"
-      />
+      <Button text={t('GitHub')} onClick={handleGotoGithub} color="default" />
     </div>
   )
 }

@@ -14,10 +14,11 @@ import 'regenerator-runtime/runtime'
 import App from './App'
 import rootReducer from './reducers'
 
+let settings
 /// #if USEDUMMY
-import settings from 'Settings/dummy'
+settings = require('Settings/dummy')
 /// #else
-import settings from 'Settings'
+settings = require('Settings')
 /// #endif
 
 i18n.use(initReactI18next).init({
@@ -36,9 +37,6 @@ i18n.use(initReactI18next).init({
     escapeValue: false,
   },
 })
-
-
-console.log(i18n.languages)
 
 const langChangeMiddleware = ({ getState }) => {
   return (next) => (action) => {

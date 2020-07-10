@@ -2,10 +2,11 @@ import i18n from 'i18next'
 import * as types from '../constants/ActionTypes'
 import { userData, projectData, loadedLocale } from '../utils/dataCache'
 
+let useDummy
 /// #if USEDUMMY
-const useDummy = true
+useDummy = true
 /// #else
-const useDummy = false
+useDummy = false
 /// #endif
 
 const getDataLang = async (lang, userOrProject) => {
@@ -16,11 +17,11 @@ const getDataLang = async (lang, userOrProject) => {
 
   const d = await
 /// #if LESSCHUNKS
-require(
+require
 /// #else
-import(
+import
 /// #endif
-    `Data/${useDummy ? 'dummy/' : ''}${
+    (`Data/${useDummy ? 'dummy/' : ''}${
       userOrProject ? 'cv' : 'project-list'
     }/${lang}.json`
   )
@@ -28,17 +29,16 @@ import(
 }
 
 const getI18nLang = async (lang) => {
-  console.log(i18n.languages)
   if (loadedLocale.includes(lang)) {
     return true
   }
   const res = await
 /// #if LESSCHUNKS
-require(
+require
 /// #else
-import(
+import
 /// #endif
-    `../../i18n/${lang}/common.json`)
+    (`../../i18n/${lang}/common.json`)
   i18n.addResourceBundle(lang, 'common', res)
   loadedLocale.push(lang)
   return true

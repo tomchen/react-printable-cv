@@ -3,23 +3,24 @@ import PropTypes from 'prop-types'
 import { withTranslation } from 'react-i18next'
 import { Helmet } from 'react-helmet'
 import { connect } from 'react-redux'
-import { changeLangAsync } from './actions'
 import {
   createMuiTheme,
   ThemeProvider,
   makeStyles,
 } from '@material-ui/core/styles'
 import { blue } from '@material-ui/core/colors'
-import './global_styles/global.scss'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import { changeLangAsync } from './actions'
+import './global_styles/global.scss'
 import ButtonMenu from './components/ButtonMenu'
 import CVPage from './components/CV'
 import ProjectListPage from './components/ProjectList'
 
+let settings
 /// #if USEDUMMY
-import settings from 'Settings/dummy'
+settings = require('Settings/dummy')
 /// #else
-import settings from 'Settings'
+settings = require('Settings')
 /// #endif
 
 const blueTheme = createMuiTheme({
