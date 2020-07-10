@@ -1,11 +1,14 @@
 version: 2.1
+
 orbs:
   node: circleci/node@1.1.6
+
+branches:
+  ignore:
+    - gh-pages
+
 jobs:
   build-and-test:
-    filters:
-      branches:
-        ignore: gh-pages
     executor:
       name: node/default
     steps:
