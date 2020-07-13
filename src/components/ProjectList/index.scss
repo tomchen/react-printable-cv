@@ -5,11 +5,11 @@
   padding: $projectlist-page-margin;
 }
 
-.projectlistwrapper {
-  // @media print {
-  //   width: calc(100% - 2 * #{$projectlist-page-margin});
-  // }
-}
+// .projectlistwrapper {
+//   @media print {
+//     width: calc(100% - 2 * #{$projectlist-page-margin});
+//   }
+// }
 
 .svgwrapper {
   display: inline-block;
@@ -33,12 +33,12 @@
   /**
    * For long page only
    */
-  @media print {
-    &:last-child {
-      break-before: page;
-      margin-top: $projectlist-page-margin;
-    }
-  }
+  // @media print {
+  //   &:last-child {
+  //     break-before: page;
+  //     margin-top: $projectlist-page-margin;
+  //   }
+  // }
 }
 
 .cattitle {

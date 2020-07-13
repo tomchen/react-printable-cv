@@ -8,7 +8,10 @@
     "dev": "webpack --mode development",
     "pdf": "npm run start && node a.js",
     "build": "webpack --mode production",
-    "test": "jest --coverage",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.{js,jsx}",
     "i18nextract": "i18next"
   },
   "keywords": [],
@@ -51,6 +54,9 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "3.6.0",
     "cssnano": "4.1.10",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.5.0",
     "eslint": "7.3.1",
     "eslint-config-airbnb": "18.2.0",
     "eslint-config-prettier": "6.11.0",
@@ -64,6 +70,7 @@
     "html-loader": "1.1.0",
     "html-webpack-plugin": "4.3.0",
     "i18next-parser": "^2.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "ifdef-loader": "^2.1.5",
     "image-webpack-loader": "^6.0.0",
     "jest": "26.1.0",
@@ -76,6 +83,7 @@
     "puppeteer": "^5.0.0",
     "react-dev-utils": "10.2.1",
     "react-test-renderer": "^16.13.1",
+    "redux-mock-store": "^1.5.4",
     "remove-files-webpack-plugin": "^1.4.3",
     "sass-loader": "8.0.2",
     "style-loader": "1.2.1",
@@ -101,12 +109,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "jest": {
-    "testRegex": "((\\.|/*.)(spec|test))\\.js?$",
-    "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-      "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js"
-    }
   }
 }

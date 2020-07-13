@@ -9,22 +9,11 @@ import Button from './Button'
 import buttonStyle from './index.scss'
 // import UploadButton from './UploadButton'
 
-/// #if USEDUMMY
-import pdfUrlEn from '../../../pdf/dummy/en.pdf'
-import pdfUrlFr from '../../../pdf/dummy/fr.pdf'
-import pdfUrlZhCn from '../../../pdf/dummy/zh-cn.pdf'
-/// #else
-import pdfUrlEn2 from '../../../pdf/en.pdf'
-import pdfUrlFr2 from '../../../pdf/fr.pdf'
-import pdfUrlZhCn2 from '../../../pdf/zh-cn.pdf'
-/// #endif
+import pdfUrlEn from '../../../pdf/en.pdf'
+import pdfUrlFr from '../../../pdf/fr.pdf'
+import pdfUrlZhCn from '../../../pdf/zh-cn.pdf'
 
-let settings
-/// #if USEDUMMY
-settings = require('Settings/dummy')
-/// #else
-settings = require('Settings')
-/// #endif
+const settings = require('Settings')
 
 let pdfUrlEnA
 let pdfUrlFrA

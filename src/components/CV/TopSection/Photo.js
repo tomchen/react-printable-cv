@@ -2,17 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import photoStyle from './Photo.scss'
-/// #if USEDUMMY
-import photoImage from '../../../../data/dummy/photo.jpg'
-/// #else
-import photoImage2 from '../../../../data/photo.jpg'
-/// #endif
-
-const photoImageUrl = typeof photoImage !== "undefined" ? photoImage : photoImage2
+import photoImage from '../../../../data/photo.jpg'
 
 const Photo = ({ name }) => (
   <div className={photoStyle.photo}>
-    <img src={photoImageUrl} alt={name} />
+    <img src={photoImage} alt={name} />
   </div>
 )
 

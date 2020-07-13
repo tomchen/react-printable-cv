@@ -116,7 +116,7 @@ const list = {
     icon: Babel,
   },
   gulp: {
-    name: 'Gulp',
+    name: 'gulp',
     icon: Gulp,
   },
   webpack: {

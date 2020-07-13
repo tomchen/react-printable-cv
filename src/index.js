@@ -14,12 +14,7 @@ import 'regenerator-runtime/runtime'
 import App from './App'
 import rootReducer from './reducers'
 
-let settings
-/// #if USEDUMMY
-settings = require('Settings/dummy')
-/// #else
-settings = require('Settings')
-/// #endif
+const settings = require('Settings')
 
 i18n.use(initReactI18next).init({
   ns: ['common'],

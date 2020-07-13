@@ -1906,6 +1906,7 @@
   {
     "name": "CSS3",
     "shortname": "css-3",
+    "aliases": ["css"],
     "url": "http://www.w3.org/TR/CSS/",
     "files": [
       "css-3.svg",
@@ -2495,8 +2496,9 @@
     ]
   },
   {
-    "name": "ES6",
+    "name": "ECMAScript 6",
     "shortname": "es6",
+    "aliases": ["ECMAScript"],
     "url": "https://tc39.es/ecma262/",
     "files": [
       "es6.svg"
@@ -2587,6 +2589,7 @@
   {
     "name": "Express",
     "shortname": "express",
+    "aliases": ["express.js"],
     "url": "http://expressjs.com/",
     "files": [
       "express.svg"
@@ -3750,6 +3753,7 @@
   {
     "name": "HTML5",
     "shortname": "html-5",
+    "aliases": ["html"],
     "url": "http://www.w3.org/TR/html5/",
     "files": [
       "html-5.svg"
@@ -3776,6 +3780,7 @@
     "shortname": "hugo",
     "url": "https://gohugo.io/",
     "files": [
+      "hugo-icon.svg",
       "hugo.svg"
     ]
   },
@@ -4006,8 +4011,9 @@
     ]
   },
   {
-    "name": "Javascript (JS)",
+    "name": "Javascript",
     "shortname": "javascript",
+    "aliases": ["js"],
     "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
     "files": [
       "javascript.svg"
@@ -4090,6 +4096,7 @@
     "shortname": "jquery",
     "url": "https://jquery.com/",
     "files": [
+      "jquery-icon.svg",
       "jquery.svg"
     ]
   },
@@ -5189,6 +5196,7 @@
     "shortname": "mongodb",
     "url": "https://www.mongodb.org/",
     "files": [
+      "mongodb-icon.svg",
       "mongodb.svg"
     ]
   },
@@ -6458,7 +6466,16 @@
   {
     "name": "React",
     "shortname": "react",
+    "aliases": ["React.js"],
     "url": "https://facebook.github.io/react/",
+    "files": [
+      "react.svg"
+    ]
+  },
+  {
+    "name": "React Native",
+    "shortname": "react-native",
+    "url": "https://reactnative.dev/",
     "files": [
       "react.svg"
     ]
@@ -6472,7 +6489,7 @@
     ]
   },
   {
-    "name": "React/Router",
+    "name": "React Router",
     "shortname": "react-router",
     "url": "https://github.com/rackt/react-router",
     "files": [
@@ -6482,6 +6499,7 @@
   {
     "name": "ReactiveX (RxJS)",
     "shortname": "reactivex",
+    "aliases": ["RxJS"],
     "url": "http://reactivex.io/",
     "files": [
       "reactivex.svg"
@@ -6700,8 +6718,10 @@
   {
     "name": "rollup.js",
     "shortname": "rollupjs",
+    "aliases": ["rollup"],
     "url": "http://rollupjs.org/",
     "files": [
+      "rollup.svg",
       "rollupjs.svg"
     ]
   },
@@ -8521,7 +8541,7 @@
     ]
   },
   {
-    "name": "Wordpress",
+    "name": "WordPress",
     "shortname": "wordpress",
     "url": "https://wordpress.org/",
     "files": [
@@ -8784,6 +8804,41 @@
     "url": "https://zulip.com/",
     "files": [
       "zulip.svg"
+    ]
+  },
+  {
+    "name": "Delphi",
+    "shortname": "delphi",
+    "aliases": ["Pascal"],
+    "url": "https://www.embarcadero.com/products/delphi",
+    "files": [
+      "delphi.svg"
+    ]
+  },
+  {
+    "name": "Adobe Photoshop",
+    "shortname": "adobe-photoshop",
+    "aliases": ["Photoshop"],
+    "url": "https://www.adobe.com/products/photoshop.html",
+    "files": [
+      "adobe-photoshop.svg"
+    ]
+  },
+  {
+    "name": "Adobe Illustrator",
+    "shortname": "adobe-illustrator",
+    "aliases": ["illustrator", "ai"],
+    "url": "https://www.adobe.com/products/illustrator.html",
+    "files": [
+      "adobe-illustrator.svg"
+    ]
+  },
+  {
+    "name": "NSIS",
+    "shortname": "nsis",
+    "url": "https://nsis.sourceforge.io/",
+    "files": [
+      "nsis.svg"
     ]
   }
 ]

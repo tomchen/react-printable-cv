@@ -8,7 +8,7 @@ import projectListStyle from './index.scss'
 
 const ProjectList = ({ projectData }) => (
   <Page className={projectListStyle.projectlist}>
-    <div className={projectListStyle.projectlistwrapper}>
+    <div>
       <h2 className={projectListStyle.title}>{projectData.title}</h2>
       {projectData.categorys.map((categoryData) => (
         <Category

@@ -11,8 +11,7 @@ const postcssPresetEnv = require('postcss-preset-env')
 const postcssNormalize = require('postcss-normalize')
 const cssnano = require('cssnano')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const usedummy = require('./settings/usedummy')
-const settings = usedummy ? require('./settings/dummy') : require('./settings')
+const settings = require('./settings')
 
 module.exports = (env, argv) => {
   const dev = argv.mode === 'development'
@@ -33,20 +32,17 @@ module.exports = (env, argv) => {
     },
     module: {
       rules: [
+        // {
+        //   test: /\.tsx?$/,
+        //   exclude: /node_modules/,
+        //   use: [
+        //     { loader: 'ts-loader' },
+        //   ],
+        // },
         {
-          test: /\.(js|jsx)$/,
+          test: /\.jsx?$/,
           exclude: /node_modules/,
-          use: [
-            { loader: 'babel-loader' },
-            {
-              loader: 'ifdef-loader',
-              options: {
-                USEDUMMY: usedummy,
-                LESSCHUNKS: !dev && settings.less_script_chunks,
-                'ifdef-verbose': true,
-              },
-            },
-          ],
+          use: [{ loader: 'babel-loader' }],
         },
         {
           test: /\.html$/,
@@ -260,11 +256,11 @@ module.exports = (env, argv) => {
       }),
 
       !dev &&
-      settings.less_script_chunks &&
-      new webpack.optimize.LimitChunkCountPlugin({
-        // produce one script chunk and / or inline script in index.html
-        maxChunks: 1,
-      }), // then manually remove /dist/*.js
+        settings.less_script_chunks &&
+        new webpack.optimize.LimitChunkCountPlugin({
+          // produce one script chunk and / or inline script in index.html
+          maxChunks: 1,
+        }), // then manually remove /dist/*.js
 
       ...(!dev && settings.inline_resources
         ? [
@@ -285,7 +281,6 @@ module.exports = (env, argv) => {
             }),
           ]
         : []),
-
     ].filter((a) => a !== false),
 
     resolve: {
@@ -307,18 +302,19 @@ module.exports = (env, argv) => {
         }),
       ],
       moduleIds: 'hashed',
-      runtimeChunk: 'single',
-      splitChunks: !dev && settings.less_script_chunks
-        ? {}
-        : {
-            cacheGroups: {
-              vendor: {
-                test: /[\\/]node_modules[\\/]/,
-                name: 'vendors',
-                chunks: 'all',
+      runtimeChunk: !dev && settings.less_script_chunks ? false : 'single',
+      splitChunks:
+        !dev && settings.less_script_chunks
+          ? {}
+          : {
+              cacheGroups: {
+                vendor: {
+                  test: /[\\/]node_modules[\\/]/,
+                  name: 'vendors',
+                  chunks: 'all',
+                },
               },
             },
-          },
     },
   }
 

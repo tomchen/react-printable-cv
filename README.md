@@ -54,14 +54,6 @@ You can set languages in `settings/index.js` and `i18next-parser.config.js`. Tra
 
 ## Configuration
 
-`settings/usedummy.js`:
-
-```javascript
-module.exports = true
-```
-
-It controls whether to use dummy data and settings (data/dummy/, pdf/dummy/, settings/dummy/), or not (data/, pdf/, settings/).
-
 `settings/index.js`:
 
 ```javascript
@@ -78,6 +70,8 @@ module.exports = {
   inline_resources: true, // make resources inline in order to generate a standalone HTML in production
 }
 ```
+
+Modify user data and settings in data/, pdf/ and settings/ folders, and run `npm start` (dev mode) or `npm run build` (build production file).
 
 ## Stack
 

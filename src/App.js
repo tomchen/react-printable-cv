@@ -16,12 +16,7 @@ import ButtonMenu from './components/ButtonMenu'
 import CVPage from './components/CV'
 import ProjectListPage from './components/ProjectList'
 
-let settings
-/// #if USEDUMMY
-settings = require('Settings/dummy')
-/// #else
-settings = require('Settings')
-/// #endif
+const settings = require('Settings')
 
 const blueTheme = createMuiTheme({
   palette: {
