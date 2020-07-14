@@ -46,14 +46,14 @@ const Infos: React.FC<InfosProps> = ({
   </div>
 );
 Infos.defaultProps = {
-  address: null,
-  tel: null,
-  email: null,
-  birthDate: null,
-  birthPlace: null,
-  websiteName: null,
-  websiteUrl: null,
-  socialNetworks: null
+  address: undefined,
+  tel: undefined,
+  email: undefined,
+  birthDate: undefined,
+  birthPlace: undefined,
+  websiteName: undefined,
+  websiteUrl: undefined,
+  socialNetworks: undefined
 };
 const mapStateToProps = state => ({
   address: state.userData.address,

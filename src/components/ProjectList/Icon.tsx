@@ -87,8 +87,8 @@ const Icon: React.FC<IconProps> = ({ type, url, title, size }) => {
   return anchor;
 };
 Icon.defaultProps = {
-  url: null,
-  title: null,
+  url: undefined,
+  title: undefined,
   size: "middle"
 };
 export default Icon;

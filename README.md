@@ -1,5 +1,7 @@
 # React Printable CV
 
+**[`ts-version`](https://github.com/tomchen/react-printable-cv/tree/ts-version) branch is a partially-transformed TypeScript version that is converted from ES6 version [v2.1](https://github.com/tomchen/react-printable-cv/releases/tag/v2.1) in [`master`](https://github.com/tomchen/react-printable-cv/tree/master) branch. `ts-version` is runable but the type definitions and checks are not complete.**
+
 [![CircleCI](https://circleci.com/gh/tomchen/react-printable-cv.svg?style=shield)](https://circleci.com/gh/tomchen/react-printable-cv) [![codecov](https://codecov.io/gh/tomchen/react-printable-cv/branch/master/graph/badge.svg)](https://codecov.io/gh/tomchen/react-printable-cv)
 
 Printable, multi-language, web curriculum vitae (resume) built with React and Redux.

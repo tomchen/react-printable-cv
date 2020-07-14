@@ -26,7 +26,7 @@ const CareerSection: React.FC<CareerSectionProps> = ({ careerList, t }) =>
     />
   );
 CareerSection.defaultProps = {
-  careerList: null
+  careerList: undefined
 };
 const mapStateToProps = state => ({
   careerList: state.userData.career

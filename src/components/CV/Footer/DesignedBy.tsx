@@ -19,6 +19,6 @@ const DesignedBy: React.FC<DesignedByProps> = ({ name, url, t }) => (
   </div>
 );
 DesignedBy.defaultProps = {
-  url: null
+  url: undefined
 };
 export default withTranslation()(DesignedBy);

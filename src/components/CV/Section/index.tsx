@@ -12,7 +12,7 @@ const Section: React.FC<SectionProps> = ({ title, children, className }) => (
   </section>
 );
 Section.defaultProps = {
-  title: null,
+  title: undefined,
   className: ""
 };
 export default Section;

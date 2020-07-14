@@ -53,9 +53,9 @@ const Button: React.FC<ButtonProps> = ({
   return uiButton;
 };
 Button.defaultProps = {
-  onClick: null,
+  onClick: undefined,
   color: "primary",
-  title: null,
+  title: undefined,
   disabled: false,
   component: "button"
 };

@@ -23,7 +23,7 @@ const ProjectList: React.FC<ProjectListProps> = ({ projectData }) => (
   </Page>
 );
 ProjectList.defaultProps = {
-  projectData: null
+  projectData: undefined
 };
 const mapStateToProps = state => ({
   projectData: state.projectData

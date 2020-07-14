@@ -1,12 +1,15 @@
 module.exports = {
+  root: true,
   env: {
     es6: true,
     browser: true,
     node: true,
     jest: true,
   },
-  parser: 'babel-eslint',
-  extends: ['airbnb', 'eslint:recommended', 'prettier', 'prettier/react'],
+  parser: '@typescript-eslint/parser',
+  extends: [
+    'airbnb-typescript',
+  ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
@@ -18,9 +21,6 @@ module.exports = {
       impliedStrict: true,
       jsx: true,
     },
-  },
-  rules: {
-    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
   },
   settings: {
     'import/resolver': {

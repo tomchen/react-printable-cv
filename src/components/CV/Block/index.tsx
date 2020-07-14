@@ -16,7 +16,7 @@ const Block: React.FC<BlockProps> = ({ children, isTop, className }) => (
   </div>
 );
 Block.defaultProps = {
-  isTop: null,
-  className: null
+  isTop: undefined,
+  className: undefined
 };
 export default Block;

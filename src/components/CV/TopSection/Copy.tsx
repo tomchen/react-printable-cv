@@ -47,6 +47,6 @@ const Copy: React.FC<CopyProps> = ({ text, title, t }) => {
   return b;
 };
 Copy.defaultProps = {
-  title: null
+  title: undefined
 };
 export default withTranslation()(Copy);

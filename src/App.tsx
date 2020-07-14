@@ -76,8 +76,8 @@ const App: React.FC<AppProps> = ({ currentLang, userName, dispatch, t }) => {
   );
 };
 App.defaultProps = {
-  currentLang: null,
-  userName: null
+  currentLang: undefined,
+  userName: undefined
 };
 const mapStateToProps = state => ({
   currentLang: state.lang,

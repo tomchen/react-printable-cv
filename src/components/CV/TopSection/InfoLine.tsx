@@ -125,7 +125,7 @@ const InfoLine: React.FC<InfoLineProps> = ({
   );
 };
 InfoLine.defaultProps = {
-  url: null,
+  url: undefined,
   isNotExtUrl: false,
   isSocial: false
 };

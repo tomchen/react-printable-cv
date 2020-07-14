@@ -24,7 +24,7 @@ const ItemTime: React.FC<ItemTimeProps> = ({ from, to, currentLang, t }) => {
   );
 };
 ItemTime.defaultProps = {
-  to: null
+  to: undefined
 };
 const mapStateToProps = state => ({
   currentLang: state.lang

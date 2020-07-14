@@ -104,7 +104,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({
   );
 };
 ButtonMenu.defaultProps = {
-  currentLang: null
+  currentLang: undefined
 };
 const mapStateToProps = state => ({
   currentLang: state.lang,

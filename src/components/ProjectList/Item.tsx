@@ -102,14 +102,14 @@ const Item: React.FC<ItemProps> = ({
   );
 };
 Item.defaultProps = {
-  url: null,
-  urlTitle: null,
-  gitUrl: null,
-  githubUrl: null,
-  npmUrl: null,
-  date: null,
-  stack: null,
-  desc: null
+  url: undefined,
+  urlTitle: undefined,
+  gitUrl: undefined,
+  githubUrl: undefined,
+  npmUrl: undefined,
+  date: undefined,
+  stack: undefined,
+  desc: undefined
 };
 const mapStateToProps = state => ({
   currentLang: state.lang

@@ -34,9 +34,9 @@ const Footer: React.FC<FooterProps> = ({
   );
 };
 Footer.defaultProps = {
-  design: null,
-  develop: null,
-  lastUpdateTime: null
+  design: undefined,
+  develop: undefined,
+  lastUpdateTime: undefined
 };
 const mapStateToProps = state => ({
   design: state.userData.designed_by,

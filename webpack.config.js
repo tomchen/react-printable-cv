@@ -33,14 +33,9 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.tsx?$/,
+          test: /\.(t|j)sx?$/,
           exclude: /node_modules/,
           use: [{ loader: 'ts-loader' }],
-        },
-        {
-          test: /\.jsx?$/,
-          exclude: /node_modules/,
-          use: [{ loader: 'babel-loader' }],
         },
         {
           test: /\.html$/,
@@ -58,6 +53,7 @@ module.exports = (env, argv) => {
                 reloadAll: true,
               },
             },
+            { loader: 'css-modules-typescript-loader' },
             {
               loader: 'css-loader',
               options: {

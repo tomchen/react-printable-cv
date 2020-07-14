@@ -37,7 +37,7 @@ const CV: React.FC<CVProps> = ({ customSections }) => (
   </Page>
 );
 CV.defaultProps = {
-  customSections: null
+  customSections: undefined
 };
 const mapStateToProps = state => ({
   customSections: state.userData.custom_sections

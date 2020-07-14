@@ -6,6 +6,7 @@ orbs:
 branches:
   ignore:
     - gh-pages
+    - ts-version
 
 jobs:
   build-and-test:

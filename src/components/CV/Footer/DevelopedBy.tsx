@@ -38,8 +38,8 @@ const DevelopedBy: React.FC<DevelopedByProps> = ({
   </div>
 );
 DevelopedBy.defaultProps = {
-  url: null,
-  repoName: null,
-  gitUrl: null
+  url: undefined,
+  repoName: undefined,
+  gitUrl: undefined
 };
 export default withTranslation()(DevelopedBy);

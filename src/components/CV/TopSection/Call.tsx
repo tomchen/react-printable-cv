@@ -36,6 +36,6 @@ const Call: React.FC<CallProps> = ({ tel, title }) => {
   return b;
 };
 Call.defaultProps = {
-  title: null
+  title: undefined
 };
 export default Call;

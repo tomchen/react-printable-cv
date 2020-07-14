@@ -1,4 +1,6 @@
 module.exports = {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
   testRegex: '((\\.|/*.)(spec|test))\\.js?$',
   setupFilesAfterEnv: ['<rootDir>__tests__/setup/setupEnzyme.js'],
   testPathIgnorePatterns: ['<rootDir>/__tests__/setup/'],
@@ -11,4 +13,4 @@ module.exports = {
       '<rootDir>/__mocks__/fileMock.js',
     '\\.(css|sass|scss|less)$': 'identity-obj-proxy',
   },
-}
+};

@@ -1,6 +1,7 @@
 import i18n from "i18next";
 import * as types from "../constants/ActionTypes";
 import { userData, projectData, loadedLocale } from "../utils/dataCache";
+
 const getDataLang = async (lang, userOrProject) => {
   // userOrProject: true=user ; false=project
   if (lang in (userOrProject ? userData : projectData)) {
