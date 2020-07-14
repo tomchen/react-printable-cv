@@ -15,24 +15,10 @@ import pdfUrlZhCn from '../../../pdf/zh-cn.pdf'
 
 const settings = require('Settings')
 
-let pdfUrlEnA
-let pdfUrlFrA
-let pdfUrlZhCnA
-
-if (typeof pdfUrlEn !== 'undefined') {
-  pdfUrlEnA = pdfUrlEn
-  pdfUrlFrA = pdfUrlFr
-  pdfUrlZhCnA = pdfUrlZhCn
-} else {
-  pdfUrlEnA = pdfUrlEn2
-  pdfUrlFrA = pdfUrlFr2
-  pdfUrlZhCnA = pdfUrlZhCn2
-}
-
 const pdfUrls = {
-  en: pdfUrlEnA,
-  fr: pdfUrlFrA,
-  'zh-cn': pdfUrlZhCnA,
+  en: pdfUrlEn,
+  fr: pdfUrlFr,
+  'zh-cn': pdfUrlZhCn,
 }
 
 const ButtonMenu = ({ currentLang, userData, projectData, dispatch, t }) => {
