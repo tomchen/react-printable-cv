@@ -1,6 +1,6 @@
 module.exports = {
   testRegex: '((\\.|/*.)(spec|test))\\.js?$',
-  setupTestFrameworkScriptFile: '<rootDir>__tests__/setup/setupEnzyme.js',
+  setupFilesAfterEnv: ['<rootDir>__tests__/setup/setupEnzyme.js'],
   testPathIgnorePatterns: ['<rootDir>/__tests__/setup/'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   moduleNameMapper: {

@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import Page from '../Page'
 import Category from './Category'
 import projectListStyle from './index.scss'
-// import PageBreak from '../Page/PageBreak'
 
 const ProjectList = ({ projectData }) => (
   <Page className={projectListStyle.projectlist}>

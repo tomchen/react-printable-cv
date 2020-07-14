@@ -5,7 +5,7 @@ const userData = (state = {}, action) => {
     case RENDER_DATA:
       return action.data.userData
     case IMPORT_JSON:
-      return action.data
+      return action.data.userData
     default:
       return state
   }
