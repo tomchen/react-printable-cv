@@ -20,7 +20,7 @@ module.exports = (env, argv) => {
   const CssOutputSubPath = ''
 
   const config = {
-    entry: './src/index.js',
+    entry: './src/index.tsx',
     output: {
       filename: path.join(JsOutputSubPath, '[name].[contenthash].js'),
       chunkFilename: path.join(JsOutputSubPath, '[id].[contenthash].js'),
@@ -32,11 +32,11 @@ module.exports = (env, argv) => {
     },
     module: {
       rules: [
-        // {
-        //   test: /\.tsx?$/,
-        //   exclude: /node_modules/,
-        //   use: [{ loader: 'ts-loader' }],
-        // },
+        {
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          use: [{ loader: 'ts-loader' }],
+        },
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
@@ -287,6 +287,7 @@ module.exports = (env, argv) => {
         Data: path.resolve(__dirname, 'data/'),
         Settings: path.resolve(__dirname, 'settings/'),
       },
+      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
     },
 
     devtool: dev ? 'source-map' : false,
