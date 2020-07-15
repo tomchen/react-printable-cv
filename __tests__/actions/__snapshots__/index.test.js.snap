@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test actions changeLang dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "lang": "zh-cn",
+    "type": "CHANGE_LANG",
+  },
+]
+`;
+
+exports[`test actions importJson dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "data": Object {
+      "b": "g",
+    },
+    "type": "IMPORT_JSON",
+  },
+]
+`;
+
+exports[`test actions renderData dispatches the correct action and payload 1`] = `
+Array [
+  Object {
+    "data": Object {
+      "a": 6,
+    },
+    "type": "RENDER_DATA",
+  },
+]
+`;

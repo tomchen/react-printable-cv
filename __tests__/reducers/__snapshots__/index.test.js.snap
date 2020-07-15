@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Initial state is correct 1`] = `
+Object {
+  "lang": null,
+  "projectData": Object {},
+  "userData": Object {},
+}
+`;
+
+exports[`reducer should handle CHANGE_LANG 1`] = `
+Object {
+  "lang": "zh-cn",
+  "projectData": Object {},
+  "userData": Object {},
+}
+`;
+
+exports[`reducer should handle IMPORT_JSON 1`] = `
+Object {
+  "lang": null,
+  "projectData": 7,
+  "userData": "n",
+}
+`;
+
+exports[`reducer should handle RENDER_DATA 1`] = `
+Object {
+  "lang": null,
+  "projectData": "f",
+  "userData": 6,
+}
+`;
