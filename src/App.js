@@ -10,13 +10,12 @@ import {
 } from '@material-ui/core/styles'
 import { blue } from '@material-ui/core/colors'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import settings from 'Settings'
 import { changeLangAsync } from './actions'
 import './global_styles/global.scss'
 import ButtonMenu from './components/ButtonMenu'
 import CVPage from './components/CV'
 import ProjectListPage from './components/ProjectList'
-
-const settings = require('Settings')
 
 const blueTheme = createMuiTheme({
   palette: {

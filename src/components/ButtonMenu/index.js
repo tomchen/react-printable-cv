@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
+import settings from 'Settings'
 import { downloadStringAsFile, downloadBlobAsFile } from '../../utils/download'
 import { changeLangAsync } from '../../actions'
 import Button from './Button'
@@ -9,17 +10,15 @@ import Button from './Button'
 import buttonStyle from './index.scss'
 // import UploadButton from './UploadButton'
 
-import pdfUrlEn from '../../../pdf/en.pdf'
-import pdfUrlFr from '../../../pdf/fr.pdf'
-import pdfUrlZhCn from '../../../pdf/zh-cn.pdf'
+const pdfUrls = {}
 
-const settings = require('Settings')
-
-const pdfUrls = {
-  en: pdfUrlEn,
-  fr: pdfUrlFr,
-  'zh-cn': pdfUrlZhCn,
-}
+Promise.all(
+  settings.langs.map((lang) => import(`../../../pdf/${lang.code}.pdf`)),
+).then((importedLangPdfs) => {
+  settings.langs.forEach((lang, index) => {
+    pdfUrls[lang.code] = importedLangPdfs[index].default
+  })
+})
 
 const ButtonMenu = ({ currentLang, userData, projectData, dispatch, t }) => {
   const print = () => {

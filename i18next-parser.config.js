@@ -1,6 +1,7 @@
+/* eslint-disable global-require */
 module.exports = {
   defaultNamespace: 'common',
-  locales: ['en', 'fr', 'zh-cn'],
+  locales: require('./settings').langs.map((lang) => lang.code),
   namespaceSeparator: false,
   keySeparator: false,
   keepRemoved: true,
@@ -11,7 +12,7 @@ module.exports = {
   debug: true,
   func: {
     list: ['t'],
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   trans: {
     component: 'Trans',

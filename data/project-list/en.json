@@ -36,7 +36,7 @@
           "git_url": "https://github.com/expressjs/express",
           "date": "2019-02",
           "stack": ["MongoDB", "Node.js", "Express", "React.js"],
-          "desc": "*MERN* is the acronym for **M**ongoDB, **E**xpress.js, **R**eact.js and **N**ode.js. [Node.js](https://nodejs.org/) is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside a web browser.\n\n[MongoDB](https://www.mongodb.com/) is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas."
+          "desc": "*MERN* is the acronym for **M**ongoDB, **E**xpress.js, **R**eact.js and **N**ode.js. [Node.js](https://nodejs.org/) is an open-source, cross-platform, JavaScript runtime environment that executes `JavaScript` code outside a web browser.\n\n[MongoDB](https://www.mongodb.com/) is a cross-platform document-oriented database program. Classified as a NoSQL database program, MongoDB uses JSON-like documents with optional schemas."
         }
       ]
     },

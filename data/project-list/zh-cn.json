@@ -36,7 +36,7 @@
           "git_url": "https://github.com/expressjs/express",
           "date": "2019-02",
           "stack": ["MongoDB", "Node.js", "Express", "React.js"],
-          "desc": "*MERN*是**M**ongoDB、**E**xpress.js、**R**eact.js和**N**ode.js的缩写。[Node.js](https://nodejs.org/)是一个开源的、跨平台的JavaScript运行环境，它可以在Web浏览器之外执行JavaScript代码。\n\n[MongoDB](https://www.mongodb.com/)是一个跨平台的面向文档的数据库程序。MongoDB被归类为NoSQL数据库程序，它使用类似JSON的文档，模式可选。"
+          "desc": "*MERN*是**M**ongoDB、**E**xpress.js、**R**eact.js和**N**ode.js的缩写。[Node.js](https://nodejs.org/)是一个开源的、跨平台的JavaScript运行环境，它可以在Web浏览器之外执行`JavaScript`代码。\n\n[MongoDB](https://www.mongodb.com/)是一个跨平台的面向文档的数据库程序。MongoDB被归类为NoSQL数据库程序，它使用类似JSON的文档，模式可选。"
         }
       ]
     },

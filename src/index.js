@@ -11,10 +11,9 @@ import i18n from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
+import settings from 'Settings'
 import App from './App'
 import rootReducer from './reducers'
-
-const settings = require('Settings')
 
 i18n.use(initReactI18next).init({
   ns: ['common'],

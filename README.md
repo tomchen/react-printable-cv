@@ -50,7 +50,7 @@ You'll find the Chrome generated PDF usually much smaller than Word generated PD
 
 ## Multi-language
 
-You can set languages in `settings/index.js` and `i18next-parser.config.js`. Translations are in `i18n/$LOCALE/$NAMESPACE.json`.
+You can set languages in `settings/index.js`. Translations are in `i18n/$LOCALE/$NAMESPACE.json`.
 
 ## Configuration
 

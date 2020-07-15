@@ -8,7 +8,7 @@ import Babel from '../../../logos/babel.svg'
 import Gulp from '../../../logos/gulp.svg'
 import Webpack from '../../../logos/webpack.svg'
 import Rollup from '../../../logos/rollup.svg'
-import Grunt from '../../../logos/grunt.svg'
+// import Grunt from '../../../logos/grunt.svg'
 import Sass from '../../../logos/sass.svg'
 import Prettier from '../../../logos/prettier.svg'
 import Eslint from '../../../logos/eslint.svg'
@@ -54,7 +54,7 @@ import Nextjs from '../../../logos/nextjs.svg'
 import Svelte from '../../../logos/svelte-icon.svg'
 import Deno from '../../../logos/deno.svg'
 import Graphql from '../../../logos/graphql.svg'
-import Laravel from '../../../logos/laravel.svg'
+// import Laravel from '../../../logos/laravel.svg'
 import Docker from '../../../logos/docker-icon.svg'
 import Rust from '../../../logos/rust.svg'
 import WebAssembly from '../../../logos/webassembly.svg'
@@ -127,10 +127,10 @@ const list = {
     name: 'rollup',
     icon: Rollup,
   },
-  grunt: {
-    name: 'Grunt',
-    icon: Grunt,
-  },
+  // grunt: {
+  //   name: 'Grunt',
+  //   icon: Grunt,
+  // },
   sass: {
     name: 'Sass',
     icon: Sass,
@@ -311,10 +311,10 @@ const list = {
     name: 'GraphQL',
     icon: Graphql,
   },
-  laravel: {
-    name: 'Laravel',
-    icon: Laravel,
-  },
+  // laravel: {
+  //   name: 'Laravel',
+  //   icon: Laravel,
+  // },
   docker: {
     name: 'Docker',
     icon: Docker,
