@@ -1,0 +1,3 @@
+/** @license
+ * React Printable CV https://github.com/tomchen/react-printable-cv by Tom CHEN, MIT License
+ */
