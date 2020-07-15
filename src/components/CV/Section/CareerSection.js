@@ -25,10 +25,6 @@ const CareerSection = ({ careerList, t }) =>
     />
   )
 
-CareerSection.defaultProps = {
-  careerList: null,
-}
-
 CareerSection.propTypes = {
   careerList: PropTypes.arrayOf(PropTypes.object),
   t: PropTypes.func.isRequired,

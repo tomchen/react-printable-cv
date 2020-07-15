@@ -77,11 +77,6 @@ const App = ({ currentLang, userName, dispatch, t }) => {
   )
 }
 
-App.defaultProps = {
-  currentLang: null,
-  userName: null,
-}
-
 App.propTypes = {
   currentLang: PropTypes.string,
   userName: PropTypes.string,

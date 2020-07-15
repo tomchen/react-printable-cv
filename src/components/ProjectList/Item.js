@@ -93,17 +93,6 @@ const Item = ({
   )
 }
 
-Item.defaultProps = {
-  url: null,
-  urlTitle: null,
-  gitUrl: null,
-  githubUrl: null,
-  npmUrl: null,
-  date: null,
-  stack: null,
-  desc: null,
-}
-
 Item.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string,

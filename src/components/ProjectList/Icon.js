@@ -90,8 +90,6 @@ const Icon = ({ type, url, title, size }) => {
 }
 
 Icon.defaultProps = {
-  url: null,
-  title: null,
   size: 'middle',
 }
 

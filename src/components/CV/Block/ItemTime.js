@@ -20,10 +20,6 @@ const ItemTime = ({ from, to, currentLang, t }) => {
   )
 }
 
-ItemTime.defaultProps = {
-  to: null,
-}
-
 ItemTime.propTypes = {
   from: PropTypes.string.isRequired,
   to: PropTypes.string,

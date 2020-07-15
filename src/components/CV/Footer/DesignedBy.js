@@ -16,10 +16,6 @@ const DesignedBy = ({ name, url, t }) => (
   </div>
 )
 
-DesignedBy.defaultProps = {
-  url: null,
-}
-
 DesignedBy.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string,

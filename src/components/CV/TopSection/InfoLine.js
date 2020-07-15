@@ -121,7 +121,6 @@ const InfoLine = ({
 }
 
 InfoLine.defaultProps = {
-  url: null,
   isNotExtUrl: false,
   isSocial: false,
 }

@@ -27,12 +27,6 @@ const DevelopedBy = ({ name, url, repoName, gitUrl, t }) => (
   </div>
 )
 
-DevelopedBy.defaultProps = {
-  url: null,
-  repoName: null,
-  gitUrl: null,
-}
-
 DevelopedBy.propTypes = {
   name: PropTypes.string.isRequired,
   url: PropTypes.string,

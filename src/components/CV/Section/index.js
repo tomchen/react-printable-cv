@@ -11,7 +11,6 @@ const Section = ({ title, children, className }) => (
 )
 
 Section.defaultProps = {
-  title: null,
   className: '',
 }
 

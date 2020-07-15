@@ -18,7 +18,7 @@ const settings = require('Settings')
 
 i18n.use(initReactI18next).init({
   ns: ['common'],
-  defaultNS: ['common'],
+  defaultNS: 'common',
   lowerCaseLng: true,
   lng: settings.default_lang,
   fallbackLng: {

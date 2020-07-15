@@ -36,10 +36,6 @@ const CV = ({ customSections }) => (
   </Page>
 )
 
-CV.defaultProps = {
-  customSections: null,
-}
-
 CV.propTypes = {
   customSections: PropTypes.arrayOf(PropTypes.object),
 }

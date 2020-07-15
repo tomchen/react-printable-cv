@@ -45,10 +45,6 @@ const Copy = ({ text, title, t }) => {
   return b
 }
 
-Copy.defaultProps = {
-  title: null,
-}
-
 Copy.propTypes = {
   text: PropTypes.string.isRequired,
   title: PropTypes.string,

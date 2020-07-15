@@ -6,6 +6,7 @@ orbs:
 branches:
   ignore:
     - gh-pages
+    - ts-version
 
 jobs:
   build-and-test:
@@ -15,8 +16,15 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
-            - run: npm install
-            - run: npm run test:coverage
+            - run:
+                name: Install
+                command: npm install
+            - run:
+                name: Lint
+                command: npm run lint
+            - run:
+                name: Test
+                command: npm run test:coverage
             - store_artifacts:
                 path: coverage
             - run:

@@ -35,10 +35,6 @@ const Call = ({ tel, title }) => {
   return b
 }
 
-Call.defaultProps = {
-  title: null,
-}
-
 Call.propTypes = {
   tel: PropTypes.string.isRequired,
   title: PropTypes.string,

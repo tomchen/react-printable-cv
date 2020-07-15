@@ -20,10 +20,6 @@ const ProjectList = ({ projectData }) => (
   </Page>
 )
 
-ProjectList.defaultProps = {
-  projectData: null,
-}
-
 ProjectList.propTypes = {
   projectData: PropTypes.objectOf(PropTypes.any)
 }

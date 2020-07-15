@@ -44,9 +44,7 @@ const Button = ({ text, onClick, color, title, disabled, component }) => {
 }
 
 Button.defaultProps = {
-  onClick: null,
   color: 'primary',
-  title: null,
   disabled: false,
   component: 'button',
 }

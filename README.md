@@ -90,14 +90,13 @@ Not bootstrapped with Create React App, it uses:
 * Puppeteer for backend PDF creation
 * Jest for test
 * CircleCI and Codecov for CI
+* *[`ts-version`](https://github.com/tomchen/react-printable-cv/tree/ts-version) branch is a partially-checked TypeScript version transformed from `master` branch's ES version v2.1. The project will continue to be developed in ES*
 
 ## To do
 
 Things that could be done in the future to make it better or more interesting:
 
-* [ ] Tests
 * [ ] Editor forms (Edit Mode)
-* [ ] Migrate to TypeScript
 * [ ] Backend generates PDF on-demand
 * [ ] Separate the optimized production version with backend server, from the development version
 * [ ] More templates

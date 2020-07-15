@@ -23,12 +23,6 @@ const Footer = ({ design, develop, lastUpdateTime }) => {
   )
 }
 
-Footer.defaultProps = {
-  design: null,
-  develop: null,
-  lastUpdateTime: null,
-}
-
 Footer.propTypes = {
   design: PropTypes.objectOf(PropTypes.string),
   develop: PropTypes.objectOf(PropTypes.string),

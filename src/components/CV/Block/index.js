@@ -14,11 +14,6 @@ const Block = ({ children, isTop, className }) => (
   </div>
 )
 
-Block.defaultProps = {
-  isTop: null,
-  className: null,
-}
-
 Block.propTypes = {
   children: PropTypes.element.isRequired,
   isTop: PropTypes.bool,

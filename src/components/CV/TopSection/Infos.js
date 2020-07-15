@@ -35,17 +35,6 @@ const Infos = ({
   </div>
 )
 
-Infos.defaultProps = {
-  address: null,
-  tel: null,
-  email: null,
-  birthDate: null,
-  birthPlace: null,
-  websiteName: null,
-  websiteUrl: null,
-  socialNetworks: null,
-}
-
 Infos.propTypes = {
   address: PropTypes.string,
   tel: PropTypes.string,

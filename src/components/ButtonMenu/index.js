@@ -99,10 +99,6 @@ const ButtonMenu = ({ currentLang, userData, projectData, dispatch, t }) => {
   )
 }
 
-ButtonMenu.defaultProps = {
-  currentLang: null,
-}
-
 ButtonMenu.propTypes = {
   currentLang: PropTypes.string,
   userData: PropTypes.objectOf(PropTypes.any).isRequired,
