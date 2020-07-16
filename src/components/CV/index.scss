@@ -1,9 +1,30 @@
 @import '../../global_styles/variables';
 
 .cv {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   overflow: hidden;
   background: $main-color;
+}
+
+.webversionlink {
+  display: none;
+
+  @media print {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    display: inline-block;
+    width: 7rem;
+    padding: 0.3rem 0.6rem 0.3rem 1rem;
+    color: $back-color;
+    font-weight: bold;
+    text-align: right;
+    text-decoration: none;
+    background-color: $main-color;
+    border-radius: 0 0 0 10rem;
+  }
 }

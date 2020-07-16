@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Markdown from 'react-markdown'
+import settings from 'Settings'
 import Page from '../Page'
+import WebVersionLink from './WebVersionLink'
 import TopSection from './TopSection'
 import CareerSection from './Section/CareerSection'
 import EduSection from './Section/EduSection'
@@ -12,9 +14,10 @@ import Block from './Block'
 import Footer from './Footer'
 import CVStyle from './index.scss'
 
-const CV = ({ customSections }) => (
+const CV = ({ customSections, url }) => (
   <Page className={CVStyle.cv}>
     <>
+      {settings.print_show_web_version_link && url && <WebVersionLink />}
       <TopSection />
       <CareerSection />
       <EduSection />
@@ -38,10 +41,12 @@ const CV = ({ customSections }) => (
 
 CV.propTypes = {
   customSections: PropTypes.arrayOf(PropTypes.object),
+  url: PropTypes.string,
 }
 
 const mapStateToProps = (state) => ({
   customSections: state.userData.custom_sections,
+  url: state.userData.web_version_url,
 })
 
 export default connect(mapStateToProps)(CV)

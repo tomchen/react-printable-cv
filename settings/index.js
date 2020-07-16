@@ -16,4 +16,6 @@ module.exports = {
   default_lang: 'en',
   less_script_chunks: false,
   inline_resources: false,
+  private: false,
+  print_show_web_version_link: false,
 }

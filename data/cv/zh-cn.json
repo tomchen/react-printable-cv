@@ -8,6 +8,7 @@
   "website_name": "example.com",
   "website_url": "https://example.com/",
   "profession": "市场部经理",
+  "web_version_url": "",
   "social_networks": [
     {
       "type": "github",
@@ -108,7 +109,7 @@
   },
   "designed_by": {
     "name": "Tom CHEN",
-    "url": "https://github.com/tomchen/"
+    "url": ""
   },
-  "last_update": "2020-07-05"
+  "last_update": "2020-07-17"
 }

@@ -9,10 +9,6 @@ Name.propTypes = {
   name: PropTypes.string.isRequired,
 }
 
-Name.propTypes = {
-  name: PropTypes.string.isRequired,
-}
-
 const mapStateToProps = (state) => ({
   name: state.userData.name,
 })

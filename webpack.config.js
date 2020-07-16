@@ -16,14 +16,14 @@ const settings = require('./settings')
 module.exports = (env, argv) => {
   const dev = argv.mode === 'development'
   const outputPath = path.join(__dirname, 'dist')
-  const JsOutputSubPath = ''
-  const CssOutputSubPath = ''
+  const jsPath = 'scripts/'
+  const cssPath = 'styles/'
 
   const config = {
     entry: './src/index.js',
     output: {
-      filename: path.join(JsOutputSubPath, '[name].[contenthash].js'),
-      chunkFilename: path.join(JsOutputSubPath, '[id].[contenthash].js'),
+      filename: `${jsPath}[name].[contenthash].js`,
+      chunkFilename: `${jsPath}[id].[contenthash].js`,
       path: outputPath,
     },
     devServer: {
@@ -35,20 +35,25 @@ module.exports = (env, argv) => {
         {
           test: /\.jsx?$/,
           exclude: /node_modules/,
-          use: [{ loader: 'babel-loader' }],
+          use: [
+            {
+              loader: 'babel-loader',
+            },
+          ],
         },
-        {
-          test: /\.html$/,
-          use: {
-            loader: 'html-loader',
-          },
-        },
+        // {
+        //   test: /\.html$/,
+        //   use: {
+        //     loader: 'html-loader',
+        //   },
+        // },
         {
           test: /\.(sa|sc|c)ss$/i,
           use: [
             {
               loader: MiniCssExtractPlugin.loader,
               options: {
+                publicPath: cssPath ? '../' : '', // need this hack because `filename: 'css/...'` (has cssPath)
                 hmr: dev,
                 reloadAll: true,
               },
@@ -83,7 +88,7 @@ module.exports = (env, argv) => {
               ? {
                   loader: 'file-loader',
                   options: {
-                    name: '[name].[ext]',
+                    name: '[name].[hash:8].[ext]',
                     outputPath: 'images/',
                   },
                 }
@@ -126,7 +131,7 @@ module.exports = (env, argv) => {
               ? {
                   loader: 'file-loader',
                   options: {
-                    name: '[name].[ext]',
+                    name: '[name].[hash:8].[ext]',
                     outputPath: 'pdf/',
                   },
                 }
@@ -145,7 +150,7 @@ module.exports = (env, argv) => {
               ? {
                   loader: 'file-loader',
                   options: {
-                    name: '[name].[ext]',
+                    name: '[name].[hash:8].[ext]',
                     outputPath: 'icons/',
                   },
                 }
@@ -164,7 +169,7 @@ module.exports = (env, argv) => {
               ? {
                   loader: 'file-loader',
                   options: {
-                    name: '[name].[ext]',
+                    name: '[name].[hash:8].[ext]',
                     outputPath: 'fonts/',
                   },
                 }
@@ -207,7 +212,7 @@ module.exports = (env, argv) => {
                           removeDimensions: true,
                           removeDoctype: true,
                           removeEditorsNSData: true,
-                          removeElementsByAttr: true,
+                          // removeElementsByAttr: true,
                           removeEmptyAttrs: true,
                           removeEmptyContainers: true,
                           removeEmptyText: true,
@@ -235,17 +240,16 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './src/index.html',
+        template: './src/index.ejs',
+        templateParameters: {
+          private: settings.private,
+        },
         filename: './index.html',
       }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
-        filename: dev
-          ? path.join(CssOutputSubPath, '[name].css')
-          : path.join(CssOutputSubPath, '[name].[hash].css'),
-        chunkFilename: dev
-          ? path.join(CssOutputSubPath, '[id].css')
-          : path.join(CssOutputSubPath, '[id].[hash].css'),
+        filename: dev ? `${cssPath}[name].css` : `${cssPath}[name].[hash:8].css`,
+        chunkFilename: dev ? `${cssPath}[id].css` : `${cssPath}[id].[hash:8].css`,
       }),
 
       !dev &&
@@ -253,7 +257,7 @@ module.exports = (env, argv) => {
         new webpack.optimize.LimitChunkCountPlugin({
           // produce one script chunk and / or inline script in index.html
           maxChunks: 1,
-        }), // then manually remove /dist/*.js
+        }), // then remove /dist/*.js
 
       ...(!dev && settings.inline_resources
         ? [
@@ -264,7 +268,7 @@ module.exports = (env, argv) => {
                 root: outputPath,
                 test: [
                   {
-                    folder: path.join('.', JsOutputSubPath),
+                    folder: jsPath ? (`./${jsPath}`) : '.',
                     method: (absoluteItemPath) => {
                       return /\.(js|txt)$/i.test(absoluteItemPath)
                     },
