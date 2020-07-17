@@ -12,6 +12,10 @@
 .time {
   flex-basis: 11rem;
   flex-grow: 0;
+
+  @include small-mobile {
+    flex-basis: 5rem;
+  }
 }
 
 .lines {

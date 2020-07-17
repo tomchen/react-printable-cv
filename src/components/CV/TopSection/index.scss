@@ -29,6 +29,10 @@
     margin: 0 3rem;
   }
 
+  @include small-mobile {
+    margin: 0;
+  }
+
   div[data-type='website'],
   .social {
     flex-basis: 33%;
@@ -109,5 +113,6 @@
 
   @include mobile {
     margin: 1rem 0;
+    padding: 0;
   }
 }
