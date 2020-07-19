@@ -8,10 +8,10 @@ const getDataLang = async (lang, userOrProject) => {
     return userData.lang
   }
 
-  const d = await import(
+  const importedData = await import(
     `Data/${userOrProject ? 'cv' : 'project-list'}/${lang}.json`
   )
-  return d
+  return importedData.default
 }
 
 const getI18nLang = async (lang) => {

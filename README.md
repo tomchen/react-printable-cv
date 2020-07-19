@@ -68,7 +68,7 @@ module.exports = {
   default_lang: 'en',
   less_script_chunks: false, // generate one JavaScript chunk files only in production
   inline_resources: false, // make resources inline in order to generate a standalone HTML in production
-  private: false, // add noindex meta tag to block search engine
+  noindex: false, // add noindex meta tag to block search engine
   print_show_web_version_link: false, // show web version link in print view so that it will be shown in the print-view-generated PDF (`web_version_url` is optionally defined in CV data JSON)
 }
 ```

@@ -11,6 +11,7 @@ const postcssPresetEnv = require('postcss-preset-env')
 const postcssNormalize = require('postcss-normalize')
 const cssnano = require('cssnano')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+// const { exec } = require('child_process')
 const settings = require('./settings')
 
 module.exports = (env, argv) => {
@@ -242,14 +243,18 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './src/index.ejs',
         templateParameters: {
-          private: settings.private,
+          noindex: settings.noindex,
         },
         filename: './index.html',
       }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
-        filename: dev ? `${cssPath}[name].css` : `${cssPath}[name].[hash:8].css`,
-        chunkFilename: dev ? `${cssPath}[id].css` : `${cssPath}[id].[hash:8].css`,
+        filename: dev
+          ? `${cssPath}[name].css`
+          : `${cssPath}[name].[hash:8].css`,
+        chunkFilename: dev
+          ? `${cssPath}[id].css`
+          : `${cssPath}[id].[hash:8].css`,
       }),
 
       !dev &&
@@ -268,7 +273,7 @@ module.exports = (env, argv) => {
                 root: outputPath,
                 test: [
                   {
-                    folder: jsPath ? (`./${jsPath}`) : '.',
+                    folder: jsPath ? `./${jsPath}` : '.',
                     method: (absoluteItemPath) => {
                       return /\.(js|txt)$/i.test(absoluteItemPath)
                     },
@@ -278,6 +283,17 @@ module.exports = (env, argv) => {
             }),
           ]
         : []),
+
+      // {
+      //   apply: (compiler) => {
+      //     compiler.hooks.afterEmit.tap('AfterEmitPlugin', () => {
+      //       exec('node test.js', (err, stdout, stderr) => {
+      //         if (stdout) process.stdout.write(stdout)
+      //         if (stderr) process.stderr.write(stderr)
+      //       })
+      //     })
+      //   },
+      // },
     ].filter((a) => a !== false),
 
     resolve: {

@@ -5,7 +5,7 @@ const projectData = (state = {}, action) => {
     case RENDER_DATA:
       return action.data.projectData
     case IMPORT_JSON:
-      return action.data.projectData
+      return action.data.project_list
     default:
       return state
   }

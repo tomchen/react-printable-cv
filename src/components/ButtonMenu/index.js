@@ -4,11 +4,11 @@ import { withTranslation } from 'react-i18next'
 import { connect } from 'react-redux'
 import settings from 'Settings'
 import { downloadStringAsFile, downloadBlobAsFile } from '../../utils/download'
-import { changeLangAsync } from '../../actions'
+import { changeLangAsync, importJson } from '../../actions'
 import Button from './Button'
 // import SwitchBar from './SwitchBar'
 import buttonStyle from './index.scss'
-// import UploadButton from './UploadButton'
+import UploadButton from './UploadButton'
 
 const pdfUrls = {}
 
@@ -38,6 +38,14 @@ const ButtonMenu = ({ currentLang, userData, projectData, dispatch, t }) => {
       'data.json',
       JSON.stringify({ cv: userData, project_list: projectData }, null, 2),
     )
+  }
+
+  const handleImportJson = (e) => {
+    const reader = new FileReader()
+    reader.onload = (evt) => {
+      dispatch(importJson(JSON.parse(evt.target.result)))
+    }
+    reader.readAsText(e.target.files[0])
   }
 
   const pdf = () => {
@@ -86,14 +94,20 @@ const ButtonMenu = ({ currentLang, userData, projectData, dispatch, t }) => {
         color="default"
       />
       {/* <SwitchBar text={t('Edit mode')} onChange={handleEditModeChange} /> */}
-      <Button
+      {settings.export_json_button && <Button
         text={t('Export JSON')}
         title={t('Export .json file of the data')}
         onClick={handleExportJson}
         color="default"
-      />
-      {/* <UploadButton /> */}
-      <Button text={t('GitHub')} onClick={handleGotoGithub} color="default" />
+      />}
+      {settings.import_json_button && <UploadButton
+        text={t('Import JSON')}
+        title={t('Import .json file and replace the data')}
+        onChange={handleImportJson}
+        color="default"
+        component="span"
+      />}
+      {settings.github_button && <Button text={t('GitHub')} onClick={handleGotoGithub} color="default" />}
     </div>
   )
 }

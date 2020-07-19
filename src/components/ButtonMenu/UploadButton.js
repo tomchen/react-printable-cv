@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withTranslation } from 'react-i18next'
-import { connect } from 'react-redux'
 import { makeStyles } from '@material-ui/core/styles'
-import { importJson } from '../../actions'
 import Button from './Button'
 
 const useStyles = makeStyles((theme) => ({
@@ -18,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }))
 
-const UploadButton = ({ dispatch, t }) => {
+const UploadButton = ({ text, onChange, color, title, disabled, component }) => {
   const classes = useStyles()
 
   return (
@@ -30,19 +27,14 @@ const UploadButton = ({ dispatch, t }) => {
           id="contained-button-file"
           multiple
           type="file"
-          onChange={(e) => {
-            const reader = new FileReader()
-            reader.onload = (evt) => {
-              dispatch(importJson(JSON.parse(evt.target.result)))
-            }
-            reader.readAsText(e.target.files[0])
-          }}
+          onChange={onChange}
         />
         <Button
-          text={t('Import JSON')}
-          title={t('Import .json file and replace the data')}
-          color="primary"
-          component="span"
+          text={text}
+          title={title}
+          color={color}
+          disabled={disabled}
+          component={component}
         />
       </label>
     </div>
@@ -50,8 +42,12 @@ const UploadButton = ({ dispatch, t }) => {
 }
 
 UploadButton.propTypes = {
-  t: PropTypes.func.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
+  onChange: PropTypes.func,
+  color: PropTypes.string,
+  title: PropTypes.string,
+  disabled: PropTypes.bool,
+  component: PropTypes.string,
 }
 
-export default connect()(withTranslation()(UploadButton))
+export default UploadButton
