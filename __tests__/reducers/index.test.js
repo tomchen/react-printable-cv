@@ -50,7 +50,7 @@ describe('reducer', () => {
   })
 
   it('should handle IMPORT_JSON', () => {
-    const data = { userData: 'n', projectData: 7 }
+    const data = { cv: 'n', project_list: 7 }
 
     const s = expect(
       reducer(initialState, {
@@ -60,7 +60,8 @@ describe('reducer', () => {
     )
     s.toEqual({
       lang: null,
-      ...data,
+      userData: data.cv,
+      projectData: data.project_list,
     })
     s.toMatchSnapshot()
   })

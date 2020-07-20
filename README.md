@@ -69,6 +69,12 @@ module.exports = {
   less_script_chunks: false, // generate one JavaScript chunk files only in production
   inline_resources: false, // make resources inline in order to generate a standalone HTML in production
   noindex: false, // add noindex meta tag to block search engine
+  recaptcha: false, // add Google reCAPTCHA to block spiders, if true, you should also set `site_key` and `secret_key` in `backend/recaptcha.js`
+  dynamic_pdf: true, // when clicking PDF button, send JSON to backend to generate PDF on demand, instead of downloading pre-included static PDF
+  export_json_button: true, // show "Export JSON" button
+  import_json_button: true, // show "Import JSON" button
+  github_button: true, // show "GitHub" button
+  generate_backend_pdf_template: false, // generate a template to be used by backend to generate PDF
   print_show_web_version_link: false, // show web version link in print view so that it will be shown in the print-view-generated PDF (`web_version_url` is optionally defined in CV data JSON)
 }
 ```

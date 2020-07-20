@@ -1,8 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cx from 'classnames'
 import pageStyle from './index.scss'
 
-const PageBreak = ({ children, className }) => <div className={`${pageStyle.pagebreak} ${className}`}>{children}</div>
+const PageBreak = ({ children, className }) => (
+  <div
+    className={cx({
+      [pageStyle.pagebreak]: true,
+      [className]: className,
+    })}
+  >
+    {children}
+  </div>
+)
 
 PageBreak.defaultProps = {
   className: '',

@@ -5,10 +5,11 @@ import blockStyle from './index.scss'
 
 const Block = ({ children, isTop, className }) => (
   <div
-    className={`${cx({
+    className={cx({
       [blockStyle.block]: true,
       [blockStyle.topblock]: isTop,
-    })} ${className}`}
+      [className]: className
+    })}
   >
     {children}
   </div>
