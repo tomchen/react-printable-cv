@@ -17,7 +17,7 @@ module.exports = {
   less_script_chunks: false,
   inline_resources: false,
   noindex: false,
-  recaptcha: false,// to do
+  recaptcha: false,
   dynamic_pdf: true,// to do
   export_json_button: true,
   import_json_button: true,

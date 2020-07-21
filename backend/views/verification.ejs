@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Verification</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      #notice {
+        width: 260px;
+        margin: 0 auto 8px;
+        font-size: 15px;
+        font-family: sans-serif;
+        line-height: 20px;
+        text-align: center;
+      }
+
+      #main-form {
+        max-width: 400px;
+        text-align: center;
+      }
+
+      #submit-button {
+        margin-top: 6px;
+        padding: 12px 26px;
+        color: #fff;
+        font-size: 18px;
+        background-color: #0c5;
+        border: 0;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in;
+      }
+
+      #submit-button:hover {
+        background-color: #008000;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="" method="POST" id="main-form">
+      <div id="notice">
+        To view my CV, please verify you are not a robot or a spider or
+        something.<br />
+        👩👨✅, 🤖🕷️⛔
+      </div>
+      <div
+        class="g-recaptcha"
+        data-sitekey="<%= siteKey %>"
+      ></div>
+      <input type="submit" value="OK" id="submit-button" />
+    </form>
+  </body>
+</html>
