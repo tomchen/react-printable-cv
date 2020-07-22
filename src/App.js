@@ -55,7 +55,7 @@ const App = ({ currentLang, userName, dispatch, t }) => {
 
   return (
     <ThemeProvider theme={blueTheme}>
-      <ButtonMenu />
+      {!settings.generate_backend_pdf_template && <ButtonMenu />}
       {userName ? (
         <>
           <CVPage />

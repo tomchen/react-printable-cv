@@ -88,7 +88,6 @@
     "postcss-normalize": "9.0.0",
     "postcss-preset-env": "6.7.0",
     "prettier": "2.0.5",
-    "puppeteer": "^5.1.0",
     "react-dev-utils": "10.2.1",
     "react-test-renderer": "^16.13.1",
     "redux-mock-store": "^1.5.4",

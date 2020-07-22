@@ -79,7 +79,7 @@ module.exports = {
 }
 ```
 
-Modify user data and settings in data/, pdf/ and settings/ folders, and run `npm start` (dev mode) or `npm run build` (build production file).
+Modify user data and settings in `data/`, `pdf/` and `settings/` folders, and run `npm start` (dev mode) or `npm run build` (build production file).
 
 ## Back end
 

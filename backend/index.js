@@ -6,14 +6,13 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const querystring = require('querystring')
 const fetch = require('node-fetch')
-const backendSettings = require('./settings')
-const { recaptcha } = require('../settings')
+const settings = require('./settings')
 
 const app = express()
 
-const privateKey = fs.readFileSync(backendSettings.privateKeyPath, 'utf8')
-const certificate = fs.readFileSync(backendSettings.certificatePath, 'utf8')
-const ca = fs.readFileSync(backendSettings.caPath, 'utf8')
+const privateKey = fs.readFileSync(settings.privateKeyPath, 'utf8')
+const certificate = fs.readFileSync(settings.certificatePath, 'utf8')
+const ca = fs.readFileSync(settings.caPath, 'utf8')
 
 const credentials = {
   key: privateKey,
@@ -21,9 +20,9 @@ const credentials = {
   ca,
 }
 
-const routePath = backendSettings.routePath || ''
+const routePath = settings.routePath || ''
 
-if (backendSettings.isHttps) {
+if (settings.useHttps) {
   app.use((req, res, next) => {
     if (req.secure) {
       next()
@@ -33,13 +32,13 @@ if (backendSettings.isHttps) {
   })
 }
 
-if (routePath && backendSettings.rootRedirectTo) {
+if (routePath && settings.rootRedirectTo) {
   app.get('/', (req, res) => {
-    res.redirect(backendSettings.rootRedirectTo)
+    res.redirect(settings.rootRedirectTo)
   })
 }
 
-if (recaptcha) {
+if (settings.useRecaptcha) {
   app.set('view engine', 'ejs')
   // app.set('views', path.join(__dirname, 'views'))
 
@@ -48,7 +47,7 @@ if (recaptcha) {
   app.get(`${routePath}/`, (req, res) => {
     res.set({ 'X-Robots-Tag': 'noindex, nofollow' })
     res.render('verification', {
-      siteKey: backendSettings.siteKey,
+      siteKey: settings.siteKey,
     })
   })
 
@@ -70,7 +69,7 @@ if (recaptcha) {
           'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
         },
         body: querystring.stringify({
-          secret: backendSettings.secretKey,
+          secret: settings.secretKey,
           response: recaptchaRes,
         }),
       })
@@ -102,7 +101,7 @@ if (recaptcha) {
 
 app.use(
   express.static(path.join(__dirname, 'static'), {
-    index: recaptcha ? false : ['index.html'],
+    index: settings.useRecaptcha ? false : ['index.html'],
     setHeaders: (res) => {
       res.set('X-Robots-Tag', 'noindex, nofollow')
     },
@@ -113,7 +112,7 @@ http.createServer(app).listen(80, () => {
   console.log('HTTP Server running on port 80')
 })
 
-if (backendSettings.isHttps) {
+if (settings.useHttps) {
   https.createServer(credentials, app).listen(443, () => {
     console.log('HTTPS Server running on port 443')
   })
