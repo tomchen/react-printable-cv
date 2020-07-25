@@ -69,7 +69,7 @@ module.exports = {
   less_script_chunks: false, // generate one JavaScript chunk files only in production
   inline_resources: false, // make resources inline in order to generate a standalone HTML in production
   noindex: false, // add noindex meta tag to block search engine. However, the reCAPTCHA described below would be a better choice
-  recaptcha: false, // add Google reCAPTCHA to block spiders, if true, you should also set `site_key` and `secret_key` in `backend/settings.js`, see also the following "Back end" section
+  recaptcha: false, // add Google reCAPTCHA to block spiders, if true, you should also set `useRecaptcha`, `siteKey` and `secretKey` in `backend/settings.js`, see also the following "Back end" section
   dynamic_pdf: true, // when clicking PDF button, send JSON to backend to generate PDF on demand, instead of downloading pre-included static PDF
   export_json_button: true, // show "Export JSON" button
   import_json_button: true, // show "Import JSON" button
@@ -79,13 +79,20 @@ module.exports = {
 }
 ```
 
-Modify user data and settings in data/, pdf/ and settings/ folders, and run `npm start` (dev mode) or `npm run build` (build production file).
+Modify user data and settings in `data/`, `pdf/` and `settings/` folders, and run `npm start` (dev mode) or `npm run build` (build production file).
 
 ## Back end
 
-To use Google reCAPTCHA, you need to have a back end. A Node.js+Express.js-powered simple back end is in the `backend/` folder. Modify `backend/settings.js`, move the production files you have built from `dist/` to `backend/static`, deploy `backend/` to your server, run `npm start` at `backend/` directory.
+To use [Google reCAPTCHA](https://www.google.com/recaptcha/) ([register new site in console](https://www.google.com/recaptcha/admin/create)), you need to have a back end. A Node.js+Express.js-powered simple back end is in the `backend/` folder. Modify `backend/settings.js`, move the production files you have built from `dist/` to `backend/static`, deploy `backend/` to your server, run `npm start` at `backend/` directory.
 
 If you use Google reCAPTCHA, It is automatically assumed you do not want your pages to be indexed by search engines and web crawlers.
+
+`backend/settings.js`:
+* `useRecaptcha`:
+  * `false`: do not use reCAPTCHA
+  * `'checkbox'`: checkbox reCAPTCHA (v2)
+  * *ANYTHING ELSE*: invisible reCAPTCHA (v2 or v3)
+* the other settings should be pretty clear
 
 ## Stack
 

@@ -14,13 +14,22 @@ import Block from './Block'
 import Footer from './Footer'
 import CVStyle from './index.scss'
 
-const CV = ({ customSections, url }) => (
+const CV = ({ educationFirst, customSections, url }) => (
   <Page className={CVStyle.cv}>
     <>
       {settings.print_show_web_version_link && url && <WebVersionLink />}
       <TopSection />
-      <CareerSection />
-      <EduSection />
+      {educationFirst ? (
+        <>
+          <EduSection />
+          <CareerSection />
+        </>
+      ) : (
+        <>
+          <CareerSection />
+          <EduSection />
+        </>
+      )}
       <LanguageSection />
       {customSections &&
         customSections.map((item, index) => (
@@ -40,11 +49,13 @@ const CV = ({ customSections, url }) => (
 )
 
 CV.propTypes = {
+  educationFirst: PropTypes.bool,
   customSections: PropTypes.arrayOf(PropTypes.object),
   url: PropTypes.string,
 }
 
 const mapStateToProps = (state) => ({
+  educationFirst: state.userData.education_first,
   customSections: state.userData.custom_sections,
   url: state.userData.web_version_url,
 })

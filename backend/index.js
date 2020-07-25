@@ -6,24 +6,26 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const querystring = require('querystring')
 const fetch = require('node-fetch')
-const backendSettings = require('./settings')
-const { recaptcha } = require('../settings')
+const settings = require('./settings')
 
 const app = express()
 
-const privateKey = fs.readFileSync(backendSettings.privateKeyPath, 'utf8')
-const certificate = fs.readFileSync(backendSettings.certificatePath, 'utf8')
-const ca = fs.readFileSync(backendSettings.caPath, 'utf8')
+const urlPath = settings.path || ''
 
-const credentials = {
+const { useHttps, useRecaptcha } = settings
+
+const privateKey = useHttps && fs.readFileSync(settings.privateKeyPath, 'utf8')
+const certificate =
+  useHttps && fs.readFileSync(settings.certificatePath, 'utf8')
+const ca = useHttps && fs.readFileSync(settings.caPath, 'utf8')
+
+const credentials = useHttps && {
   key: privateKey,
   cert: certificate,
   ca,
 }
 
-const routePath = backendSettings.routePath || ''
-
-if (backendSettings.isHttps) {
+if (useHttps) {
   app.use((req, res, next) => {
     if (req.secure) {
       next()
@@ -33,26 +35,28 @@ if (backendSettings.isHttps) {
   })
 }
 
-if (routePath && backendSettings.rootRedirectTo) {
+if (urlPath && settings.rootRedirectTo) {
   app.get('/', (req, res) => {
-    res.redirect(backendSettings.rootRedirectTo)
+    res.redirect(settings.rootRedirectTo)
   })
 }
 
-if (recaptcha) {
+if (useRecaptcha) {
   app.set('view engine', 'ejs')
   // app.set('views', path.join(__dirname, 'views'))
 
+  const viewFile = useRecaptcha === 'checkbox' ? 'checkbox' : 'invisible'
+
   app.use(bodyParser.urlencoded({ extended: true }))
 
-  app.get(`${routePath}/`, (req, res) => {
+  app.get(`${urlPath}/`, (req, res) => {
     res.set({ 'X-Robots-Tag': 'noindex, nofollow' })
-    res.render('verification', {
-      siteKey: backendSettings.siteKey,
+    res.render(viewFile, {
+      siteKey: settings.siteKey,
     })
   })
 
-  app.post(`${routePath}/`, async (req, res) => {
+  app.post(`${urlPath}/`, async (req, res) => {
     try {
       const recaptchaRes = req.body['g-recaptcha-response']
       const verifyUrl = 'https://www.google.com/recaptcha/api/siteverify'
@@ -70,7 +74,7 @@ if (recaptcha) {
           'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
         },
         body: querystring.stringify({
-          secret: backendSettings.secretKey,
+          secret: settings.secretKey,
           response: recaptchaRes,
         }),
       })
@@ -95,14 +99,14 @@ if (recaptcha) {
     }
   })
 
-  app.use(`${routePath}/index.html`, (req, res) => {
+  app.use(`${urlPath}/index.html`, (req, res) => {
     return res.sendStatus(404)
   })
 }
 
 app.use(
   express.static(path.join(__dirname, 'static'), {
-    index: recaptcha ? false : ['index.html'],
+    index: useRecaptcha ? false : ['index.html'],
     setHeaders: (res) => {
       res.set('X-Robots-Tag', 'noindex, nofollow')
     },
@@ -113,7 +117,7 @@ http.createServer(app).listen(80, () => {
   console.log('HTTP Server running on port 80')
 })
 
-if (backendSettings.isHttps) {
+if (useHttps) {
   https.createServer(credentials, app).listen(443, () => {
     console.log('HTTPS Server running on port 443')
   })

@@ -16,6 +16,7 @@
       "url": "https://github.com/example"
     }
   ],
+  "education_first": false,
   "education": [
     {
       "from_date": "2002-09",
