@@ -10,6 +10,8 @@ const settings = require('./settings')
 
 const app = express()
 
+app.enable('strict routing')
+
 const urlPath = settings.path || ''
 
 const { useHttps, useRecaptcha } = settings
@@ -105,6 +107,7 @@ if (useRecaptcha) {
 }
 
 app.use(
+  `${urlPath}/`,
   express.static(path.join(__dirname, 'static'), {
     index: useRecaptcha ? false : ['index.html'],
     setHeaders: (res) => {
